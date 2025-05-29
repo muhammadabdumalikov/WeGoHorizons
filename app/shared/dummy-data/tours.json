@@ -1,0 +1,258 @@
+[
+  {
+    "id": "1",
+    "title": "Touching Hanoi - vegan food tour wwwwwwwwwwwwwww",
+    "description": "Experience the vibrant flavors of Hanoi's vegan cuisine on this guided food tour through the city's bustling streets.",
+    "organizer_title": "Hanoi Food Tours",
+    "organizer_phone": "+84123456789",
+    "organizer_logo": "https://picsum.photos/200/200",
+    "price": 380000,
+    "rating": 4.5,
+    "reviews_count": 128,
+    "duration": "3 hours",
+    "group_size": "2-8 people",
+    "location": "Hanoi, Vietnam",
+    "start_location": "Old Quarter",
+    "end_location": "Hoan Kiem Lake",
+    "categoryName": "Street food • Walking",
+    "categoryId": "food",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=1",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "Food tastings at 5 different locations",
+        "included": true
+      },
+      {
+        "title": "English speaking guide",
+        "included": true
+      },
+      {
+        "title": "Alcoholic beverages",
+        "included": false
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Off Track to Hanoi hidden island",
+    "description": "Discover the hidden gems of Hanoi's lesser-known island, exploring local culture and traditions away from tourist crowds.",
+    "organizer_title": "Hanoi Cultural Expeditions",
+    "organizer_phone": "+84987654321",
+    "organizer_logo": "https://picsum.photos/200/200?random=2",
+    "price": 45,
+    "rating": 4.5,
+    "reviews_count": 94,
+    "duration": "5 hours",
+    "group_size": "4-10 people",
+    "location": "Hanoi, Vietnam",
+    "start_location": "West Lake",
+    "end_location": "West Lake",
+    "categoryName": "Cultural Tour • Food",
+    "categoryId": "cultural",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300?random=3",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=4",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "Boat transportation",
+        "included": true
+      },
+      {
+        "title": "Lunch with local family",
+        "included": true
+      },
+      {
+        "title": "Souvenir",
+        "included": false
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Hanoi's Old Quarter Walking Tour",
+    "description": "Explore the historic Old Quarter of Hanoi on this guided walking tour, learning about its colonial past and vibrant present.",
+    "organizer_title": "Hanoi Heritage Walks",
+    "organizer_phone": "+84543219876",
+    "organizer_logo": "https://picsum.photos/200/200?random=5",
+    "price": 25,
+    "rating": 4.7,
+    "reviews_count": 216,
+    "duration": "2.5 hours",
+    "group_size": "2-12 people",
+    "location": "Hanoi, Vietnam",
+    "start_location": "Dong Xuan Market",
+    "end_location": "St. Joseph's Cathedral",
+    "categoryName": "Historical • Walking",
+    "categoryId": "historical",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300?random=6",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=7",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "Professional guide",
+        "included": true
+      },
+      {
+        "title": "Bottled water",
+        "included": true
+      },
+      {
+        "title": "Museum entrance fees",
+        "included": false
+      },
+      {
+        "title": "Meals and snacks",
+        "included": false
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "The Romanian – Solo Exhibition",
+    "description": "Explore the provocative works of Romania's leading contemporary artist in this exclusive solo exhibition.",
+    "organizer_title": "Vicas Art Studio",
+    "organizer_phone": "+84123498765",
+    "organizer_logo": "https://picsum.photos/200/200?random=8",
+    "price": 10,
+    "rating": 4.8,
+    "reviews_count": 56,
+    "duration": "1.5 hours",
+    "group_size": "Any",
+    "location": "Hanoi, Vietnam",
+    "start_location": "Vicas Art Studio",
+    "end_location": "Vicas Art Studio",
+    "categoryName": "Art • Exhibition",
+    "categoryId": "art",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300?random=9",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=10",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "Exhibition entry",
+        "included": true
+      },
+      {
+        "title": "Audio guide",
+        "included": false
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Femme-Broidery Workshop",
+    "description": "Learn the art of contemporary embroidery in this hands-on workshop celebrating feminist themes and traditional techniques.",
+    "organizer_title": "Hockett Haus of Crafts",
+    "organizer_phone": "+84765432198",
+    "organizer_logo": "https://picsum.photos/200/200?random=11",
+    "price": 30,
+    "rating": 4.9,
+    "reviews_count": 42,
+    "duration": "2 hours",
+    "group_size": "5-15 people",
+    "location": "Hanoi, Vietnam",
+    "start_location": "Hockett Haus",
+    "end_location": "Hockett Haus",
+    "categoryName": "Workshop • Crafts",
+    "categoryId": "workshop",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300?random=12",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=13",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "All materials",
+        "included": true
+      },
+      {
+        "title": "Complimentary tea",
+        "included": true
+      },
+      {
+        "title": "Take-home embroidery kit",
+        "included": false
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Hanoi Street Food Safari",
+    "description": "Embark on a culinary adventure through Hanoi's vibrant streets, sampling the city's most iconic street foods guided by a local expert.",
+    "organizer_title": "Hanoi Food Expeditions",
+    "organizer_phone": "+84234567891",
+    "organizer_logo": "https://picsum.photos/200/200?random=14",
+    "price": 35,
+    "rating": 4.6,
+    "reviews_count": 184,
+    "duration": "4 hours",
+    "group_size": "2-8 people",
+    "location": "Hanoi, Vietnam",
+    "start_location": "Dong Xuan Market",
+    "end_location": "Ta Hien Street",
+    "categoryName": "Food • Walking",
+    "categoryId": "food",
+    "files": [
+      {
+        "url": "https://picsum.photos/400/300?random=15",
+        "type": "cover"
+      },
+      {
+        "url": "https://picsum.photos/400/300?random=16",
+        "type": "extra"
+      }
+    ],
+    "includes": [
+      {
+        "title": "7 food tastings",
+        "included": true
+      },
+      {
+        "title": "1 local beer or soft drink",
+        "included": true
+      },
+      {
+        "title": "Printed food guide",
+        "included": true
+      },
+      {
+        "title": "Hotel pickup/drop-off",
+        "included": false
+      }
+    ]
+  }
+] 

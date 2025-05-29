@@ -1,0 +1,142 @@
+import { GroupType } from "../types/group";
+
+export const destinations = ['All', 'Mountains', 'Lakes', 'North Forests', 'Nature', 'Ocean', 'Kuala-Lumpur'];
+
+export const listingsData = [
+  {
+    id: 1,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    description: 'Lorem picsum amet de',
+    rating: 4.8,
+    price: 150,
+    duration: 3,
+    location: 'Pacific Ocean',
+    category: 'Beaches',
+  },
+  {
+    id: 2,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    description: 'Lorem picsum amet de',
+    rating: 4.8,
+    price: 150,
+    duration: 3,
+    location: 'Pacific Ocean',
+    category: 'Beaches',
+  },
+  {
+    id: 3,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    description: 'Lorem picsum amet de',
+    rating: 4.8,
+    price: 150,
+    duration: 3,
+    location: 'Pacific Ocean',
+    category: 'Beaches',
+  },
+  {
+    id: 4,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    description: 'Lorem picsum amet de',
+    rating: 4.8,
+    price: 150,
+    duration: 3,
+    location: 'Pacific Ocean',
+    category: 'Beaches',
+  },
+  {
+    id: 5,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    description: 'Lorem picsum amet de',
+    rating: 4.8,
+    price: 150,
+    duration: 3,
+    location: 'Pacific Ocean',
+    category: 'Beaches',
+  },
+];
+
+export const groupListingsData: GroupType[] = [
+  {
+    id: 1,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    rating: 4.8,
+    reviews: 332,
+  },
+  {
+    id: 2,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    rating: 4.8,
+    reviews: 332,
+  },
+  {
+    id: 3,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    rating: 4.8,
+    reviews: 332,
+  },
+  {
+    id: 4,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    rating: 4.8,
+    reviews: 332,
+  },
+  {
+    id: 5,
+    name: 'Alpine Chalet Retreat',
+    image: 'https://picsum.photos/200',
+    rating: 4.8,
+    reviews: 332,
+  },
+];
+
+export const PRODUCT_DATA = [
+  {
+    id: '1',
+    image: 'https://picsum.photos/200',
+    name: 'Nimadir mahsulot',
+    rating: 3,
+    price: 45000,
+    orders: 12121,
+  },
+  {
+    id: '2',
+    image: 'https://picsum.photos/200',
+    name: 'Nimadir mahsulot',
+    rating: 2,
+    price: 45000,
+    orders: 5,
+  },
+  {
+    id: '3',
+    image: 'https://picsum.photos/200',
+    name: 'Nimadir mahsulot',
+    rating: 5,
+    price: 45000,
+    orders: 4443,
+  },
+  {
+    id: '4',
+    image: 'https://picsum.photos/200',
+    name: 'Nimadir mahsulot',
+    rating: 3,
+    price: 45000,
+    orders: 501,
+  },
+  {
+    id: '5',
+    image: 'https://picsum.photos/200',
+    name: 'Nimadir mahsulot',
+    rating: 4,
+    price: 45000,
+    orders: 110,
+  },
+];
