@@ -15,12 +15,12 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  Image,
   Text,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import {appColors} from '../shared/constants';
+import {CachedImage} from './CachedImage';
 
 interface Story {
   id: string;
@@ -51,7 +51,7 @@ export function Stories({stories, onStoryPress}: StoriesProps) {
                 styles.storyRing,
                 story.viewed ? styles.viewedRing : styles.unviewedRing,
               ]}>
-              <Image source={{uri: story.avatar}} style={styles.storyAvatar} />
+              <CachedImage uri={story.avatar} style={styles.storyAvatar} />
             </View>
             <Text style={styles.username} numberOfLines={1}>
               {story.username}

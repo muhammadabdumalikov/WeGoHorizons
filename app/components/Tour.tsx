@@ -16,6 +16,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {addDotsToNumber} from '../shared/helpers';
+import {CachedImage} from './CachedImage';
+import {CachedImageBackground} from './CachedImageBackground';
 // import {HeartLike} from './CustomHeartLike';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -42,19 +44,26 @@ function Component({tourData, title = 'Tours'}: Props) {
   };
 
   const renderItem: ListRenderItem<Tour> = ({item}) => {
+    const backgroundImageUrl = item.files?.find(f => f.type === 'extra')?.url;
+    const organizerLogoUrl = item.organizer_logo;
+
+    if (!backgroundImageUrl || !organizerLogoUrl) {
+      return null;
+    }
+
     return (
       <Pressable onPress={() => onPressHandler(item)}>
         <View style={styles.item}>
-          <ImageBackground
-            source={{uri: item.files?.find(f => f.type === 'extra')?.url}}
+          <CachedImageBackground
+            uri={backgroundImageUrl}
             style={styles.imgBackground}>
             <View style={styles.discountBox}>
               <Text style={styles.discountTxt}>25% OFF</Text>
             </View>
 
             <View style={styles.organizerLogoBox}>
-              <Image
-                source={{uri: item.organizer_logo}}
+              <CachedImage
+                uri={organizerLogoUrl}
                 style={styles.organizerLogo}
               />
             </View>
@@ -67,7 +76,7 @@ function Component({tourData, title = 'Tours'}: Props) {
               />
               {/* <HeartLike /> */}
             </View>
-          </ImageBackground>
+          </CachedImageBackground>
 
           <View>
             <Text style={styles.tagBox}>Cultural • Coffee</Text>

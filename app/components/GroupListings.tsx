@@ -1,29 +1,30 @@
 import React from 'react';
-import {
-  FlatList,
-  Image,
-  ListRenderItem,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, View, ListRenderItem} from 'react-native';
 import {GroupType} from '../types/group';
 import {appColors} from '../shared/constants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {CachedImage} from './CachedImage';
 
-type Props = {
+interface Props {
   listings: GroupType[];
-};
+}
 
 function Component({listings}: Props) {
   const renderItem: ListRenderItem<GroupType> = ({item}) => {
     return (
       <View style={styles.item}>
-        <Image source={{uri: item.files?.find(f => f.type === 'logo')?.url}} style={styles.image} />
+        <CachedImage
+          uri={item.files?.find(f => f.type === 'logo')?.url}
+          style={styles.image}
+        />
         <View style={styles.infoBox}>
           <Text style={styles.itemTxt}>{item.title}</Text>
           <View style={styles.reviewsRow}>
-            <FontAwesome name="star" size={18} color={appColors.secondMainColor} />
+            <FontAwesome
+              name="star"
+              size={18}
+              color={appColors.secondMainColor}
+            />
             <Text style={styles.itemRating}>{item.rating || 0}</Text>
             <Text style={styles.itemReview}>({item.reviews || 323})</Text>
           </View>

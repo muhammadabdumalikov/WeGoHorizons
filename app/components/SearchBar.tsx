@@ -150,12 +150,13 @@ function ComponentInput() {
 const styles = StyleSheet.create({
   searchHeader: {
     width: '100%',
-    marginTop: 20,
+    marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingBottom: 5,
+    maxHeight: 55,
   },
   locationTxt: {
     fontSize: 20,

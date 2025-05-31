@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   PermissionsAndroid,
   Platform,
-  SafeAreaView,
-  ScrollView,
   StyleSheet,
   Alert,
+  Animated,
+  StatusBar,
+  SafeAreaView,
+  FlatList,
+  View,
+  Text,
 } from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {appColors} from '../shared/constants';
 import {Tours} from '../components/Tour';
 import {GroupListings} from '../components/GroupListings';
@@ -15,6 +20,9 @@ import {fetchOrganizers, fetchTours} from '../api/cities';
 import {SearchBar} from '../components/SearchBar';
 import {Stories} from '../components/Stories';
 import Geolocation from '@react-native-community/geolocation';
+import {TourCardsSmall} from './all-tours';
+import { CustomNavigationProp } from '../types/stack';
+import { useNavigation } from '@react-navigation/native';
 
 const mockStories = [
   {
@@ -51,6 +59,13 @@ const mockStories = [
 
 export function HomeScreen() {
   const [weatherData, setWeatherData] = useState(null);
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const lastScrollY = useRef(0);
+  const headerTranslateY = useRef(new Animated.Value(0)).current;
+  const HEADER_HEIGHT = 80; // Approximate height of SearchBar
+  const insets = useSafeAreaInsets();
+  const STATUS_BAR_HEIGHT =
+    Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight || 0;
 
   const {data: tours} = useQuery({
     queryKey: ['destinations'],
@@ -122,24 +137,50 @@ export function HomeScreen() {
 
     getUserLocation();
   }, []);
+  
+  const navigation = useNavigation<CustomNavigationProp>();
 
-  return (
-    <SafeAreaView style={styles.viewBox}>
-      <SearchBar weatherData={weatherData} />
-      {/* <Pressable style={styles.headerRightPressable}>
-          <Ionicons
-            name="notifications"
-            size={28}
-            color={appColors.mainColor}
-          />
-        </Pressable> */}
+  const handleScroll = Animated.event(
+    [{nativeEvent: {contentOffset: {y: scrollY}}}],
+    {
+      useNativeDriver: false,
+      listener: (event: any) => {
+        const currentScrollY = event.nativeEvent.contentOffset.y;
+        const scrollDirection =
+          currentScrollY > lastScrollY.current ? 'down' : 'up';
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        // bounces={false}
-        scrollEventThrottle={16}>
-        {/* <Text style={styles.headingTxt}>Explore The Beautiful World!</Text> */}
+        const isScrolling = Math.abs(currentScrollY - lastScrollY.current);
+        // Only trigger animation if scroll position changed significantly
+        if (isScrolling > 4) {
+          if (
+            scrollDirection === 'down' &&
+            currentScrollY > HEADER_HEIGHT &&
+            isScrolling > 8
+          ) {
+            // Hide header when scrolling down
+            Animated.timing(headerTranslateY, {
+              toValue: -HEADER_HEIGHT - STATUS_BAR_HEIGHT,
+              duration: 350,
+              useNativeDriver: true,
+            }).start();
+          } else if (scrollDirection === 'up') {
+            // Show header when scrolling up
+            Animated.timing(headerTranslateY, {
+              toValue: 0,
+              duration: 350,
+              useNativeDriver: true,
+            }).start();
+          }
+        }
 
+        lastScrollY.current = currentScrollY;
+      },
+    },
+  );
+
+  const renderContent = () => {
+    return (
+      <>
         <Stories
           stories={mockStories}
           onStoryPress={storyId => {
@@ -147,16 +188,52 @@ export function HomeScreen() {
           }}
         />
 
-        <Tours
-          tourData={tours}
-        />
+        <Tours tourData={tours} />
 
         <GroupListings listings={organizers} />
 
-        <Tours
-          tourData={tours}
-        />
-      </ScrollView>
+        <View style={{padding: 16, marginTop: 16}}>
+          <FlatList
+            data={tours}
+            renderItem={({item}) => TourCardsSmall({item, navigation})}
+            keyExtractor={item => item.id}
+            numColumns={2}
+            contentContainerStyle={styles.gridContainer}
+            columnWrapperStyle={styles.row}
+            showsVerticalScrollIndicator={false}
+            ListEmptyComponent={
+              <View style={styles.emptyContainer}>
+                <Text style={styles.emptyText}>No tours found</Text>
+              </View>
+            }
+          />
+        </View>
+      </>
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.viewBox}>
+      <Animated.View
+        style={[
+          styles.stickyHeader,
+          {
+            transform: [{translateY: headerTranslateY}],
+            top: STATUS_BAR_HEIGHT,
+          },
+        ]}>
+        <SearchBar weatherData={weatherData} />
+      </Animated.View>
+
+      <FlatList
+        data={[1]} // Single item since we're using renderItem to render all content
+        renderItem={() => renderContent()}
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={handleScroll}
+        contentContainerStyle={[styles.scrollContent]}
+        keyExtractor={() => 'main-content'}
+      />
     </SafeAreaView>
   );
 }
@@ -184,9 +261,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     backgroundColor: appColors.pureWhite,
-    // shadowColor: appColors.mainColor,
-    // shadowOffset: {width: 2, height: 4},
-    // shadowOpacity: 0.2,
-    // shadowRadius: 3,
+  },
+  stickyHeader: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    paddingHorizontal: 16,
+    backgroundColor: appColors.pureWhite,
+    borderBottomColor: appColors.grey2,
+    borderBottomWidth: 0.5,
+  },
+  scrollContent: {
+    paddingTop: 60,
+  },
+  gridContainer: {
+    padding: 16,
+    backgroundColor: 'red',
+  },
+  row: {
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 24,
+  },
+  emptyText: {
+    fontSize: 16,
+    fontFamily: 'Gilroy-Medium',
+    color: appColors.darkGrey,
   },
 });

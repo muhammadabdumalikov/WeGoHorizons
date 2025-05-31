@@ -37,13 +37,14 @@ interface RBSheetRefType {
   close: () => void;
 }
 
-export const renderTourCard = ({
+export const TourCardsSmall = ({
   item,
   navigation,
 }: {
   item: any;
   navigation: any;
-}) => {
+  }) => {
+  
   return (
     <Pressable
       style={styles.tourCard}
@@ -91,8 +92,26 @@ export const renderTourCard = ({
        </View>
      </Pressable>
    );
- };
+};
 
+const SmallToursFlatList = ({filteredTours, navigation}: {filteredTours: any[], navigation?: any}) => {
+  return (
+     <FlatList
+          data={filteredTours}
+          renderItem={({item}) => TourCardsSmall({item, navigation})}
+          keyExtractor={item => item.id}
+          numColumns={2}
+          contentContainerStyle={styles.gridContainer}
+          columnWrapperStyle={styles.row}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyText}>No tours found</Text>
+            </View>
+          }
+        />
+  );
+};
 export function AllToursScreen({navigation, route}: Props) {
   const {top} = useSafeAreaInsets();
   const [tours, setTours] = useState<any[]>([]);
@@ -298,19 +317,9 @@ export function AllToursScreen({navigation, route}: Props) {
           <ActivityIndicator size="large" color={appColors.mainColor} />
         </View>
       ) : (
-        <FlatList
-          data={filteredTours}
-          renderItem={({item}) => renderTourCard({item, navigation})}
-          keyExtractor={item => item.id}
-          numColumns={2}
-          contentContainerStyle={styles.gridContainer}
-          columnWrapperStyle={styles.row}
-          showsVerticalScrollIndicator={false}
-          ListEmptyComponent={
-            <View style={styles.emptyContainer}>
-              <Text style={styles.emptyText}>No tours found</Text>
-            </View>
-          }
+        <SmallToursFlatList
+          filteredTours={filteredTours}
+          navigation={navigation}
         />
       )}
 

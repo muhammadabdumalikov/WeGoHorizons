@@ -1,3 +1,4 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Tour } from './tour';
 
 export type RootStackParamList = {
@@ -9,3 +10,5 @@ export type RootStackParamList = {
   'search-screen': undefined;
   'all-tours-screen': { title?: string; categoryId?: string };
 };
+
+export type CustomNavigationProp = NativeStackNavigationProp<RootStackParamList>;
