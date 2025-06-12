@@ -4,7 +4,7 @@ import {DarkTheme, DefaultTheme, ThemeProvider} from '@react-navigation/native';
 import {useColorScheme} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {RootLayout} from './app/navigation';
+import {RootLayout} from './app/navigation/index';
 import {QueryClientProvider} from '@tanstack/react-query';
 import queryClient from './app/api/react-query';
 import {AuthProvider} from './app/navigation/auth-context';

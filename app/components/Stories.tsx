@@ -11,7 +11,7 @@ Timings:
 !Image and Videos are from Pexels.com!
 */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   ScrollView,
@@ -21,6 +21,7 @@ import {
 } from 'react-native';
 import {appColors} from '../shared/constants';
 import {CachedImage} from './CachedImage';
+import {StoryViewer} from './StoryViewer';
 
 interface Story {
   id: string;
@@ -34,18 +35,54 @@ interface StoriesProps {
   onStoryPress: (storyId: string) => void;
 }
 
+const storyImages = [
+  'https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&w=400&h=700',
+  'https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&w=400&h=700',
+  'https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&w=400&h=700',
+  // Add more URLs as needed
+];
+
 export function Stories({stories, onStoryPress}: StoriesProps) {
+  const [viewerVisible, setViewerVisible] = useState(false);
+  const [selectedStory, setSelectedStory] = useState<any>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const handleStoryPress = (story: any, index: number) => {
+    setSelectedStory({
+      ...story,
+      image: storyImages[index % storyImages.length],
+    });
+    setSelectedIndex(index);
+    setViewerVisible(true);
+  };
+
+  const handleCloseViewer = () => {
+    setViewerVisible(false);
+    setSelectedStory(null);
+    setSelectedIndex(0);
+  };
+
+  const handleChangeStory = (newIndex: number) => {
+    if (newIndex >= 0 && newIndex < stories.length) {
+      setSelectedStory({
+        ...stories[newIndex],
+        image: storyImages[newIndex % storyImages.length],
+      });
+      setSelectedIndex(newIndex);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}>
-        {stories.map(story => (
+        {stories.map((story, idx) => (
           <TouchableOpacity
             key={story.id}
             style={styles.storyContainer}
-            onPress={() => onStoryPress(story.id)}>
+            onPress={() => handleStoryPress(story, idx)}>
             <View
               style={[
                 styles.storyRing,
@@ -59,6 +96,14 @@ export function Stories({stories, onStoryPress}: StoriesProps) {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <StoryViewer
+        visible={viewerVisible}
+        story={selectedStory}
+        onClose={handleCloseViewer}
+        stories={stories}
+        selectedIndex={selectedIndex}
+        onChangeStory={handleChangeStory}
+      />
     </View>
   );
 }

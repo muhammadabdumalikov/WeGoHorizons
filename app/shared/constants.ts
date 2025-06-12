@@ -25,7 +25,6 @@ export const appColors = {
   bottomBarBlur: 'rgba(255, 255, 255, 0.8)',
   backgroundBlur: 'rgba(255, 255, 255, 0.85)',
   yellow: '#febd2d',
-
   mainColor: '#febd2d', // '#176FF2', // '#FF8559',
   secondMainColor: '#ff8264',
 };
