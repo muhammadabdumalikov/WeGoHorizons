@@ -42,6 +42,12 @@ const storyImages = [
   // Add more URLs as needed
 ];
 
+const mockOrganizer = {
+  id: 'org1',
+  avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+  name: 'John Doe',
+};
+
 export function Stories({stories, onStoryPress}: StoriesProps) {
   const [viewerVisible, setViewerVisible] = useState(false);
   const [selectedStory, setSelectedStory] = useState<any>(null);
@@ -51,6 +57,7 @@ export function Stories({stories, onStoryPress}: StoriesProps) {
     setSelectedStory({
       ...story,
       image: storyImages[index % storyImages.length],
+      organizer: mockOrganizer,
     });
     setSelectedIndex(index);
     setViewerVisible(true);
@@ -67,6 +74,7 @@ export function Stories({stories, onStoryPress}: StoriesProps) {
       setSelectedStory({
         ...stories[newIndex],
         image: storyImages[newIndex % storyImages.length],
+        organizer: mockOrganizer,
       });
       setSelectedIndex(newIndex);
     }

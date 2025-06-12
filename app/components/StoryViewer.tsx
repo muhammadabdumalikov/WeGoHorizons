@@ -42,6 +42,7 @@ interface StoryViewerProps {
   stories: any[];
   selectedIndex: number;
   onChangeStory: (newIndex: number) => void;
+  onOrganizerPress?: (organizer: any) => void;
 }
 
 export const StoryViewer: React.FC<StoryViewerProps> = ({
@@ -51,6 +52,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   stories,
   selectedIndex,
   onChangeStory,
+  onOrganizerPress,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -72,6 +74,12 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     } // else do nothing
   };
 
+  const handleOrganizerPress = () => {
+    if (onOrganizerPress && story.organizer) {
+      onOrganizerPress(story.organizer);
+    }
+  };
+
   return (
     <Modal visible={visible} animationType="fade" transparent={true}>
       <View style={styles.container}>
@@ -84,6 +92,22 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
             resizeMode={FastImage.resizeMode.cover}
             onLoadEnd={() => setLoading(false)}
           />
+          {/* Organizer profile image and name (top left, horizontal row) */}
+          {story.organizer?.avatar && (
+            <TouchableOpacity
+              style={styles.organizerRow}
+              onPress={handleOrganizerPress}
+              activeOpacity={0.8}>
+              <FastImage
+                source={{uri: story.organizer.avatar}}
+                style={styles.organizerAvatar}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              {story.organizer?.name && (
+                <Text style={styles.organizerName}>{story.organizer.name}</Text>
+              )}
+            </TouchableOpacity>
+          )}
           {/* Tap areas for prev/next */}
           <Pressable style={styles.leftArea} onPress={handlePrev} />
           <Pressable style={styles.rightArea} onPress={handleNext} />
@@ -293,5 +317,35 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     zIndex: 2,
+  },
+  organizerRow: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    zIndex: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.25)',
+    borderRadius: 24,
+    paddingVertical: 4,
+    paddingLeft: 4,
+    paddingRight: 10,
+  },
+  organizerAvatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    borderWidth: 2,
+    borderColor: '#fff',
+    backgroundColor: '#eee',
+  },
+  organizerName: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 8,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: {width: 0, height: 1},
+    textShadowRadius: 2,
   },
 });
