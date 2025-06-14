@@ -17,6 +17,8 @@ import Animated, {
   useAnimatedScrollHandler,
   interpolateColor,
   interpolate,
+  withSpring,
+  withSequence,
 } from 'react-native-reanimated';
 import {RootStackParamList} from '../types/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -69,6 +71,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
   const [hoverRating, setHoverRating] = useState(0);
   const [animatingRating, setAnimatingRating] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const heartScale = useSharedValue(1);
+  const heartColor = useSharedValue(appColors.navyBlack);
 
   const onScroll = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
@@ -92,6 +97,18 @@ export function TourDetailsScreen({navigation, route}: Props) {
         [IMG_HEIGHT - 70, IMG_HEIGHT - 68],
         [0, 1],
       ),
+    };
+  });
+
+  const heartAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{scale: heartScale.value}],
+    };
+  });
+
+  const heartColorStyle = useAnimatedStyle(() => {
+    return {
+      color: heartColor.value,
     };
   });
 
@@ -120,6 +137,14 @@ export function TourDetailsScreen({navigation, route}: Props) {
         }, 1000);
       }
     }, 150); // 150ms delay between each star
+  };
+
+  const handleHeartPress = () => {
+    setIsLiked(!isLiked);
+    heartScale.value = withSequence(withSpring(1.2), withSpring(1));
+    heartColor.value = withSpring(
+      isLiked ? appColors.navyBlack : appColors.redVelvet,
+    );
   };
 
   const renderTabContent = () => {
@@ -510,10 +535,12 @@ export function TourDetailsScreen({navigation, route}: Props) {
         </View>
 
         <View style={styles.headerRightBox}>
-          <Pressable style={styles.headerLeftBox}>
-            <View style={styles.headerLeftIcon}>
-              <Feather name="heart" size={20} color={appColors.navyBlack} />
-            </View>
+          <Pressable style={styles.headerLeftBox} onPress={handleHeartPress}>
+            <Animated.View style={[styles.headerLeftIcon, heartAnimatedStyle]}>
+              <Animated.Text style={heartColorStyle}>
+                <FontAwesome name={isLiked ? 'heart' : 'heart-o'} size={20} />
+              </Animated.Text>
+            </Animated.View>
           </Pressable>
           <Pressable
             style={styles.headerLeftBox}

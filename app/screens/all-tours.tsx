@@ -85,7 +85,7 @@ export const TourCardsSmall = ({
                <Text style={styles.priceTxt}>
                  {addDotsToNumber(+item.price)}
                </Text>
-               <Text style={styles.personTxt}>/person</Text>
+               <Text style={styles.personTxt} numberOfLines={1}>/person</Text>
              </View>
            </View>
          </View>

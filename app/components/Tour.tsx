@@ -1,8 +1,6 @@
 import React, {useRef} from 'react';
 import {
   Animated,
-  Image,
-  ImageBackground,
   ListRenderItem,
   Pressable,
   StyleSheet,
@@ -15,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {addDotsToNumber} from '../shared/helpers';
 import {CachedImage} from './CachedImage';
 import {CachedImageBackground} from './CachedImageBackground';
@@ -97,7 +96,7 @@ function Component({tourData, title = 'Tours'}: Props) {
                   <Text style={styles.priceTxt}>
                     {addDotsToNumber(+item.price)}
                   </Text>
-                  <Text style={styles.personTxt}>/person</Text>
+                  <Text style={styles.personTxt} numberOfLines={1}>/person</Text>
                 </View>
               </View>
             </View>
@@ -113,7 +112,11 @@ function Component({tourData, title = 'Tours'}: Props) {
         <Text style={styles.headerTitle}>{title}</Text>
         <Pressable onPress={handleSeeAllPress} style={styles.showAllButton}>
           <Text style={styles.showAllText}>See all</Text>
-          {/* <FontAwesome name="angle-right" size={16} color={appColors.mainColor} /> */}
+          <Entypo
+            name="chevron-right"
+            size={18}
+            color={appColors.mainColor}
+          />
         </Pressable>
       </View>
 
@@ -144,14 +147,14 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   headerTitle: {
-    fontSize: 24,
-    fontFamily: 'Gilroy-Bold',
+    fontSize: 22,
+    fontFamily: 'Gilroy-Semibold',
     color: appColors.navyBlack,
   },
   showAllButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 2,
   },
   showAllText: {
     fontSize: 16,
@@ -222,7 +225,6 @@ const styles = StyleSheet.create({
   titleTxt: {
     maxWidth: 210,
     fontSize: 20,
-    fontWeight: '600',
     letterSpacing: 0.3,
     lineHeight: 22,
     color: appColors.navyBlack,

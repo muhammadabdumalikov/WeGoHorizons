@@ -20,7 +20,7 @@ export function SplashScreen({navigation}: {navigation: any}) {
           style={styles.logo}
           resizeMode="contain"
         />
-        <GilroyBoldText style={styles.appName}>Trippo</GilroyBoldText>
+        <GilroyBoldText style={styles.appName}>trippo</GilroyBoldText>
       </View>
     </View>
   );

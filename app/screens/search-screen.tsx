@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   Text,
+  Dimensions
 } from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -20,7 +21,7 @@ import {SearchInputBox} from '../components/Input';
 import Feather from 'react-native-vector-icons/Feather';
 import FilterComponent from '../components/FilterComponent';
 import {fetchTours} from '../api/cities';
-import {renderTourCard} from './all-tours';
+import { renderTourCard } from './all-tours';
 
 export interface MyRefType {
   open: () => void;
@@ -171,8 +172,10 @@ export function SearchScreen({navigation}: {navigation: any}) {
           draggable
           customStyles={{
             container: {
-              borderTopLeftRadius: 30,
-              borderTopRightRadius: 30,
+              borderRadius: 30,
+              marginBottom: 16,
+              width: Dimensions.get('window').width - 20,
+              alignSelf: 'center',
             },
           }}>
           <FilterComponent

@@ -10,11 +10,12 @@ import {
   FlatList,
   View,
   Text,
+  Pressable,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {appColors} from '../shared/constants';
 import {Tours} from '../components/Tour';
-import {GroupListings} from '../components/GroupListings';
+import {Organizers} from '../components/Organizers';
 import {useQuery} from '@tanstack/react-query';
 import {fetchOrganizers, fetchTours} from '../api/cities';
 import {SearchBar} from '../components/SearchBar';
@@ -23,6 +24,7 @@ import Geolocation from '@react-native-community/geolocation';
 import {TourCardsSmall} from './all-tours';
 import { CustomNavigationProp } from '../types/stack';
 import { useNavigation } from '@react-navigation/native';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const mockStories = [
   {
@@ -76,6 +78,10 @@ export function HomeScreen() {
     queryKey: ['organizers'],
     queryFn: fetchOrganizers,
   });
+
+  const handleSeeAllPress = () => {
+    navigation.navigate('all-tours-screen', {title: 'Tours'});
+  };
 
   const requestLocationPermission = async () => {
     if (Platform.OS === 'ios') {
@@ -188,9 +194,9 @@ export function HomeScreen() {
           }}
         />
 
-        <Tours tourData={tours} />
+        <Tours tourData={tours} title="Upcoming Tours" />
 
-        <GroupListings listings={organizers} />
+        <Organizers listings={organizers} />
 
         <View style={{padding: 16, marginTop: 16}}>
           <FlatList
@@ -198,6 +204,21 @@ export function HomeScreen() {
             renderItem={({item}) => TourCardsSmall({item, navigation})}
             keyExtractor={item => item.id}
             numColumns={2}
+            ListHeaderComponent={() => (
+              <View style={styles.headerContainer}>
+                <Text style={styles.headerTitle}>Tours</Text>
+                <Pressable
+                  onPress={handleSeeAllPress}
+                  style={styles.showAllButton}>
+                  <Text style={styles.showAllText}>See all</Text>
+                  <Entypo
+                    name="chevron-right"
+                    size={18}
+                    color={appColors.mainColor}
+                  />
+                </Pressable>
+              </View>
+            )}
             contentContainerStyle={styles.gridContainer}
             columnWrapperStyle={styles.row}
             showsVerticalScrollIndicator={false}
@@ -214,16 +235,16 @@ export function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.viewBox}>
-      <Animated.View
+      <View
         style={[
           styles.stickyHeader,
-          {
-            transform: [{translateY: headerTranslateY}],
-            top: STATUS_BAR_HEIGHT,
-          },
+          // {
+          //   transform: [{translateY: headerTranslateY}],
+          //   top: STATUS_BAR_HEIGHT,
+          // },
         ]}>
         <SearchBar weatherData={weatherData} />
-      </Animated.View>
+      </View>
 
       <FlatList
         data={[1]} // Single item since we're using renderItem to render all content
@@ -231,7 +252,7 @@ export function HomeScreen() {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
         onScroll={handleScroll}
-        contentContainerStyle={[styles.scrollContent]}
+        // contentContainerStyle={[styles.scrollContent]}
         keyExtractor={() => 'main-content'}
       />
     </SafeAreaView>
@@ -263,10 +284,6 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.pureWhite,
   },
   stickyHeader: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    zIndex: 1,
     paddingHorizontal: 16,
     backgroundColor: appColors.pureWhite,
     borderBottomColor: appColors.grey2,
@@ -277,7 +294,6 @@ const styles = StyleSheet.create({
   },
   gridContainer: {
     padding: 16,
-    backgroundColor: 'red',
   },
   row: {
     justifyContent: 'space-between',
@@ -293,5 +309,26 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Gilroy-Medium',
     color: appColors.darkGrey,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 12,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: 'Gilroy-Semibold',
+    color: appColors.navyBlack,
+  },
+  showAllButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+  },
+  showAllText: {
+    fontSize: 16,
+    fontFamily: 'Gilroy-Medium',
+    color: '#FFC107',
   },
 });

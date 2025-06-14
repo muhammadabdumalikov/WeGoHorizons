@@ -71,14 +71,14 @@ function Component({weatherData}: {weatherData: WeatherApiResponse | null}) {
       <View>
         <Text style={styles.locationTxt}>{weatherData?.location?.name}, {weatherData?.location?.region}</Text>
         <View style={styles.weatherBox}>
-          <Feather name="cloud" size={24} color={appColors.grey6} />
+          <Feather name="cloud" size={20} color={appColors.grey6} />
           <Text style={styles.degreeTxt}>{weatherData?.current?.temp_c?.toFixed()}{'\u00B0'}C</Text>
         </View>
       </View>
       <Pressable
         style={styles.searchIconWrapper}
         onPress={() => navigation.navigate('search-screen')}>
-        <Feather size={26} name="search" color={appColors.navyBlack} />
+        <Feather size={24} name="search" color={appColors.navyBlack} />
       </Pressable>
     </View>
   );
@@ -154,15 +154,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 12,
+    // paddingHorizontal: 12,
     paddingBottom: 5,
     maxHeight: 55,
   },
   locationTxt: {
-    fontSize: 20,
+    fontSize: 18,
     color: appColors.navyBlack,
     fontFamily: 'Gilroy-Semibold',
-    marginBottom: 4,
+    marginBottom: 2,
   },
   weatherBox: {
     flexDirection: 'row',
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   },
   degreeTxt: {
     marginLeft: 5,
-    fontSize: 16,
+    fontSize: 14,
     color: appColors.grey6,
     fontFamily: 'Gilroy-Semibold',
   },
