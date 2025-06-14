@@ -171,8 +171,8 @@ export function SearchScreen({navigation}: {navigation: any}) {
           draggable
           customStyles={{
             container: {
-              borderTopLeftRadius: 40,
-              borderTopRightRadius: 40,
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30,
             },
           }}>
           <FilterComponent

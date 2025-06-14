@@ -326,20 +326,14 @@ export function AllToursScreen({navigation, route}: Props) {
       {/* Filter Bottom Sheet */}
       <RBSheet
         ref={filterSheetRef as any}
-        closeOnPressMask={true}
+        // closeOnPressMask={true}
         height={700}
+        draggable
         customStyles={{
-          wrapper: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          },
           container: {
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
             paddingTop: 10,
-          },
-          draggableIcon: {
-            backgroundColor: '#DADADA',
-            width: 60,
           },
         }}>
         <FilterComponent

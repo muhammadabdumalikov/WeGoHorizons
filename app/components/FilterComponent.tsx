@@ -749,14 +749,14 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 10,
     backgroundColor: appColors.mainColor,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // elevation: 2,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
   },
   priceLabelsContainer: {
     flexDirection: 'row',

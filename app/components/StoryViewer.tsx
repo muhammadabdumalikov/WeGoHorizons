@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   Modal,
   View,
@@ -7,6 +7,7 @@ import {
   Text,
   Dimensions,
   Pressable,
+  Animated,
 } from 'react-native';
 import {appColors} from '../shared/constants';
 import Feather from 'react-native-vector-icons/Feather';
@@ -54,10 +55,16 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   onChangeStory,
   onOrganizerPress,
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const prevImageRef = useRef(story?.image);
 
   useEffect(() => {
-    setLoading(true);
+    if (prevImageRef.current !== story?.image) {
+      setLoading(true);
+      fadeAnim.setValue(0); // Instantly hide content
+      prevImageRef.current = story?.image;
+    }
   }, [story?.image]);
 
   if (!story) return null;
@@ -80,18 +87,26 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
     }
   };
 
+  const handleImageLoadEnd = () => {
+    setLoading(false);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 120,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <Modal visible={visible} animationType="fade" transparent={true}>
       <View style={styles.container}>
-        <View style={{flex: 1, width: '100%'}}>
-          {/* Custom Skeleton while loading */}
-          {loading && <StorySkeleton onClose={onClose} />}
+        <Animated.View style={{flex: 1, width: '100%', opacity: fadeAnim}}>
           <FastImage
             source={{uri: story.image}}
             style={styles.image}
             resizeMode={FastImage.resizeMode.cover}
-            onLoadEnd={() => setLoading(false)}
+            onLoadEnd={handleImageLoadEnd}
           />
+          {loading && <StorySkeleton onClose={onClose} />}
           {/* Organizer profile image and name (top left, horizontal row) */}
           {story.organizer?.avatar && (
             <TouchableOpacity
@@ -118,7 +133,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           {/* Overlay: Details (bottom) */}
           <View style={styles.detailsContainer}>
             <LinearGradient
-              colors={['rgba(0,0,0,0.01)', 'rgba(0,0,0,0.9)']}
+              colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.9)']}
               start={{x: 0, y: 0}}
               end={{x: 0, y: 1}}
               style={StyleSheet.absoluteFill}
@@ -138,7 +153,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );
