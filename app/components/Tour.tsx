@@ -31,6 +31,7 @@ function Component({tourData, title = 'Tours'}: Props) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const ITEM_WIDTH = 290 + 16; // Item width + marginRight
 
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   // Show up to 5 tours
   const visibleListings = tourData?.slice(0, 5) || [];
 
@@ -53,30 +54,39 @@ function Component({tourData, title = 'Tours'}: Props) {
     return (
       <Pressable onPress={() => onPressHandler(item)}>
         <View style={styles.item}>
-          <CachedImageBackground
-            uri={backgroundImageUrl}
-            style={styles.imgBackground}>
-            <View style={styles.discountBox}>
-              <Text style={styles.discountTxt}>25% OFF</Text>
-            </View>
+          {!imageLoaded && (
+          <View style={styles.placeholder}>
+            <Text style={styles.placeholderText}>trippo</Text>
+          </View>
+        )}
+          {backgroundImageUrl && (
+            <CachedImageBackground
+              uri={backgroundImageUrl}
+              style={styles.imgBackground}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageLoaded(false)}
+            >
+              <View style={styles.discountBox}>
+                <Text style={styles.discountTxt}>25% OFF</Text>
+              </View>
 
-            <View style={styles.organizerLogoBox}>
-              <CachedImage
-                uri={organizerLogoUrl}
-                style={styles.organizerLogo}
-              />
-            </View>
+              <View style={styles.organizerLogoBox}>
+                <CachedImage
+                  uri={organizerLogoUrl}
+                  style={styles.organizerLogo}
+                />
+              </View>
 
-            <View style={styles.heartBox}>
-              <FontAwesome
-                name="heart-o"
-                size={28}
-                color={appColors.pureWhite}
-              />
-              {/* <HeartLike /> */}
-            </View>
-          </CachedImageBackground>
-
+              <View style={styles.heartBox}>
+                <FontAwesome
+                  name="heart-o"
+                  size={28}
+                  color={appColors.pureWhite}
+                />
+                {/* <HeartLike /> */}
+              </View>
+            </CachedImageBackground>
+          )}
           <View>
             <Text style={styles.tagBox}>Cultural • Coffee</Text>
             <View style={styles.infoBox}>
@@ -254,7 +264,6 @@ const styles = StyleSheet.create({
   },
   rateTxt: {
     fontSize: 12,
-    fontWeight: '600',
     paddingTop: 2,
     marginRight: 3,
     color: appColors.pureWhite,
@@ -271,6 +280,23 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Medium',
     color: appColors.darkGrey,
     fontSize: 12,
+  },
+  placeholder: {
+    position: 'absolute',
+    width: '100%',
+    height: 180,
+    borderRadius: 16,
+    backgroundColor: '#B0B0B0',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+  placeholderText: {
+    color: '#fff',
+    fontSize: 26,
+    fontFamily: 'Gilroy-Bold',
+    letterSpacing: 2,
+    textTransform: 'lowercase',
   },
 });
 

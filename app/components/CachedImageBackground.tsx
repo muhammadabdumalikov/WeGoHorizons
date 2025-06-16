@@ -9,6 +9,8 @@ interface CachedImageBackgroundProps {
   uri: string;
   style?: StyleProp<ViewStyle>;
   imageStyle?: StyleProp<ImageStyle>;
+  onLoad?: () => void;
+  onError?: () => void;
   children?: React.ReactNode;
 }
 
@@ -16,6 +18,8 @@ export const CachedImageBackground: React.FC<CachedImageBackgroundProps> = ({
   uri,
   style,
   imageStyle,
+  onLoad,
+  onError,
   children,
   ...props
 }) => {
@@ -28,6 +32,8 @@ export const CachedImageBackground: React.FC<CachedImageBackgroundProps> = ({
           priority: FastImage.priority.normal,
           cache: FastImage.cacheControl.immutable,
         }}
+        onLoad={onLoad}
+        onError={onError}
         resizeMode={FastImage.resizeMode.cover}
         {...props}
       />

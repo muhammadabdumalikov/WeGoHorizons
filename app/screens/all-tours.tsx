@@ -9,7 +9,6 @@ import {
   FlatList,
   SafeAreaView,
   Image,
-  ImageBackground,
   TouchableOpacity,
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -25,6 +24,7 @@ import FilterComponent from '../components/FilterComponent';
 // Sample tours data - in a real app this would come from an API
 import tourData from '../shared/dummy-data/tours.json';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CachedImageBackground} from '../components/CachedImageBackground';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'all-tours-screen'>;
 
@@ -43,55 +43,71 @@ export const TourCardsSmall = ({
 }: {
   item: any;
   navigation: any;
-  }) => {
-  
+}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const backgroundImageUrl = item.files?.find(
+    (f: any) => f.type === 'extra',
+  )?.url;
+
   return (
     <Pressable
       style={styles.tourCard}
-       onPress={() => navigation.navigate('tour-details-screen', {tour: item})}>
-       <ImageBackground
-         source={{uri: item.files?.find((f: any) => f.type === 'extra')?.url}}
-         style={styles.imgBackground}>
-         <View style={styles.discountBox}>
-           <Text style={styles.discountTxt}>25% OFF</Text>
-         </View>
+      onPress={() => navigation.navigate('tour-details-screen', {tour: item})}>
+      {!imageLoaded && (
+        <View style={styles.placeholder}>
+          <Text style={styles.placeholderText}>trippo</Text>
+        </View>
+      )}
+      {backgroundImageUrl && (
+        <CachedImageBackground
+          uri={backgroundImageUrl}
+          style={styles.imgBackground}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(false)}
+        >
+          <View style={styles.discountBox}>
+            <Text style={styles.discountTxt}>25% OFF</Text>
+          </View>
 
-         <View style={styles.organizerLogoBox}>
-           <Image
-             source={{uri: item.organizer_logo}}
-             style={styles.organizerLogo}
-           />
-         </View>
+          <View style={styles.organizerLogoBox}>
+            <Image
+              source={{uri: item.organizer_logo}}
+              style={styles.organizerLogo}
+            />
+          </View>
 
-         <View style={styles.heartBox}>
-           <FontAwesome name="heart-o" size={24} color={appColors.pureWhite} />
-         </View>
-       </ImageBackground>
+          <View style={styles.heartBox}>
+            <FontAwesome name="heart-o" size={24} color={appColors.pureWhite} />
+          </View>
+        </CachedImageBackground>
+      )}
 
-       <View>
-         <Text style={styles.tagBox}>
-           {item.categoryName || 'Cultural Tour'}
-         </Text>
-         <View style={styles.infoBox}>
-           <Text style={styles.titleTxt} numberOfLines={2}>
-             {item.title.en || item.title}
-           </Text>
-           <View style={styles.ratingPriceBox}>
-             <View style={styles.ratingBox}>
-               <Text style={styles.rateTxt}>{item.rating || 0}</Text>
-               <FontAwesome size={12} name="star" color={appColors.pureWhite} />
-             </View>
-             <View style={styles.priceBox}>
-               <Text style={styles.priceTxt}>
-                 {addDotsToNumber(+item.price)}
-               </Text>
-               <Text style={styles.personTxt} numberOfLines={1}>/person</Text>
-             </View>
-           </View>
-         </View>
-       </View>
-     </Pressable>
-   );
+      <View>
+        <Text style={styles.tagBox}>
+          {item.categoryName || 'Cultural Tour'}
+        </Text>
+        <View style={styles.infoBox}>
+          <Text style={styles.titleTxt} numberOfLines={2}>
+            {item.title.en || item.title}
+          </Text>
+          <View style={styles.ratingPriceBox}>
+            <View style={styles.ratingBox}>
+              <Text style={styles.rateTxt}>{item.rating || 0}</Text>
+              <FontAwesome size={12} name="star" color={appColors.pureWhite} />
+            </View>
+            <View style={styles.priceBox}>
+              <Text style={styles.priceTxt}>
+                {addDotsToNumber(+item.price)}
+              </Text>
+              <Text style={styles.personTxt} numberOfLines={1}>
+                /person
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </Pressable>
+  );
 };
 
 const SmallToursFlatList = ({filteredTours, navigation}: {filteredTours: any[], navigation?: any}) => {
@@ -112,6 +128,7 @@ const SmallToursFlatList = ({filteredTours, navigation}: {filteredTours: any[], 
         />
   );
 };
+
 export function AllToursScreen({navigation, route}: Props) {
   const {top} = useSafeAreaInsets();
   const [tours, setTours] = useState<any[]>([]);
@@ -480,7 +497,6 @@ const styles = StyleSheet.create({
     maxWidth: CARD_WIDTH,
     height: 36,
     fontSize: 16,
-    fontWeight: '600',
     letterSpacing: 0.3,
     color: appColors.navyBlack,
     fontFamily: 'Gilroy-Semibold',
@@ -502,8 +518,6 @@ const styles = StyleSheet.create({
   },
   rateTxt: {
     fontSize: 12,
-    fontWeight: '600',
-    paddingTop: 2,
     marginRight: 3,
     color: appColors.pureWhite,
     fontFamily: 'Gilroy-Semibold',
@@ -522,5 +536,20 @@ const styles = StyleSheet.create({
   },
   infoBox: {
     // padding: 12,
+  },
+  placeholder: {
+    width: '100%',
+    height: 180,
+    borderRadius: 16,
+    backgroundColor: '#B0B0B0',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    color: '#fff',
+    fontSize: 26,
+    fontFamily: 'Gilroy-Bold',
+    letterSpacing: 2,
+    textTransform: 'lowercase',
   },
 });

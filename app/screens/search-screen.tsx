@@ -21,7 +21,7 @@ import {SearchInputBox} from '../components/Input';
 import Feather from 'react-native-vector-icons/Feather';
 import FilterComponent from '../components/FilterComponent';
 import {fetchTours} from '../api/cities';
-import { renderTourCard } from './all-tours';
+import {TourCardsSmall} from './all-tours';
 
 export interface MyRefType {
   open: () => void;
@@ -249,7 +249,9 @@ export function SearchScreen({navigation}: {navigation: any}) {
             ) : (
               <FlatList
                 data={searchResults}
-                renderItem={({item}) => renderTourCard({item, navigation})}
+                renderItem={({item}) => (
+                  <TourCardsSmall item={item} navigation={navigation} />
+                )}
                 keyExtractor={item => item.id}
                 numColumns={2}
                 contentContainerStyle={styles.gridContainer}

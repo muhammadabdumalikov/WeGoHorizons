@@ -22,8 +22,8 @@ import {SearchBar} from '../components/SearchBar';
 import {Stories} from '../components/Stories';
 import Geolocation from '@react-native-community/geolocation';
 import {TourCardsSmall} from './all-tours';
-import { CustomNavigationProp } from '../types/stack';
-import { useNavigation } from '@react-navigation/native';
+import {CustomNavigationProp} from '../types/stack';
+import {useNavigation} from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const mockStories = [
@@ -143,7 +143,7 @@ export function HomeScreen() {
 
     getUserLocation();
   }, []);
-  
+
   const navigation = useNavigation<CustomNavigationProp>();
 
   const handleScroll = Animated.event(
@@ -201,7 +201,9 @@ export function HomeScreen() {
         <View style={{padding: 16, marginTop: 16}}>
           <FlatList
             data={tours}
-            renderItem={({item}) => TourCardsSmall({item, navigation})}
+            renderItem={({item}) => (
+              <TourCardsSmall item={item} navigation={navigation} />
+            )}
             keyExtractor={item => item.id}
             numColumns={2}
             ListHeaderComponent={() => (

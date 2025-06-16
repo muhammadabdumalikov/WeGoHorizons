@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: 'Gilroy-Bold',
     letterSpacing: 1.5,
     textTransform: 'lowercase',
@@ -225,21 +225,20 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Medium',
   },
   ratingBadge: {
-    backgroundColor: appColors.green2,
-    borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    marginLeft: 8,
-    minWidth: 40,
     justifyContent: 'center',
+    backgroundColor: appColors.green2,
+    width: 48,
+    height: 24,
+    borderRadius: 7,
     marginBottom: 28,
+    paddingHorizontal: 6
   },
   ratingText: {
     color: '#fff',
-    fontSize: 14,
-    fontFamily: 'Gilroy-Bold',
+    fontSize: 12,
+    fontFamily: 'Gilroy-Semibold',
     marginRight: 2,
   },
 });
