@@ -146,7 +146,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
       isLiked ? appColors.navyBlack : appColors.redVelvet,
     );
   };
-
+  
   const renderTabContent = () => {
     switch (activeTab) {
       case 'Overview':
@@ -1028,8 +1028,6 @@ const styles = StyleSheet.create({
   includedIconContainer: {
     width: 24,
     height: 24,
-    borderRadius: 12,
-    backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     alignItems: 'center',
   },

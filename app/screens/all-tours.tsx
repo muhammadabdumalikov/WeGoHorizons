@@ -326,7 +326,7 @@ export function AllToursScreen({navigation, route}: Props) {
           <MaterialCommunityIcons
             name="tune-variant"
             size={24}
-            color={appColors.pureWhite}
+            color={appColors.navyBlack}
           />
         </TouchableOpacity>
       </View>
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
     color: appColors.navyBlack,
   },
   searchIcon: {
-    backgroundColor: appColors.navyBlack,
+    backgroundColor: '#F5F5F5',
     padding: 5,
     borderRadius: 10,
   },
@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     overflow: 'hidden',
     padding: 12,
-    height: 180,
+    height: 160,
     justifyContent: 'flex-end',
   },
   discountBox: {
@@ -450,8 +450,8 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.mainColor,
     borderRadius: 30,
     position: 'absolute',
-    left: 12,
-    top: 12,
+    left: 8,
+    top: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -466,8 +466,8 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.pureWhite,
     borderRadius: 30,
     position: 'absolute',
-    right: 12,
-    bottom: 12,
+    right: 8,
+    bottom: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -482,8 +482,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderRadius: 18,
     position: 'absolute',
-    right: 12,
-    top: 12,
+    right: 8,
+    top: 6,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -541,7 +541,7 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     width: '100%',
-    height: 180,
+    height: 160,
     borderRadius: 16,
     backgroundColor: '#B0B0B0',
     justifyContent: 'center',

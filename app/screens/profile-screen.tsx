@@ -69,7 +69,9 @@ export function ProfileScreen() {
   const [emailEnabled, setEmailEnabled] = React.useState(true);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container}
+    showsVerticalScrollIndicator={false}
+    >
       <ImageBackground
         source={require('../../assets/images/profile-background.png')}
         style={styles.headerBackground}
