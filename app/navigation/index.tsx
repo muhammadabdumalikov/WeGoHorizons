@@ -17,6 +17,7 @@ import {AllToursScreen} from '../screens/all-tours';
 import {useAuth} from './auth-context';
 import {SplashScreen} from '../screens/splash-screen';
 import {OnboardingScreen} from '../screens/onboarding-screen';
+import {GuideDetailScreen} from '../screens/guide-detail-screen';
 
 // const isAdmin = getData(IS_ADMIN_KEY).then(data => data) || false;
 
@@ -89,6 +90,17 @@ function MainNavigation() {
         options={{
           title: '',
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="guide-detail-screen"
+        component={GuideDetailScreen}
+        options={{
+          title: '',
+          headerShown: false,
+          headerTransparent: true,
+          headerLeft: headerLeft,
+          headerRight: headerRight,
         }}
       />
     </Stack.Navigator>

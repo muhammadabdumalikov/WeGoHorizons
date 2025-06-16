@@ -12,6 +12,9 @@ import {GroupType} from '../types/group';
 import {appColors} from '../shared/constants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {CachedImage} from './CachedImage';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../types/stack';
 
 interface Props {
   listings: (GroupType & {tags?: string[]; price?: number})[];
@@ -31,8 +34,12 @@ function GuideListItem({
 }: GuideListItemProps) {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const imageUrl = item.files?.find((f: any) => f.type === 'logo')?.url;
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
-    <View style={styles.itemRow}>
+    <Pressable
+      onPress={() => navigation.navigate('guide-detail-screen', {guideId: item.id})}
+      style={styles.itemRow}>
       <View style={styles.imageWrapper}>
         {!imageLoaded && (
           <View style={styles.placeholder}>
@@ -71,7 +78,7 @@ function GuideListItem({
           style={{marginLeft: 2}}
         />
       </View>
-    </View>
+    </Pressable>
   );
 }
 

@@ -112,20 +112,22 @@ export const TourCardsSmall = ({
 
 const SmallToursFlatList = ({filteredTours, navigation}: {filteredTours: any[], navigation?: any}) => {
   return (
-     <FlatList
-          data={filteredTours}
-          renderItem={({item}) => TourCardsSmall({item, navigation})}
-          keyExtractor={item => item.id}
-          numColumns={2}
-          contentContainerStyle={styles.gridContainer}
-          columnWrapperStyle={styles.row}
-          showsVerticalScrollIndicator={false}
-          ListEmptyComponent={
-            <View style={styles.emptyContainer}>
-              <Text style={styles.emptyText}>No tours found</Text>
-            </View>
-          }
-        />
+    <FlatList
+      data={filteredTours}
+      renderItem={({item}) => (
+        <TourCardsSmall item={item} navigation={navigation} />
+      )}
+      keyExtractor={item => item.id}
+      numColumns={2}
+      contentContainerStyle={styles.gridContainer}
+      columnWrapperStyle={styles.row}
+      showsVerticalScrollIndicator={false}
+      ListEmptyComponent={
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>No tours found</Text>
+        </View>
+      }
+    />
   );
 };
 

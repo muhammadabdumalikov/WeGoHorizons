@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {appColors} from '../shared/constants';
+import { CachedImage } from './CachedImage';
 
 interface ReviewCardProps {
   single?: boolean;
@@ -69,9 +70,9 @@ const ReviewCard = ({
           showsHorizontalScrollIndicator={false}
           style={styles.imagesContainer}>
           {images.map((image, index) => (
-            <Image
+            <CachedImage
               key={index}
-              source={{uri: image}}
+              uri={image}
               style={styles.reviewImage}
             />
           ))}
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 16,
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingVertical: 10,
   },
   header: {
     flexDirection: 'row',

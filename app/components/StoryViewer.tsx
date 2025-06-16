@@ -133,7 +133,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
           {/* Overlay: Details (bottom) */}
           <View style={styles.detailsContainer}>
             <LinearGradient
-              colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.9)']}
+              colors={['rgba(0,0,0,0.01)', 'rgba(0,0,0,0.95)']}
               start={{x: 0, y: 0}}
               end={{x: 0, y: 1}}
               style={StyleSheet.absoluteFill}

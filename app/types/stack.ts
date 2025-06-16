@@ -9,6 +9,7 @@ export type RootStackParamList = {
   'gallery-carousel-screen': undefined;
   'search-screen': undefined;
   'all-tours-screen': { title?: string; categoryId?: string };
+  'guide-detail-screen': { guideId: string };
 };
 
 export type CustomNavigationProp = NativeStackNavigationProp<RootStackParamList>;
