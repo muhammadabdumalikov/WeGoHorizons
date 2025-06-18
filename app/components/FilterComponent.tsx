@@ -14,6 +14,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {appColors} from '../shared/constants';
 import {Slider} from '@miblanchard/react-native-slider';
+import { GilroyMediumText } from './StyledText';
 
 // For Android, need to enable LayoutAnimation
 if (
@@ -274,28 +275,30 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   return (
     <View style={styles.filterContainer}>
       {/* Filter Content */}
+      <View style={styles.filterHeader}>
+        {/* Close button on the left */}
+        <TouchableOpacity
+          style={styles.closeModalButton}
+          onPress={onClose || applyFilters}
+          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+          <AntDesign name="close" size={22} color={appColors.navyBlack} />
+        </TouchableOpacity>
+
+        {/* Title in the center */}
+        <Text style={styles.modalTitle}>Filters</Text>
+
+        {/* Clear all on the right */}
+        <TouchableOpacity onPress={clearAllFilters}>
+          <GilroyMediumText style={styles.clearAllText}>
+            Clear All
+          </GilroyMediumText>
+        </TouchableOpacity>
+      </View>
       <ScrollView
         style={styles.filterContent}
         contentContainerStyle={styles.filterContentContainer}
         showsVerticalScrollIndicator={false}>
         {/* Filter Header */}
-        <View style={styles.filterHeader}>
-          {/* Close button on the left */}
-          <TouchableOpacity
-            style={styles.closeModalButton}
-            onPress={onClose || applyFilters}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-            <AntDesign name="close" size={22} color={appColors.navyBlack} />
-          </TouchableOpacity>
-
-          {/* Title in the center */}
-          <Text style={styles.modalTitle}>Filters</Text>
-
-          {/* Clear all on the right */}
-          <TouchableOpacity onPress={clearAllFilters}>
-            <Text style={styles.clearAllText}>Clear All</Text>
-          </TouchableOpacity>
-        </View>
         {/* Price Range Section */}
         <View style={styles.filterSection}>
           <View style={styles.priceHeader}>
@@ -688,7 +691,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#EEEEEE',
-    marginBottom: 10,
   },
   modalTitle: {
     fontSize: 18,
@@ -696,15 +698,15 @@ const styles = StyleSheet.create({
     color: appColors.navyBlack,
   },
   clearAllText: {
-    fontSize: 16,
+    fontSize: 14,
     color: appColors.redVelvet,
-    fontFamily: 'Gilroy-Medium',
     paddingVertical: 5,
   },
   filterContent: {
     flex: 1,
   },
   filterContentContainer: {
+    paddingTop: 20,
     paddingBottom: 100,
   },
   filterSection: {

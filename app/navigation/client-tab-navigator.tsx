@@ -11,6 +11,7 @@ import { WorldInactiveSvg } from '../../assets/images/world-inactive';
 import { ProfileActiveSvg } from '../../assets/images/profile-active';
 import { ProfileInactiveSvg } from '../../assets/images/profile-inactive';
 import { ProfileScreen } from '../screens/profile-screen';
+import { CalendarEventsScreen } from '../screens/calendar-events-screen';
 
 const Tab = createBottomTabNavigator();
 
@@ -121,7 +122,7 @@ export function ClientTabNavigator() {
       />
       <Tab.Screen
         name="profile"
-        component={ProfileScreen}
+        component={CalendarEventsScreen}
         options={{
           title: 'Profile',
           tabBarIcon: WorldIcon,

@@ -1,6 +1,6 @@
 import {ViewStyle, Pressable, StyleSheet, View, Text} from 'react-native';
 import { appColors } from '../shared/constants';
-import { GilroyBoldText, GilroySemiboldText } from './StyledText';
+import { GilroySemiboldText } from './StyledText';
 
 export const SeeAllHeader = ({
   headerName,
@@ -17,15 +17,15 @@ export const SeeAllHeader = ({
 }) => {
   return (
     <View style={[styles.box, style]}>
-      <GilroyBoldText style={styles.headerName}>{headerName}</GilroyBoldText>
+      <GilroySemiboldText style={styles.headerName}>{headerName}</GilroySemiboldText>
       {link?.length ? (
         // <Link href={link as `${string}:${string}`} asChild>
         <Pressable onPress={onPress}>
-          <Text style={styles.seeAll}>{btnName}</Text>
+          <GilroySemiboldText style={styles.seeAll}>{btnName}</GilroySemiboldText>
         </Pressable>
       ) : (
         <Pressable onPress={onPress}>
-          <Text style={styles.seeAll}>{btnName}</Text>
+          <GilroySemiboldText style={styles.seeAll}>{btnName}</GilroySemiboldText>
         </Pressable>
       )}
     </View>
@@ -60,11 +60,10 @@ const styles = StyleSheet.create({
   },
   headerName: {
     fontSize: 18,
-    color: appColors.mainColor,
+    color: appColors.navyBlack,
   },
   seeAll: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: appColors.mainColor,
+    fontSize: 15,
+    color: appColors.navyBlack,
   },
 });

@@ -172,10 +172,11 @@ export function SearchScreen({navigation}: {navigation: any}) {
           draggable
           customStyles={{
             container: {
-              borderRadius: 30,
-              marginBottom: 16,
-              width: Dimensions.get('window').width - 20,
-              alignSelf: 'center',
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30,
+              // marginBottom: 16,
+              // width: Dimensions.get('window').width - 20,
+              // alignSelf: 'center',
             },
           }}>
           <FilterComponent
@@ -210,10 +211,10 @@ export function SearchScreen({navigation}: {navigation: any}) {
                   key={index}
                   onPress={() => handleSearch(item)}>
                   <View style={styles.circleTxt}>
-                    <AntDesign
-                      name="clockcircleo"
-                      size={20}
-                      color={appColors.darkGrey}
+                    <Feather
+                      name="search"
+                      size={26}
+                      color={appColors.grey6}
                     />
                     <GilroyMediumText
                       style={styles.lastSearchTxt}
@@ -224,11 +225,7 @@ export function SearchScreen({navigation}: {navigation: any}) {
                   <Pressable
                     style={styles.removeSearchBox}
                     onPress={() => handleDeleteLastSearch(index)}>
-                    <AntDesign
-                      name="close"
-                      size={14}
-                      color={appColors.darkGrey}
-                    />
+                    <AntDesign name="close" size={14} color={appColors.grey6} />
                   </Pressable>
                 </Pressable>
               ))}
@@ -236,12 +233,6 @@ export function SearchScreen({navigation}: {navigation: any}) {
           </>
         ) : (
           <>
-            <SeeAllHeader
-              headerName={`"${searchQuery}"`}
-              btnName="Clear all"
-              onPress={handleClearAll}
-            />
-
             {isLoading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color={appColors.mainColor} />
@@ -304,10 +295,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   lastSearchTxt: {
-    fontSize: 18,
+    fontSize: 16,
     marginLeft: 10,
-    fontWeight: '500',
-    color: appColors.darkGrey,
+    color: appColors.grey6,
   },
   goBackBtn: {
     paddingRight: 10,
@@ -316,9 +306,9 @@ const styles = StyleSheet.create({
   removeSearchBox: {
     width: 24,
     height: 24,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: appColors.darkGrey,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: appColors.grey6,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -328,6 +318,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   gridContainer: {
+    paddingTop: 8,
     paddingHorizontal: 8,
     paddingBottom: 80,
   },
