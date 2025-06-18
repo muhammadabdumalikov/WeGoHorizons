@@ -49,12 +49,19 @@ export function SearchInputBox(
   props: TextInputProps & {
     handleSearch: (input: string) => void;
     openBottomSheet?: () => void;
+    onFiltersChange?: (filters: {
+      search: string;
+      startDate: string;
+      endDate: string;
+    }) => void;
   },
 ) {
-  const {handleSearch, openBottomSheet} = props;
+  const {handleSearch, openBottomSheet, onFiltersChange} = props;
   const [input, setInput] = useState('');
   const [debouncedInput, setDebouncedInput] = useState('');
   const calendarRef = useRef<BottomSheetRefType>(null);
+  const [startDateCalendar, setStartDateCalendar] = useState('');
+  const [endDateCalendar, setEndDateCalendar] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
@@ -72,6 +79,17 @@ export function SearchInputBox(
     }
   }, [debouncedInput, handleSearch]);
 
+  // Notify parent component when filters change
+  useEffect(() => {
+    if (onFiltersChange) {
+      onFiltersChange({
+        search: debouncedInput,
+        startDate,
+        endDate,
+      });
+    }
+  }, [debouncedInput, startDate, endDate, onFiltersChange]);
+
   const handleFilterFocus = () => {
     if (openBottomSheet) {
       openBottomSheet();
@@ -85,18 +103,18 @@ export function SearchInputBox(
   const handleDateSelect = (date: any) => {
     const selectedDate = date.dateString;
 
-    if (!startDate || (startDate && endDate)) {
+    if (!startDateCalendar || (startDateCalendar && endDateCalendar)) {
       // First date selection or reset selection
-      setStartDate(selectedDate);
-      setEndDate('');
+      setStartDateCalendar(selectedDate);
+      setEndDateCalendar('');
     } else {
       // Second date selection
-      if (selectedDate < startDate) {
+      if (selectedDate < startDateCalendar) {
         // If selected date is before start date, swap them
-        setEndDate(startDate);
-        setStartDate(selectedDate);
+        setEndDateCalendar(startDateCalendar);
+        setStartDateCalendar(selectedDate);
       } else {
-        setEndDate(selectedDate);
+        setEndDateCalendar(selectedDate);
       }
     }
   };
@@ -105,16 +123,16 @@ export function SearchInputBox(
   const getMarkedDates = () => {
     const markedDates: any = {};
 
-    if (startDate) {
-      markedDates[startDate] = {
+    if (startDateCalendar) {
+      markedDates[startDateCalendar] = {
         startingDay: true,
         color: appColors.mainColor,
         textColor: appColors.pureWhite,
       };
     }
 
-    if (endDate) {
-      markedDates[endDate] = {
+    if (endDateCalendar) {
+      markedDates[endDateCalendar] = {
         endingDay: true,
         color: appColors.mainColor,
         textColor: appColors.pureWhite,
@@ -122,13 +140,16 @@ export function SearchInputBox(
     }
 
     // Mark dates in between start and end
-    if (startDate && endDate) {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
+    if (startDateCalendar && endDateCalendar) {
+      const start = new Date(startDateCalendar);
+      const end = new Date(endDateCalendar);
 
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
         const dateString = d.toISOString().split('T')[0];
-        if (dateString !== startDate && dateString !== endDate) {
+        if (
+          dateString !== startDateCalendar &&
+          dateString !== endDateCalendar
+        ) {
           markedDates[dateString] = {
             color: appColors.mainColor,
             textColor: appColors.pureWhite,
@@ -141,10 +162,18 @@ export function SearchInputBox(
   };
 
   const handleCloseCalendar = () => {
+    if (startDateCalendar === '') {
+      setStartDate(new Date().toISOString().split('T')[0]);
+    } else {
+      setStartDate(startDateCalendar);
+    }
+    setEndDate(endDateCalendar);
     calendarRef.current?.close();
   };
 
   const handleClearDates = () => {
+    setStartDateCalendar('');
+    setEndDateCalendar('');
     setStartDate('');
     setEndDate('');
   };

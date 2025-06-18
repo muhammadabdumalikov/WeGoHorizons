@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useCallback} from 'react';
 import {
   ActivityIndicator,
   Pressable,
@@ -6,7 +6,7 @@ import {
   View,
   FlatList,
   Text,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -20,7 +20,7 @@ import {SeeAllHeader} from '../components/SeeAllHeader';
 import {SearchInputBox} from '../components/Input';
 import Feather from 'react-native-vector-icons/Feather';
 import FilterComponent from '../components/FilterComponent';
-import {fetchTours} from '../api/cities';
+import {fetchTours, TourFilters} from '../api/cities';
 import {TourCardsSmall} from './all-tours';
 
 export interface MyRefType {
@@ -31,6 +31,8 @@ export interface MyRefType {
 export function SearchScreen({navigation}: {navigation: any}) {
   const refRBSheet = useRef<MyRefType>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [priceRange, setPriceRange] = useState<[number, number]>([
     100000, 1200000,
   ]);
@@ -40,6 +42,9 @@ export function SearchScreen({navigation}: {navigation: any}) {
     'phones',
     'apple',
   ]);
+
+  // Applied filters state (what's actually sent to API)
+  const [appliedFilters, setAppliedFilters] = useState<TourFilters>({});
 
   // Sort options
   const sortOptions = [
@@ -88,56 +93,121 @@ export function SearchScreen({navigation}: {navigation: any}) {
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState('');
 
-  const toggleSelection = (
-    id: string,
-    type: 'sort' | 'language' | 'activity' | 'gender',
-  ) => {
-    switch (type) {
-      case 'sort':
-        setSelectedSort(id);
-        break;
-      case 'language':
-        setSelectedLanguages(prev =>
-          prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
-        );
-        break;
-      case 'activity':
-        setSelectedActivities(prev =>
-          prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
-        );
-        break;
-      case 'gender':
-        setSelectedGender(id);
-        break;
-    }
-  };
+  // Create filters object for API call
+  const createFilters = useCallback((): TourFilters => {
+    const filters: TourFilters = {};
 
-  const clearAllFilters = () => {
+    if (searchQuery) filters.search = searchQuery;
+    if (startDate) filters.from_date = startDate;
+    if (endDate) filters.to_date = endDate;
+    if (priceRange) {
+      filters.from_price = priceRange[0];
+      filters.to_price = priceRange[1];
+    }
+    if (selectedLanguages.length > 0) filters.languages = selectedLanguages;
+    if (selectedActivities.length > 0) filters.activities = selectedActivities;
+    if (selectedGender) filters.gender = selectedGender;
+    if (selectedSort) filters.sort_by = selectedSort;
+
+    return filters;
+  }, [
+    searchQuery,
+    startDate,
+    endDate,
+    priceRange,
+    selectedLanguages,
+    selectedActivities,
+    selectedGender,
+    selectedSort,
+  ]);
+
+  const toggleSelection = useCallback(
+    (id: string, type: 'sort' | 'language' | 'activity' | 'gender') => {
+      switch (type) {
+        case 'sort':
+          setSelectedSort(id);
+          break;
+        case 'language':
+          setSelectedLanguages(prev =>
+            prev.includes(id)
+              ? prev.filter(item => item !== id)
+              : [...prev, id],
+          );
+          break;
+        case 'activity':
+          setSelectedActivities(prev =>
+            prev.includes(id)
+              ? prev.filter(item => item !== id)
+              : [...prev, id],
+          );
+          break;
+        case 'gender':
+          setSelectedGender(id);
+          break;
+      }
+    },
+    [],
+  );
+
+  const clearAllFilters = useCallback(() => {
     setSelectedSort('');
     setSelectedLanguages([]);
     setSelectedActivities([]);
     setSelectedGender('');
     setPriceRange(fixedPriceRange);
-  };
+    setStartDate('');
+    setEndDate('');
+    setAppliedFilters({});
+  }, [fixedPriceRange]);
 
-  const applyFilters = () => {
-    // Apply filters logic here
+  const applyFilters = useCallback(() => {
+    // Apply current filters to the applied filters state
+    setAppliedFilters(createFilters());
     refRBSheet.current?.close();
-  };
+  }, [createFilters]);
 
   const {data: searchResults, isLoading} = useQuery({
-    queryKey: ['search', searchQuery],
-    queryFn: () => fetchTours(searchQuery),
-    enabled: searchQuery.length > 0,
+    queryKey: [
+      'search',
+      appliedFilters.search || '',
+      appliedFilters.from_date || '',
+      appliedFilters.to_date || '',
+      appliedFilters.from_price || 0,
+      appliedFilters.to_price || 0,
+      JSON.stringify(appliedFilters.languages || []),
+      JSON.stringify(appliedFilters.activities || []),
+      appliedFilters.gender || '',
+      appliedFilters.sort_by || '',
+    ],
+    queryFn: () => fetchTours(appliedFilters),
+    enabled: Object.keys(appliedFilters).length > 0,
     staleTime: 0,
     gcTime: 0,
   });
 
-  const handleSearch = (input: string) => {
+  const handleSearch = useCallback((input: string) => {
     setSearchQuery(input);
-  };
+    // Apply search immediately
+    setAppliedFilters(prev => ({...prev, search: input}));
+  }, []);
 
-  const handleClearAll = () => {
+  const handleFiltersChange = useCallback(
+    (filters: {search: string; startDate: string; endDate: string}) => {
+      setSearchQuery(filters.search);
+      setStartDate(filters.startDate);
+      setEndDate(filters.endDate);
+      // Apply date filters immediately
+      setAppliedFilters(prev => ({
+        ...prev,
+        search: filters.search,
+        from_date: filters.startDate || undefined,
+        to_date: filters.endDate || undefined,
+      }));
+    },
+    [],
+  );
+
+  const handleClearAll = useCallback(() => {
     setLastSearches([]);
     setPriceRange([100000, 1200000]);
     setSelectedLanguages([]);
@@ -145,11 +215,17 @@ export function SearchScreen({navigation}: {navigation: any}) {
     setSelectedGender('');
     setSelectedSort('');
     setSearchQuery('');
-  };
+    setStartDate('');
+    setEndDate('');
+    setAppliedFilters({});
+  }, []);
 
-  const handleDeleteLastSearch = (index: number) => {
+  const handleDeleteLastSearch = useCallback((index: number) => {
     setLastSearches(prev => prev.filter((_, i) => i !== index));
-  };
+  }, []);
+
+  // Check if any filters are applied
+  const hasAppliedFilters = Object.keys(appliedFilters).length > 0;
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
@@ -162,6 +238,7 @@ export function SearchScreen({navigation}: {navigation: any}) {
             style={styles.inputBox}
             handleSearch={handleSearch}
             openBottomSheet={() => refRBSheet.current?.open()}
+            onFiltersChange={handleFiltersChange}
           />
         </View>
 
@@ -197,7 +274,7 @@ export function SearchScreen({navigation}: {navigation: any}) {
           />
         </RBSheet>
 
-        {searchQuery.length === 0 ? (
+        {!hasAppliedFilters ? (
           <>
             <SeeAllHeader
               headerName="Last Search"
@@ -211,10 +288,10 @@ export function SearchScreen({navigation}: {navigation: any}) {
                   key={index}
                   onPress={() => handleSearch(item)}>
                   <View style={styles.circleTxt}>
-                    <Feather
-                      name="search"
-                      size={26}
-                      color={appColors.grey6}
+                    <AntDesign
+                      name="clockcircleo"
+                      size={20}
+                      color={appColors.darkGrey}
                     />
                     <GilroyMediumText
                       style={styles.lastSearchTxt}
@@ -225,7 +302,11 @@ export function SearchScreen({navigation}: {navigation: any}) {
                   <Pressable
                     style={styles.removeSearchBox}
                     onPress={() => handleDeleteLastSearch(index)}>
-                    <AntDesign name="close" size={14} color={appColors.grey6} />
+                    <AntDesign
+                      name="close"
+                      size={14}
+                      color={appColors.darkGrey}
+                    />
                   </Pressable>
                 </Pressable>
               ))}
@@ -233,6 +314,12 @@ export function SearchScreen({navigation}: {navigation: any}) {
           </>
         ) : (
           <>
+            <SeeAllHeader
+              headerName={`${appliedFilters.search || 'Filtered Results'}`}
+              btnName="Clear all"
+              onPress={handleClearAll}
+            />
+
             {isLoading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color={appColors.mainColor} />
@@ -268,7 +355,7 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.pureWhite,
   },
   headerBox: {
-    height: 60,
+    height: 52,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
