@@ -14,7 +14,6 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/stack';
 import {appColors} from '../shared/constants';
-import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {addDotsToNumber} from '../shared/helpers';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -25,6 +24,7 @@ import FilterComponent from '../components/FilterComponent';
 import tourData from '../shared/dummy-data/tours.json';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CachedImageBackground} from '../components/CachedImageBackground';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'all-tours-screen'>;
 
@@ -316,7 +316,11 @@ export function AllToursScreen({navigation, route}: Props) {
         <Pressable
           style={styles.backButton}
           onPress={() => navigation.goBack()}>
-          <Feather name="arrow-left" size={22} color={appColors.navyBlack} />
+          <FontAwesome6
+            name="chevron-left"
+            size={22}
+            color={appColors.navyBlack}
+          />
         </Pressable>
         <Text style={styles.headerTitle}>{title}</Text>
 

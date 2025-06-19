@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "other": "Другое",
+    "language": "Язык",
+    "currency": "Валюта",
+    "logout": "Выйти"
+  },
+  "tour": {
+    "overview": "Обзор",
+    "photo": "Фото",
+    "review": "Отзыв",
+    "community": "Сообщество",
+    "itinerary": "Маршрут",
+    "reviews": "отзывы",
+    "reminder": "Напоминание",
+    "directions": "Маршрут",
+    "aboutTour": "О туре",
+    "whatsIncluded": "Что включено",
+    "duration": "Длительность",
+    "speakingLanguage": "Язык общения",
+    "transfer": "Трансфер",
+    "groupTrip": "Групповая поездка",
+    "breakfast": "Завтрак",
+    "tourItinerary": "Маршрут тура",
+    "pickupLocation": "Место отправления:",
+    "arriveBackAt": "Место возвращения:",
+    "photoGalleryComingSoon": "Галерея фото скоро будет доступна",
+    "communityComingSoon": "Сообщество скоро будет доступно",
+    "yourRating": "Ваша оценка",
+    "thankYouForRating": "Спасибо за вашу оценку!",
+    "youRatedThisTour": "Вы оценили этот тур",
+    "outOf5Stars": "из 5 звёзд",
+    "rateAgain": "Оценить снова",
+    "tapStarToRate": "Нажмите на звезду, чтобы оценить тур",
+    "rating": "Оценка...",
+    "organizer": "Организатор:",
+    "empty": "Пусто"
+  }
+} 

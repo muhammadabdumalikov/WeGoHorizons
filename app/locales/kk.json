@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "other": "Басқа",
+    "language": "Тіл",
+    "currency": "Валюта",
+    "logout": "Шығу"
+  },
+  "tour": {
+    "overview": "Шолу",
+    "photo": "Фото",
+    "review": "Пікір",
+    "community": "Қауымдастық",
+    "itinerary": "Маршрут",
+    "reviews": "пікірлер",
+    "reminder": "Еске салу",
+    "directions": "Бағыттар",
+    "aboutTour": "Тур туралы",
+    "whatsIncluded": "Не кіреді",
+    "duration": "Ұзақтығы",
+    "speakingLanguage": "Сөйлейтін тіл",
+    "transfer": "Трансфер",
+    "groupTrip": "Топтық сапар",
+    "breakfast": "Таңғы ас",
+    "tourItinerary": "Тур маршруты",
+    "pickupLocation": "Алу орны:",
+    "arriveBackAt": "Қайту орны:",
+    "photoGalleryComingSoon": "Фотогалерея жақында",
+    "communityComingSoon": "Қауымдастық жақында",
+    "yourRating": "Сіздің бағаңыз",
+    "thankYouForRating": "Бағалағаныңызға рахмет!",
+    "youRatedThisTour": "Сіз бұл турды бағаладыңыз",
+    "outOf5Stars": "5 жұлдыздан",
+    "rateAgain": "Қайта бағалау",
+    "tapStarToRate": "Бағалау үшін жұлдызды басыңыз",
+    "rating": "Бағалануда...",
+    "organizer": "Ұйымдастырушы:",
+    "empty": "Бос"
+  }
+} 

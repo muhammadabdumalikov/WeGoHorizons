@@ -108,12 +108,6 @@ export function TourDetailsScreen({navigation, route}: Props) {
     };
   });
 
-  const heartColorStyle = useAnimatedStyle(() => {
-    return {
-      color: heartColor.value,
-    };
-  });
-
   const handleRating = (rating: number) => {
     // First animate the stars filling up
     setIsAnimating(true);
@@ -542,9 +536,11 @@ export function TourDetailsScreen({navigation, route}: Props) {
         <Pressable
           style={styles.headerLeftBox}
           onPress={() => navigation.goBack()}>
-          <View style={styles.headerLeftIcon}>
-            <Feather name="arrow-left" size={20} color={appColors.navyBlack} />
-          </View>
+          <FontAwesome6
+            name="chevron-left"
+            size={20}
+            color={appColors.navyBlack}
+          />
         </Pressable>
 
         <View style={styles.headerTextContainer}>
@@ -556,19 +552,21 @@ export function TourDetailsScreen({navigation, route}: Props) {
         </View>
 
         <View style={styles.headerRightBox}>
-          <Pressable style={styles.headerLeftBox} onPress={handleHeartPress}>
-            <Animated.View style={[styles.headerLeftIcon, heartAnimatedStyle]}>
-              <Animated.Text style={heartColorStyle}>
-                <FontAwesome name={isLiked ? 'heart' : 'heart-o'} size={20} />
-              </Animated.Text>
-            </Animated.View>
+          <Pressable onPress={handleHeartPress}>
+            <View style={styles.headerLeftBox}>
+              <Animated.View style={[heartAnimatedStyle]}>
+                <FontAwesome
+                  name={isLiked ? 'heart' : 'heart-o'}
+                  size={22}
+                  color={isLiked ? appColors.redVelvet : appColors.navyBlack}
+                />
+              </Animated.View>
+            </View>
           </Pressable>
           <Pressable
             style={styles.headerLeftBox}
             onPress={() => navigation.goBack()}>
-            <View style={styles.headerLeftIcon}>
-              <Feather name="share-2" size={20} color={appColors.navyBlack} />
-            </View>
+            <Feather name="share-2" size={20} color={appColors.navyBlack} />
           </Pressable>
         </View>
       </Animated.View>
@@ -718,8 +716,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Semibold',
   },
   headerLeftBox: {
-    padding: 4,
-    borderRadius: 10,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
   headerLeftIcon: {

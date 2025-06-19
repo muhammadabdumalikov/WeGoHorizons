@@ -18,10 +18,10 @@ import {GilroyMediumText} from '../components/StyledText';
 import {appColors} from '../shared/constants';
 import {SeeAllHeader} from '../components/SeeAllHeader';
 import {SearchInputBox} from '../components/Input';
-import Feather from 'react-native-vector-icons/Feather';
 import FilterComponent from '../components/FilterComponent';
 import {fetchTours, TourFilters} from '../api/cities';
 import {TourCardsSmall} from './all-tours';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 export interface MyRefType {
   open: () => void;
@@ -232,7 +232,11 @@ export function SearchScreen({navigation}: {navigation: any}) {
       <SafeAreaView style={styles.container}>
         <View style={styles.headerBox}>
           <Pressable onPress={navigation.goBack} style={styles.goBackBtn}>
-            <Feather name="arrow-left" size={20} color={appColors.navyBlack} />
+            <FontAwesome6
+              name="chevron-left"
+              size={20}
+              color={appColors.navyBlack}
+            />
           </Pressable>
           <SearchInputBox
             style={styles.inputBox}
@@ -316,9 +320,7 @@ export function SearchScreen({navigation}: {navigation: any}) {
           <>
             <SeeAllHeader
               headerName={
-                appliedFilters.search
-                  ? `"${appliedFilters.search}"`
-                  : 'Results'
+                appliedFilters.search ? `"${appliedFilters.search}"` : 'Results'
               }
               btnName=""
               style={{marginVertical: 0}}

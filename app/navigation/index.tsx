@@ -9,7 +9,6 @@ import {AdminTabNavigator} from './admin-tab-navigator';
 import {TourDetailsScreen} from '../screens/tour-details';
 import {RootStackParamList} from '../types/stack';
 import {ActivityIndicator, Pressable, StyleSheet, View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import {appColors} from '../shared/constants';
 import { GalleryCarousel } from '../components/GalleryCarousel';
 import { SearchScreen } from '../screens/search-screen';
@@ -18,6 +17,7 @@ import {useAuth} from './auth-context';
 import {SplashScreen} from '../screens/splash-screen';
 import {OnboardingScreen} from '../screens/onboarding-screen';
 import {GuideDetailScreen} from '../screens/guide-detail-screen';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 // const isAdmin = getData(IS_ADMIN_KEY).then(data => data) || false;
 
@@ -33,7 +33,11 @@ function MainNavigation() {
   const headerLeft = () => (
     <Pressable style={styles.headerLeftBox} onPress={() => navigation.goBack()}>
       <View style={styles.headerLeftIcon}>
-        <Feather name="arrow-left" size={20} color={appColors.navyBlack} />
+        <FontAwesome6
+          name="chevron-left"
+          size={20}
+          color={appColors.navyBlack}
+        />
       </View>
     </Pressable>
   );

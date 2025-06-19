@@ -16,6 +16,10 @@ const availableLanguages = [
   {code: 'en', name: 'English', nativeName: 'English'},
   {code: 'es', name: 'Spanish', nativeName: 'Español'},
   {code: 'fr', name: 'French', nativeName: 'Français'},
+  {code: 'ru', name: 'Russian', nativeName: 'Русский'},
+  {code: 'uz', name: 'Uzbek', nativeName: 'Oʻzbekcha'},
+  {code: 'kk', name: 'Kazakh', nativeName: 'Қазақша'},
+  {code: 'ky', name: 'Kyrgyz', nativeName: 'Кыргызча'},
 ];
 
 export const LanguageProvider: React.FC<{children: React.ReactNode}> = ({

@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "other": "Boshqa",
+    "language": "Til",
+    "currency": "Valyuta",
+    "logout": "Chiqish"
+  },
+  "tour": {
+    "overview": "Umumiy ma'lumot",
+    "photo": "Rasm",
+    "review": "Sharh",
+    "community": "Jamiyat",
+    "itinerary": "Marshrut",
+    "reviews": "sharhlar",
+    "reminder": "Eslatma",
+    "directions": "Yo'nalishlar",
+    "aboutTour": "Tur haqida",
+    "whatsIncluded": "Nima kiritilgan",
+    "duration": "Davomiyligi",
+    "speakingLanguage": "Gaplashiladigan til",
+    "transfer": "Transfer",
+    "groupTrip": "Guruh safari",
+    "breakfast": "Nonushta",
+    "tourItinerary": "Tur marshruti",
+    "pickupLocation": "Olish joyi:",
+    "arriveBackAt": "Qaytish manzili:",
+    "photoGalleryComingSoon": "Rasmlar galereyasi tez orada",
+    "communityComingSoon": "Jamiyat tez orada",
+    "yourRating": "Sizning bahoingiz",
+    "thankYouForRating": "Baholaganingiz uchun rahmat!",
+    "youRatedThisTour": "Siz bu turni baholadingiz",
+    "outOf5Stars": "5 yulduzdan",
+    "rateAgain": "Qayta baholash",
+    "tapStarToRate": "Baholash uchun yulduzni bosing",
+    "rating": "Baholanmoqda...",
+    "organizer": "Tashkilotchi:",
+    "empty": "Bo'sh"
+  }
+} 

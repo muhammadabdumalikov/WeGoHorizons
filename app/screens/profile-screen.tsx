@@ -84,6 +84,14 @@ export function ProfileScreen() {
         return require('../../assets/images/flags/es.png');
       case 'fr':
         return require('../../assets/images/flags/fr.png');
+      case 'ru':
+        return require('../../assets/images/flags/ru.png');
+      case 'uz':
+        return require('../../assets/images/flags/uz.png');
+      case 'kk':
+        return require('../../assets/images/flags/kz.png');
+      case 'ky':
+        return require('../../assets/images/flags/ky.png');
       default:
         return require('../../assets/images/flags/uk.png');
     }

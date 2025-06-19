@@ -6,6 +6,10 @@ import { NativeModules, Platform } from 'react-native';
 import en from './en.json';
 import es from './es.json';
 import fr from './fr.json';
+import ru from './ru.json';
+import uz from './uz.json';
+import kk from './kk.json';
+import ky from './ky.json';
 
 // Get device language
 const getDeviceLanguage = (): string => {
@@ -38,6 +42,18 @@ const resources = {
   },
   fr: {
     translation: fr,
+  },
+  ru: {
+    translation: ru,
+  },
+  uz: {
+    translation: uz,
+  },
+  kk: {
+    translation: kk,
+  },
+  ky: {
+    translation: ky,
   },
 };
 

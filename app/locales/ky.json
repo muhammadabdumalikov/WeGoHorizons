@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "other": "Башка",
+    "language": "Тил",
+    "currency": "Валюта",
+    "logout": "Чыгуу"
+  },
+  "tour": {
+    "overview": "Кыскача маалымат",
+    "photo": "Сүрөт",
+    "review": "Сын-пикир",
+    "community": "Жамаат",
+    "itinerary": "Маршрут",
+    "reviews": "сын-пикирлер",
+    "reminder": "Эскертүү",
+    "directions": "Багыттар",
+    "aboutTour": "Тур жөнүндө",
+    "whatsIncluded": "Эмне кирет",
+    "duration": "Узактыгы",
+    "speakingLanguage": "Сүйлөгөн тил",
+    "transfer": "Трансфер",
+    "groupTrip": "Топтук сапар",
+    "breakfast": "Эртең мененки тамак",
+    "tourItinerary": "Тур маршруту",
+    "pickupLocation": "Алуу жери:",
+    "arriveBackAt": "Кайтуу жери:",
+    "photoGalleryComingSoon": "Сүрөт галереясы жакында",
+    "communityComingSoon": "Жамаат жакында",
+    "yourRating": "Сиздин бааңыз",
+    "thankYouForRating": "Баалаганыңыз үчүн рахмат!",
+    "youRatedThisTour": "Сиз бул турду бааладыңыз",
+    "outOf5Stars": "5 жылдыздан",
+    "rateAgain": "Кайра баалоо",
+    "tapStarToRate": "Баалоо үчүн жылдызды басыңыз",
+    "rating": "Бааланууда...",
+    "organizer": "Уюштуруучу:",
+    "empty": "Бош"
+  }
+} 

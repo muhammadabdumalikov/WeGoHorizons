@@ -23,7 +23,7 @@ import Animated, {
   interpolate,
 } from 'react-native-reanimated';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 // Type for navigation props
 type Props = NativeStackScreenProps<RootStackParamList, 'guide-detail-screen'>;
@@ -90,7 +90,7 @@ export function GuideDetailScreen({route, navigation}: Props) {
         <Pressable
           style={styles.backButton}
           onPress={() => navigation.goBack()}>
-          <Feather name="arrow-left" size={22} color={appColors.navyBlack} />
+          <FontAwesome6 name="chevron-left" size={18} color={appColors.navyBlack} />
         </Pressable>
         <Animated.Text style={[styles.headerTitle, animatedTextStyle]}>
           {data.name}
