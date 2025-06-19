@@ -15,6 +15,7 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 import {Calendar} from 'react-native-calendars';
 import {BottomSheetRefType} from '../shared/helpers';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export function InputBox(
   props: TextInputProps & {
@@ -68,7 +69,7 @@ export function SearchInputBox(
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedInput(input);
-    }, 500);
+    }, 700);
 
     return () => clearTimeout(timer);
   }, [input]);
@@ -162,11 +163,7 @@ export function SearchInputBox(
   };
 
   const handleCloseCalendar = () => {
-    if (startDateCalendar === '') {
-      setStartDate(new Date().toISOString().split('T')[0]);
-    } else {
-      setStartDate(startDateCalendar);
-    }
+    setStartDate(startDateCalendar);
     setEndDate(endDateCalendar);
     calendarRef.current?.close();
   };
@@ -176,6 +173,12 @@ export function SearchInputBox(
     setEndDateCalendar('');
     setStartDate('');
     setEndDate('');
+  };
+
+  const handleClearInput = () => {
+    setInput('');
+    setDebouncedInput('');
+    handleSearch('');
   };
 
   return (
@@ -194,6 +197,12 @@ export function SearchInputBox(
           value={input}
           onChangeText={setInput}
         />
+
+        {input.length > 0 && (
+          <Pressable onPress={handleClearInput} style={styles.clearInputButton}>
+            <Ionicons name="close" size={20} color={appColors.navyBlack} />
+          </Pressable>
+        )}
       </View>
 
       <View style={styles.iconContainer}>
@@ -382,5 +391,8 @@ const styles = StyleSheet.create({
     height: 9,
     borderRadius: 5,
     backgroundColor: appColors.navyBlack,
+  },
+  clearInputButton: {
+    padding: 8,
   },
 });

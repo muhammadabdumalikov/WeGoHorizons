@@ -15,6 +15,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {appColors} from '../shared/constants';
 import {Slider} from '@miblanchard/react-native-slider';
 import { GilroyMediumText } from './StyledText';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // For Android, need to enable LayoutAnimation
 if (
@@ -281,7 +282,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           style={styles.closeModalButton}
           onPress={onClose || applyFilters}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <AntDesign name="close" size={22} color={appColors.navyBlack} />
+          <Ionicons name="close" size={24} color={appColors.navyBlack} />
         </TouchableOpacity>
 
         {/* Title in the center */}
@@ -355,7 +356,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <MaterialIcons
                   name="keyboard-arrow-down"
                   size={24}
-                  color="#000"
+                  color={appColors.navyBlack}
                 />
               </Animated.View>
             </TouchableOpacity>
@@ -383,7 +384,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                     <MaterialIcons
                       name="keyboard-arrow-up"
                       size={24}
-                      color="#000"
+                      color={appColors.navyBlack}
                     />
                   </TouchableOpacity>
                 </View>
@@ -441,7 +442,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <MaterialIcons
                   name="keyboard-arrow-down"
                   size={24}
-                  color="#000"
+                  color={appColors.navyBlack}
                 />
               </Animated.View>
             </TouchableOpacity>
@@ -469,7 +470,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                     <MaterialIcons
                       name="keyboard-arrow-up"
                       size={24}
-                      color="#000"
+                      color={appColors.navyBlack}
                     />
                   </TouchableOpacity>
                 </View>
@@ -527,7 +528,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <MaterialIcons
                   name="keyboard-arrow-down"
                   size={24}
-                  color="#000"
+                  color={appColors.navyBlack}
                 />
               </Animated.View>
             </TouchableOpacity>
@@ -555,7 +556,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                     <MaterialIcons
                       name="keyboard-arrow-up"
                       size={24}
-                      color="#000"
+                      color={appColors.navyBlack}
                     />
                   </TouchableOpacity>
                 </View>
@@ -609,7 +610,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <MaterialIcons
                   name="keyboard-arrow-down"
                   size={24}
-                  color="#000"
+                  color={appColors.navyBlack}
                 />
               </Animated.View>
             </TouchableOpacity>
@@ -638,7 +639,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                     <MaterialIcons
                       name="keyboard-arrow-up"
                       size={24}
-                      color="#000"
+                      color={appColors.navyBlack}
                     />
                   </TouchableOpacity>
                 </View>
@@ -688,7 +689,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#EEEEEE',
   },
@@ -721,7 +721,7 @@ const styles = StyleSheet.create({
   filterSectionTitle: {
     fontSize: 18,
     fontFamily: 'Gilroy-Semibold',
-    color: '#000',
+    color: appColors.navyBlack,
   },
   priceHeader: {
     flexDirection: 'row',
@@ -860,7 +860,7 @@ const styles = StyleSheet.create({
   applyButtonText: {
     fontSize: 18,
     fontFamily: 'Gilroy-Bold',
-    color: '#000',
+    color: appColors.pureWhite,
   },
   closeModalButton: {
     paddingVertical: 10,

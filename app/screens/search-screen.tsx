@@ -315,9 +315,14 @@ export function SearchScreen({navigation}: {navigation: any}) {
         ) : (
           <>
             <SeeAllHeader
-              headerName={`${appliedFilters.search || 'Filtered Results'}`}
-              btnName="Clear all"
-              onPress={handleClearAll}
+              headerName={
+                appliedFilters.search
+                  ? `"${appliedFilters.search}"`
+                  : 'Results'
+              }
+              btnName=""
+              style={{marginVertical: 0}}
+              onPress={() => {}}
             />
 
             {isLoading ? (
