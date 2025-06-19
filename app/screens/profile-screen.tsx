@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -11,6 +11,9 @@ import {GilroyBoldText, GilroyMediumText} from '../components/StyledText';
 import {appColors} from '../shared/constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Switch from '../components/Switch';
+import LanguageSelector from '../components/LanguageSelector';
+import {useLanguage} from '../shared/contexts/LanguageContext';
+import {useLocalization} from '../shared/hooks/useLocalization';
 
 const StatBox = ({count, label}: {count: string; label: string}) => (
   <View style={styles.statBox}>
@@ -67,11 +70,27 @@ const SettingItem = ({
 export function ProfileScreen() {
   const [pushEnabled, setPushEnabled] = React.useState(true);
   const [emailEnabled, setEmailEnabled] = React.useState(true);
+  const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] =
+    useState(false);
+  const {currentLanguage} = useLanguage();
+  const {t} = useLocalization();
+
+  // Get the flag image based on the current language
+  const getLanguageFlag = () => {
+    switch (currentLanguage) {
+      case 'en':
+        return require('../../assets/images/flags/uk.png');
+      case 'es':
+        return require('../../assets/images/flags/es.png');
+      case 'fr':
+        return require('../../assets/images/flags/fr.png');
+      default:
+        return require('../../assets/images/flags/uk.png');
+    }
+  };
 
   return (
-    <ScrollView style={styles.container}
-    showsVerticalScrollIndicator={false}
-    >
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ImageBackground
         source={require('../../assets/images/profile-background.png')}
         style={styles.headerBackground}
@@ -157,19 +176,18 @@ export function ProfileScreen() {
       </View>
 
       <View style={styles.section}>
-        <GilroyBoldText style={styles.sectionTitle}>Other</GilroyBoldText>
+        <GilroyBoldText style={styles.sectionTitle}>
+          {t('profile.other')}
+        </GilroyBoldText>
         <SettingItem
-          title="Language"
+          title={t('profile.language')}
           rightContent={
-            <Image
-              source={require('../../assets/images/logo.png')}
-              style={styles.flag}
-            />
+            <Image source={getLanguageFlag()} style={styles.flag} />
           }
-          onPress={() => {}}
+          onPress={() => setIsLanguageSelectorVisible(true)}
         />
         <SettingItem
-          title="Currency"
+          title={t('profile.currency')}
           rightContent={
             <GilroyMediumText style={styles.currency}>
               USD - US Dollar
@@ -180,8 +198,15 @@ export function ProfileScreen() {
       </View>
 
       <Pressable style={styles.logoutButton}>
-        <GilroyMediumText style={styles.logoutText}>Log out</GilroyMediumText>
+        <GilroyMediumText style={styles.logoutText}>
+          {t('profile.logout')}
+        </GilroyMediumText>
       </Pressable>
+
+      <LanguageSelector
+        visible={isLanguageSelectorVisible}
+        onClose={() => setIsLanguageSelectorVisible(false)}
+      />
     </ScrollView>
   );
 }
@@ -299,6 +324,7 @@ const styles = StyleSheet.create({
   flag: {
     width: 24,
     height: 24,
+    borderRadius: 12,
     marginRight: 8,
   },
   currency: {

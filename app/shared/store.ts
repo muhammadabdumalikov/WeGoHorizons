@@ -1,37 +1,37 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import storage from './storage';
 
-// Function to save data to AsyncStorage
-export const saveData = async (key, value) => {
+// Function to save data to MMKV storage
+export const saveData = (key: string, value: any) => {
   try {
-    await AsyncStorage.setItem(key, JSON.stringify(value));
+    storage.set(key, JSON.stringify(value));
   } catch (e) {
     console.error("Error saving data", e);
   }
 };
 
-// Function to get data from AsyncStorage
-export const getData = async (key) => {
+// Function to get data from MMKV storage
+export const getData = (key: string) => {
   try {
-    const value = await AsyncStorage.getItem(key);
+    const value = storage.getString(key);
     return value != null ? JSON.parse(value) : null;
   } catch (e) {
     console.error("Error retrieving data", e);
   }
 };
 
-// Function to remove data from AsyncStorage
-export const removeData = async (key) => {
+// Function to remove data from MMKV storage
+export const removeData = (key: string) => {
   try {
-    await AsyncStorage.removeItem(key);
+    storage.delete(key);
   } catch (e) {
     console.error("Error removing data", e);
   }
 };
 
 // Function to clear all data
-export const clearAllData = async () => {
+export const clearAllData = () => {
   try {
-    await AsyncStorage.clear();
+    storage.clearAll();
   } catch (e) {
     console.error("Error clearing storage", e);
   }

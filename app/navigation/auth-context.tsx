@@ -1,11 +1,9 @@
 import React, {createContext, useState, useEffect, useContext} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const IS_ADMIN_KEY = 'isAdmin';
+import storage, {IS_ADMIN_KEY} from '../shared/storage';
 
 interface AuthContextType {
   isAdmin: boolean;
-  toggleAdmin: () => Promise<void>;
+  toggleAdmin: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -16,16 +14,16 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
-    const loadAdminStatus = async () => {
-      const storedValue = await AsyncStorage.getItem(IS_ADMIN_KEY);
+    const loadAdminStatus = () => {
+      const storedValue = storage.getString(IS_ADMIN_KEY);
       setIsAdmin(storedValue === 'true');
     };
     loadAdminStatus();
   }, []);
 
-  const toggleAdmin = async () => {
+  const toggleAdmin = () => {
     const newValue = !isAdmin;
-    await AsyncStorage.setItem(IS_ADMIN_KEY, newValue.toString());
+    storage.set(IS_ADMIN_KEY, newValue.toString());
     setIsAdmin(newValue);
   };
 

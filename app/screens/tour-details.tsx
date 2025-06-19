@@ -35,6 +35,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import {addDotsToNumber} from '../shared/helpers';
 import {openDialer} from '../components/PhoneCall';
 import ReviewCard from '../components/ReviewCard';
+import {useLocalization} from '../shared/hooks/useLocalization';
 
 type RoutePointType = 'location' | 'destination' | 'transport';
 
@@ -58,6 +59,7 @@ const IMG_HEIGHT = 300;
 type TabType = 'Overview' | 'Photo' | 'Review' | 'Community' | 'Itinerary';
 
 export function TourDetailsScreen({navigation, route}: Props) {
+  const {t} = useLocalization();
   const {top} = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<TabType>('Overview');
   const {params} = route;
@@ -146,14 +148,14 @@ export function TourDetailsScreen({navigation, route}: Props) {
       isLiked ? appColors.navyBlack : appColors.redVelvet,
     );
   };
-  
+
   const renderTabContent = () => {
     switch (activeTab) {
       case 'Overview':
         return (
           <View style={styles.contentWrapper}>
             <Text style={styles.listingName}>
-              {tour?.title || (tour?.title as unknown as string)}
+              {tour?.title || t('tour.empty')}
             </Text>
             <View style={styles.starReviewWrapper}>
               <View style={styles.starAndRate}>
@@ -165,7 +167,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                     color={appColors.pureWhite}
                   />
                 </View>
-                <Text style={styles.itemReview}>(3123 reviews)</Text>
+                <Text style={styles.itemReview}>
+                  (3123 {t('tour.reviews')})
+                </Text>
               </View>
             </View>
 
@@ -190,7 +194,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   size={18}
                   color={appColors.mainColor}
                 />
-                <Text style={styles.reminderTxt}>Reminder</Text>
+                <Text style={styles.reminderTxt}>{t('tour.reminder')}</Text>
               </Pressable>
             </View>
 
@@ -211,19 +215,19 @@ export function TourDetailsScreen({navigation, route}: Props) {
               </Text>
               <Pressable style={styles.reminderBtn}>
                 <Fontisto name="map" size={16} color={appColors.mainColor} />
-                <Text style={styles.reminderTxt}>Directions</Text>
+                <Text style={styles.reminderTxt}>{t('tour.directions')}</Text>
               </Pressable>
             </View>
 
             {/* ABOUT TOUR SECTION */}
-            <Text style={styles.infoTitle}>About tour</Text>
+            <Text style={styles.infoTitle}>{t('tour.aboutTour')}</Text>
 
             <Text style={styles.descriptionTxt}>
-              {tour?.description || 'Empty'}
+              {tour?.description || t('tour.empty')}
             </Text>
 
             {/* WHAT'S INCLUDED SECTION */}
-            <Text style={styles.infoTitle}>What's included</Text>
+            <Text style={styles.infoTitle}>{t('tour.whatsIncluded')}</Text>
 
             <View style={styles.includedList}>
               {tour.includes.map((item, index) => {
@@ -255,7 +259,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   size={24}
                   color={appColors.navyBlack}
                 />
-                <Text style={styles.aboutTourItemTitleTxt}>Duration</Text>
+                <Text style={styles.aboutTourItemTitleTxt}>
+                  {t('tour.duration')}
+                </Text>
               </View>
               <Text style={styles.aboutTourItemDescriptionTxt}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -272,7 +278,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   color={appColors.navyBlack}
                 />
                 <Text style={styles.aboutTourItemTitleTxt}>
-                  Speaking Language
+                  {t('tour.speakingLanguage')}
                 </Text>
               </View>
               <Text style={styles.aboutTourItemDescriptionTxt}>
@@ -289,7 +295,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   size={24}
                   color={appColors.navyBlack}
                 />
-                <Text style={styles.aboutTourItemTitleTxt}>Transfer</Text>
+                <Text style={styles.aboutTourItemTitleTxt}>
+                  {t('tour.transfer')}
+                </Text>
               </View>
               <Text style={styles.aboutTourItemDescriptionTxt}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -305,7 +313,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   size={24}
                   color={appColors.navyBlack}
                 />
-                <Text style={styles.aboutTourItemTitleTxt}>Group Trip</Text>
+                <Text style={styles.aboutTourItemTitleTxt}>
+                  {t('tour.groupTrip')}
+                </Text>
               </View>
               <Text style={styles.aboutTourItemDescriptionTxt}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -321,7 +331,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   size={24}
                   color={appColors.navyBlack}
                 />
-                <Text style={styles.aboutTourItemTitleTxt}>Breakfast</Text>
+                <Text style={styles.aboutTourItemTitleTxt}>
+                  {t('tour.breakfast')}
+                </Text>
               </View>
               <Text style={styles.aboutTourItemDescriptionTxt}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -334,7 +346,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
       case 'Itinerary':
         return (
           <View style={styles.contentWrapper}>
-            <Text style={styles.sectionTitle}>Tour Itinerary</Text>
+            <Text style={styles.sectionTitle}>{t('tour.tourItinerary')}</Text>
 
             {/* Itinerary List */}
             <View style={styles.itineraryList}>
@@ -362,8 +374,8 @@ export function TourDetailsScreen({navigation, route}: Props) {
                         <Text style={styles.itineraryTitle}>
                           {isLocation
                             ? index === 0
-                              ? 'Pickup location:'
-                              : 'Arrive back at:'
+                              ? t('tour.pickupLocation')
+                              : t('tour.arriveBackAt')
                             : isDestination
                             ? point.title
                             : point.transport_type}
@@ -393,14 +405,16 @@ export function TourDetailsScreen({navigation, route}: Props) {
       case 'Photo':
         return (
           <View style={styles.contentWrapper}>
-            <Text style={styles.comingSoonText}>Photo Gallery Coming Soon</Text>
+            <Text style={styles.comingSoonText}>
+              {t('tour.photoGalleryComingSoon')}
+            </Text>
           </View>
         );
       case 'Review':
         return (
           <View style={styles.contentWrapper}>
             <View style={styles.ratingSection}>
-              <Text style={styles.ratingTitle}>Your rating</Text>
+              <Text style={styles.ratingTitle}>{t('tour.yourRating')}</Text>
 
               {isSubmitting ? (
                 <View style={styles.loadingContainer}>
@@ -408,7 +422,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                 </View>
               ) : hasRated ? (
                 <View style={styles.thankYouContainer}>
-                  <Text style={styles.thankYouText}>Thank you for rating!</Text>
+                  <Text style={styles.thankYouText}>
+                    {t('tour.thankYouForRating')}
+                  </Text>
                   <View style={styles.starsContainer}>
                     {[1, 2, 3, 4, 5].map(star => (
                       <FontAwesome
@@ -420,12 +436,15 @@ export function TourDetailsScreen({navigation, route}: Props) {
                     ))}
                   </View>
                   <Text style={styles.ratingValueText}>
-                    You rated this tour {userRating} out of 5 stars
+                    {t('tour.youRatedThisTour')} {userRating}{' '}
+                    {t('tour.outOf5Stars')}
                   </Text>
                   <Pressable
                     style={styles.rateAgainButton}
                     onPress={() => setHasRated(false)}>
-                    <Text style={styles.rateAgainText}>Rate again</Text>
+                    <Text style={styles.rateAgainText}>
+                      {t('tour.rateAgain')}
+                    </Text>
                   </Pressable>
                 </View>
               ) : (
@@ -466,10 +485,10 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   </View>
                   <Text style={styles.ratingHelperText}>
                     {isAnimating
-                      ? 'Rating...'
+                      ? t('tour.rating')
                       : hoverRating > 0
                       ? getRatingText(hoverRating)
-                      : 'Tap a star to rate this tour'}
+                      : t('tour.tapStarToRate')}
                   </Text>
                 </View>
               )}
@@ -506,7 +525,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
       case 'Community':
         return (
           <View style={styles.contentWrapper}>
-            <Text style={styles.comingSoonText}>Community Coming Soon</Text>
+            <Text style={styles.comingSoonText}>
+              {t('tour.communityComingSoon')}
+            </Text>
           </View>
         );
       default:
@@ -577,7 +598,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   resizeMode="cover"
                 />
                 <View>
-                  <Text style={styles.organizerTopTxtOnImg}>Organizer:</Text>
+                  <Text style={styles.organizerTopTxtOnImg}>
+                    {t('tour.organizer')}
+                  </Text>
                   <Text
                     style={styles.organizerBottomTxtOnImg}
                     numberOfLines={1}>
@@ -627,7 +650,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
                     styles.tabText,
                     activeTab === tab && styles.activeTabText,
                   ]}>
-                  {tab}
+                  {t(`tour.${tab.toLowerCase()}`)}
                 </Text>
               </Pressable>
             ))}
@@ -645,7 +668,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
         <Pressable
           style={styles.bookBtn}
           onPress={() => openDialer(tour.organizer_phone)}>
-          <Text style={styles.bookBtnTxt}>Buy Ticket</Text>
+          <Text style={styles.bookBtnTxt}>{t('hotel.bookNow')}</Text>
         </Pressable>
       </View>
     </View>
