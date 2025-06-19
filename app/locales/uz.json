@@ -3,7 +3,14 @@
     "other": "Boshqa",
     "language": "Til",
     "currency": "Valyuta",
-    "logout": "Chiqish"
+    "logout": "Chiqish",
+    "myTrips": "Mening sayohatlarim",
+    "bookings": "Bronlar",
+    "favorites": "Sevimlilar",
+    "settings": "Sozlamalar",
+    "notifications": "Bildirishnomalar",
+    "help": "Yordam",
+    "about": "Haqida"
   },
   "tour": {
     "overview": "Umumiy ma'lumot",
@@ -34,6 +41,133 @@
     "tapStarToRate": "Baholash uchun yulduzni bosing",
     "rating": "Baholanmoqda...",
     "organizer": "Tashkilotchi:",
-    "empty": "Bo'sh"
+    "empty": "Bo'sh",
+    "discount": "25% CHEGIRMA",
+    "perPerson": "/kishi",
+    "cultural": "Madaniy",
+    "coffee": "Kofe",
+    "seeAll": "Hammasini ko'rish"
+  },
+  "common": {
+    "search": "Qidirish",
+    "apply": "Qo'llash",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "close": "Yopish",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "loading": "Yuklanmoqda...",
+    "error": "Xato",
+    "success": "Muvaffaqiyatli",
+    "retry": "Qayta urinish",
+    "ok": "OK",
+    "yes": "Ha",
+    "no": "Yo'q"
+  },
+  "navigation": {
+    "home": "Bosh sahifa",
+    "search": "Qidirish",
+    "favorites": "Sevimlilar",
+    "profile": "Profil",
+    "settings": "Sozlamalar"
+  },
+  "home": {
+    "upcomingTours": "Kutilayotgan turlar",
+    "tours": "Turlar",
+    "seeAll": "Hammasini ko'rish",
+    "noToursFound": "Turlar topilmadi",
+    "storyPressed": "Hikoya bosildi",
+    "openingStory": "Hikoyani ochish"
+  },
+  "stories": {
+    "discoverMore": "Ko'proq kashf etish",
+    "coffeeShop": "Kofe do'koni",
+    "cosy": "Qulay"
+  },
+  "search": {
+    "placeholder": "Manzillar, mehmonxonalar, faoliyatlar qidirish...",
+    "dateRange": "Sana oralig'i",
+    "selectDates": "Sanani tanlash",
+    "checkIn": "Kirish",
+    "checkOut": "Chiqish",
+    "guests": "Mehmonlar",
+    "adults": "Kattalar",
+    "children": "Bolalar",
+    "infants": "Chaqaloqlar",
+    "rooms": "Xonalar",
+    "filters": "Filtrlar",
+    "priceRange": "Narx oralig'i",
+    "sortBy": "Saralash",
+    "distance": "Masofa",
+    "rating": "Baholash",
+    "lastSearch": "Oxirgi qidiruv",
+    "clearAll": "Hammasini tozalash",
+    "results": "Natijalar",
+    "noToursFound": "Turlar topilmadi",
+    "sortOptions": {
+      "priceAsc": "Narx: pastdan yuqoriga",
+      "priceDesc": "Narx: yuqoridan pastga",
+      "ratingDesc": "Baholash: yuqoridan pastga",
+      "latest": "Yangi",
+      "popular": "Mashhur"
+    },
+    "languageOptions": {
+      "enUk": "Inglizcha / Buyuk Britaniya",
+      "enUs": "Inglizcha / AQSh",
+      "ru": "Ruscha / Rossiya",
+      "uz": "O'zbekcha / O'zbekiston",
+      "de": "Nemis / Germaniya",
+      "fr": "Fransuzcha / Fransiya",
+      "ja": "Yaponcha / Yaponiya",
+      "zh": "Xitoycha / Xitoy"
+    },
+    "activityOptions": {
+      "hiking": "Piyoda sayr",
+      "biking": "Velosiped sayri",
+      "skiing": "Chang'i",
+      "swimming": "Suzish",
+      "foodtour": "Oziq-ovqat turlari",
+      "citytour": "Shahar turlari",
+      "museum": "Muzeylar",
+      "concert": "Kontsertlar"
+    },
+    "genderOptions": {
+      "male": "Erkak",
+      "female": "Ayol",
+      "mixed": "Aralash",
+      "any": "Har qanday"
+    }
+  },
+  "hotel": {
+    "bookNow": "Hozir bron qilish",
+    "viewDetails": "Tafsilotlarni ko'rish",
+    "perNight": "tungi uchun",
+    "amenities": "Qulayliklar",
+    "reviews": "Sharhlar",
+    "location": "Manzil",
+    "description": "Tavsif",
+    "photos": "Rasmlar",
+    "map": "Xarita"
+  },
+  "travel": {
+    "destinations": "Manzillar",
+    "popular": "Mashhur",
+    "trending": "Trend",
+    "nearby": "Yaqin",
+    "recommendations": "Tavsiyalar",
+    "explore": "Tadqiq qilish",
+    "discover": "Kashf etish",
+    "plan": "Rejalashtirish",
+    "book": "Bron qilish"
+  },
+  "errors": {
+    "networkError": "Tarmoq xatosi. Ulanishni tekshiring.",
+    "serverError": "Server xatosi. Keyinroq urinib ko'ring.",
+    "notFound": "Topilmadi",
+    "unauthorized": "Ruxsat berilmagan",
+    "forbidden": "Taqiqlangan"
   }
 } 

@@ -14,6 +14,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FastImage from '@d11/react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
+import {useLocalization} from '../shared/hooks/useLocalization';
 
 const {width, height} = Dimensions.get('window');
 
@@ -58,6 +59,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   const [loading, setLoading] = useState(false);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const prevImageRef = useRef(story?.image);
+  const {t} = useLocalization();
 
   useEffect(() => {
     if (prevImageRef.current !== story?.image) {
@@ -65,7 +67,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
       fadeAnim.setValue(0); // Instantly hide content
       prevImageRef.current = story?.image;
     }
-  }, [story?.image]);
+  }, [story?.image, fadeAnim]);
 
   if (!story) return null;
 
@@ -146,10 +148,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
                   <Text style={styles.ratingText}>4.5</Text>
                   <Feather name="star" size={14} color="#fff" />
                 </View>
-                <Text style={styles.detailText}>Coffee Shop · Cosy</Text>
+                <Text style={styles.detailText}>
+                  {t('stories.coffeeShop')} · {t('stories.cosy')}
+                </Text>
               </View>
               <TouchableOpacity style={styles.discoverMore}>
-                <Text style={styles.discoverText}>Discover more</Text>
+                <Text style={styles.discoverText}>
+                  {t('stories.discoverMore')}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>

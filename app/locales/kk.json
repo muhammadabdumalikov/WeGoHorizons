@@ -1,9 +1,37 @@
 {
-  "profile": {
-    "other": "Басқа",
-    "language": "Тіл",
-    "currency": "Валюта",
-    "logout": "Шығу"
+  "common": {
+    "search": "Іздеу",
+    "apply": "Қолдану",
+    "cancel": "Бас тарту",
+    "save": "Сақтау",
+    "delete": "Жою",
+    "edit": "Өңдеу",
+    "close": "Жабу",
+    "back": "Артқа",
+    "next": "Келесі",
+    "previous": "Алдыңғы",
+    "loading": "Жүктелуде...",
+    "error": "Қате",
+    "success": "Сәтті",
+    "retry": "Қайталау",
+    "ok": "OK",
+    "yes": "Иә",
+    "no": "Жоқ"
+  },
+  "navigation": {
+    "home": "Басты бет",
+    "search": "Іздеу",
+    "favorites": "Таңдаулылар",
+    "profile": "Профиль",
+    "settings": "Баптаулар"
+  },
+  "home": {
+    "upcomingTours": "Алдағы турлар",
+    "tours": "Турлар",
+    "seeAll": "Барлығын көру",
+    "noToursFound": "Турлар табылмады",
+    "storyPressed": "Әңгіме басылды",
+    "openingStory": "Әңгімені ашу"
   },
   "tour": {
     "overview": "Шолу",
@@ -34,6 +62,112 @@
     "tapStarToRate": "Бағалау үшін жұлдызды басыңыз",
     "rating": "Бағалануда...",
     "organizer": "Ұйымдастырушы:",
-    "empty": "Бос"
+    "empty": "Бос",
+    "discount": "25% ЖЕҢІЛДІК",
+    "perPerson": "/адам",
+    "cultural": "Мәдени",
+    "coffee": "Кофе",
+    "seeAll": "Барлығын көру"
+  },
+  "stories": {
+    "discoverMore": "Көбірек ашу",
+    "coffeeShop": "Кофе дүкені",
+    "cosy": "Жайлы"
+  },
+  "search": {
+    "placeholder": "Бағыттар, қонақ үйлер, қызметтер іздеу...",
+    "dateRange": "Күн аралығы",
+    "selectDates": "Күнді таңдау",
+    "checkIn": "Кіру",
+    "checkOut": "Шығу",
+    "guests": "Қонақтар",
+    "adults": "Ересектер",
+    "children": "Балалар",
+    "infants": "Нәрестелер",
+    "rooms": "Бөлмелер",
+    "filters": "Сүзгілер",
+    "priceRange": "Баға аралығы",
+    "sortBy": "Сұрыптау",
+    "distance": "Қашықтық",
+    "rating": "Бағалау",
+    "lastSearch": "Соңғы іздеу",
+    "clearAll": "Барлығын тазалау",
+    "results": "Нәтижелер",
+    "noToursFound": "Турлар табылмады",
+    "sortOptions": {
+      "priceAsc": "Баға: төменнен жоғары",
+      "priceDesc": "Баға: жоғарыдан төмен",
+      "ratingDesc": "Бағалау: жоғарыдан төмен",
+      "latest": "Жаңа",
+      "popular": "Танымал"
+    },
+    "languageOptions": {
+      "enUk": "Ағылшын / Ұлыбритания",
+      "enUs": "Ағылшын / АҚШ",
+      "ru": "Орыс / Ресей",
+      "uz": "Өзбек / Өзбекстан",
+      "de": "Неміс / Германия",
+      "fr": "Француз / Франция",
+      "ja": "Жапон / Жапония",
+      "zh": "Қытай / Қытай"
+    },
+    "activityOptions": {
+      "hiking": "Жүру",
+      "biking": "Велосипед",
+      "skiing": "Шаңғы",
+      "swimming": "Жүзу",
+      "foodtour": "Азық-түлік турлары",
+      "citytour": "Қала турлары",
+      "museum": "Мұражайлар",
+      "concert": "Концерттер"
+    },
+    "genderOptions": {
+      "male": "Ер",
+      "female": "Әйел",
+      "mixed": "Аралас",
+      "any": "Кез келген"
+    }
+  },
+  "hotel": {
+    "bookNow": "Қазір брондау",
+    "viewDetails": "Толығырақ көру",
+    "perNight": "түнге",
+    "amenities": "Қолайлылықтар",
+    "reviews": "Пікірлер",
+    "location": "Орналасу",
+    "description": "Сипаттама",
+    "photos": "Фотосуреттер",
+    "map": "Карта"
+  },
+  "travel": {
+    "destinations": "Бағыттар",
+    "popular": "Танымал",
+    "trending": "Тренд",
+    "nearby": "Жақын",
+    "recommendations": "Ұсыныстар",
+    "explore": "Зерттеу",
+    "discover": "Ашу",
+    "plan": "Жоспарлау",
+    "book": "Брондау"
+  },
+  "profile": {
+    "myTrips": "Менің сапарларым",
+    "bookings": "Брондаулар",
+    "favorites": "Таңдаулылар",
+    "settings": "Баптаулар",
+    "language": "Тіл",
+    "currency": "Валюта",
+    "notifications": "Хабарландырулар",
+    "help": "Көмеk",
+    "about": "Туралы",
+    "other": "Басқа",
+    "logout": "Шығу"
+  },
+  "errors": {
+    "networkError": "Желі қатесі. Қосылымды тексеріңіз.",
+    "serverError": "Сервер қатесі. Кейінірек қайталап көріңіз.",
+    "notFound": "Табылмады",
+    "unauthorized": "Рұқсат етілмеген",
+    "forbidden": "Тыйым салынған"
   }
 } 

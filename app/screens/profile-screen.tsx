@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   ImageBackground,
+  SafeAreaView,
 } from 'react-native';
 import {GilroyBoldText, GilroyMediumText} from '../components/StyledText';
 import {appColors} from '../shared/constants';
@@ -14,6 +15,7 @@ import Switch from '../components/Switch';
 import LanguageSelector from '../components/LanguageSelector';
 import {useLanguage} from '../shared/contexts/LanguageContext';
 import {useLocalization} from '../shared/hooks/useLocalization';
+import {AvatarSvg} from '../../assets/images/avatar/avatar';
 
 const StatBox = ({count, label}: {count: string; label: string}) => (
   <View style={styles.statBox}>
@@ -48,7 +50,7 @@ const ActionIcon = ({
 );
 
 const SettingItem = ({
-  icon,
+  icon: _icon,
   title,
   rightContent,
   onPress,
@@ -74,6 +76,8 @@ export function ProfileScreen() {
     useState(false);
   const {currentLanguage} = useLanguage();
   const {t} = useLocalization();
+  // Placeholder for authentication state
+  const [isSignedIn, setIsSignedIn] = useState(false); // Set to true to simulate signed-in
 
   // Get the flag image based on the current language
   const getLanguageFlag = () => {
@@ -98,124 +102,155 @@ export function ProfileScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <ImageBackground
-        source={require('../../assets/images/profile-background.png')}
-        style={styles.headerBackground}
-        resizeMode="cover">
-        <View style={styles.header}>
-          <View style={styles.profileInfo}>
-            <Image
-              source={require('../../assets/images/logo.png')}
-              style={styles.avatar}
-            />
-            <GilroyBoldText style={styles.name}>Ross Adkins</GilroyBoldText>
-            <Pressable>
-              <GilroyMediumText style={styles.showProfile}>
-                Show profiles
-              </GilroyMediumText>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        {!isSignedIn ? (
+          <View style={styles.profileHeaderBox}>
+            <GilroyBoldText style={styles.profileTitle}>Profile</GilroyBoldText>
+            <View style={styles.avatar}>
+              <AvatarSvg />
+            </View>
+            <GilroyMediumText style={styles.profileDescription}>
+              Access your bookings from any device{'\n'}
+              {'\n'}
+              Sign up, sync your existing bookings, add activities to your
+              wishlist, and checkout quicker thanks to stored information.
+            </GilroyMediumText>
+            <Pressable
+              style={styles.loginButton}
+              onPress={() => setIsSignedIn(true)}>
+              <GilroyBoldText style={styles.loginButtonText}>
+                Log in or sign up
+              </GilroyBoldText>
             </Pressable>
           </View>
+        ) : (
+          <>
+            <ImageBackground
+              source={require('../../assets/images/profile-background.png')}
+              style={styles.headerBackground}
+              resizeMode="cover">
+              <View style={styles.header}>
+                <View style={styles.profileInfo}>
+                  <View style={styles.avatar}>
+                    <AvatarSvg />
+                  </View>
+                  <GilroyBoldText style={styles.name}>
+                    Ross Adkins
+                  </GilroyBoldText>
+                  <Pressable>
+                    <GilroyMediumText style={styles.showProfile}>
+                      Show profiles
+                    </GilroyMediumText>
+                  </Pressable>
+                </View>
+                <View style={styles.stats}>
+                  <StatBox count="2484" label="Photo" />
+                  <StatBox count="2484" label="Photo" />
+                  <StatBox count="2484" label="Photo" />
+                </View>
+                <View style={styles.actions}>
+                  <ActionIcon color="#FF9B9B" icon="camera" stars={3} />
+                  <ActionIcon color="#FFB571" icon="map-marker" stars={2} />
+                  <ActionIcon color="#BC71FF" icon="message" stars={2} />
+                  <ActionIcon color="#71A5FF" icon="gift" stars={1} />
+                </View>
+              </View>
+            </ImageBackground>
+            <View style={styles.vipCard}>
+              <View>
+                <GilroyBoldText style={styles.vipTitle}>
+                  VIP Member
+                </GilroyBoldText>
+                <GilroyMediumText style={styles.vipPoints}>
+                  4685 points
+                </GilroyMediumText>
+              </View>
+              <Icon name="crown" size={24} color="#FFD700" />
+            </View>
+            <View style={styles.section}>
+              <GilroyBoldText style={styles.sectionTitle}>
+                Account
+              </GilroyBoldText>
+              <SettingItem title="Personal informations" onPress={() => {}} />
+              <SettingItem title="Change Password" onPress={() => {}} />
+              <SettingItem title="Social Connect" onPress={() => {}} />
+              <SettingItem title="Switch to localguide" onPress={() => {}} />
+            </View>
+          </>
+        )}
 
-          <View style={styles.stats}>
-            <StatBox count="2484" label="Photo" />
-            <StatBox count="2484" label="Photo" />
-            <StatBox count="2484" label="Photo" />
-          </View>
-
-          <View style={styles.actions}>
-            <ActionIcon color="#FF9B9B" icon="camera" stars={3} />
-            <ActionIcon color="#FFB571" icon="map-marker" stars={2} />
-            <ActionIcon color="#BC71FF" icon="message" stars={2} />
-            <ActionIcon color="#71A5FF" icon="gift" stars={1} />
-          </View>
+        <View style={styles.section}>
+          <GilroyBoldText style={styles.sectionTitle}>
+            Notifications
+          </GilroyBoldText>
+          <SettingItem
+            title="Push notifications"
+            rightContent={
+              <Switch
+                activeColor={appColors.mainColor}
+                inActiveColor={appColors.grey1}
+                handleOnChange={() => setPushEnabled(!pushEnabled)}
+              />
+            }
+          />
+          <SettingItem
+            title="Email notifications"
+            rightContent={
+              <Switch
+                activeColor={appColors.mainColor}
+                inActiveColor={appColors.grey1}
+                handleOnChange={() => setEmailEnabled(!emailEnabled)}
+              />
+            }
+          />
         </View>
-      </ImageBackground>
 
-      <View style={styles.vipCard}>
-        <View>
-          <GilroyBoldText style={styles.vipTitle}>VIP Member</GilroyBoldText>
-          <GilroyMediumText style={styles.vipPoints}>
-            4685 points
-          </GilroyMediumText>
+        <View style={styles.section}>
+          <GilroyBoldText style={styles.sectionTitle}>Support</GilroyBoldText>
+          <SettingItem title="Contact support" onPress={() => {}} />
+          <SettingItem title="Privacy policy" onPress={() => {}} />
+          <SettingItem title="Terms of services" onPress={() => {}} />
         </View>
-        <Icon name="crown" size={24} color="#FFD700" />
-      </View>
 
-      <View style={styles.section}>
-        <GilroyBoldText style={styles.sectionTitle}>Account</GilroyBoldText>
-        <SettingItem title="Personal informations" onPress={() => {}} />
-        <SettingItem title="Change Password" onPress={() => {}} />
-        <SettingItem title="Social Connect" onPress={() => {}} />
-        <SettingItem title="Switch to localguide" onPress={() => {}} />
-      </View>
+        <View style={styles.section}>
+          <GilroyBoldText style={styles.sectionTitle}>
+            {t('profile.other')}
+          </GilroyBoldText>
+          <SettingItem
+            title={t('profile.language')}
+            rightContent={
+              <Image source={getLanguageFlag()} style={styles.flag} />
+            }
+            onPress={() => setIsLanguageSelectorVisible(true)}
+          />
+          <SettingItem
+            title={t('profile.currency')}
+            rightContent={
+              <GilroyMediumText style={styles.currency}>
+                USD - US Dollar
+              </GilroyMediumText>
+            }
+            onPress={() => {}}
+          />
+        </View>
 
-      <View style={styles.section}>
-        <GilroyBoldText style={styles.sectionTitle}>
-          Notifications
-        </GilroyBoldText>
-        <SettingItem
-          title="Push notifications"
-          rightContent={
-            <Switch
-              activeColor={appColors.mainColor}
-              inActiveColor={appColors.grey1}
-              handleOnChange={() => setPushEnabled(!pushEnabled)}
-            />
-          }
-        />
-        <SettingItem
-          title="Email notifications"
-          rightContent={
-            <Switch
-              activeColor={appColors.mainColor}
-              inActiveColor={appColors.grey1}
-              handleOnChange={() => setEmailEnabled(!emailEnabled)}
-            />
-          }
-        />
-      </View>
-
-      <View style={styles.section}>
-        <GilroyBoldText style={styles.sectionTitle}>Support</GilroyBoldText>
-        <SettingItem title="Contact support" onPress={() => {}} />
-        <SettingItem title="Privacy policy" onPress={() => {}} />
-        <SettingItem title="Terms of services" onPress={() => {}} />
-      </View>
-
-      <View style={styles.section}>
-        <GilroyBoldText style={styles.sectionTitle}>
-          {t('profile.other')}
-        </GilroyBoldText>
-        <SettingItem
-          title={t('profile.language')}
-          rightContent={
-            <Image source={getLanguageFlag()} style={styles.flag} />
-          }
-          onPress={() => setIsLanguageSelectorVisible(true)}
-        />
-        <SettingItem
-          title={t('profile.currency')}
-          rightContent={
-            <GilroyMediumText style={styles.currency}>
-              USD - US Dollar
+        {isSignedIn && (
+          <Pressable
+            style={styles.logoutButton}
+            onPress={() => setIsSignedIn(false)}>
+            <GilroyMediumText style={styles.logoutText}>
+              {t('profile.logout')}
             </GilroyMediumText>
-          }
-          onPress={() => {}}
+          </Pressable>
+        )}
+
+        <LanguageSelector
+          visible={isLanguageSelectorVisible}
+          onClose={() => setIsLanguageSelectorVisible(false)}
         />
-      </View>
-
-      <Pressable style={styles.logoutButton}>
-        <GilroyMediumText style={styles.logoutText}>
-          {t('profile.logout')}
-        </GilroyMediumText>
-      </Pressable>
-
-      <LanguageSelector
-        visible={isLanguageSelectorVisible}
-        onClose={() => setIsLanguageSelectorVisible(false)}
-      />
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -236,9 +271,9 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     marginBottom: 12,
   },
   name: {
@@ -348,5 +383,37 @@ const styles = StyleSheet.create({
   logoutText: {
     fontSize: 16,
     color: '#FF5252',
+  },
+  profileHeaderBox: {
+    alignItems: 'center',
+    paddingTop: 40,
+    paddingBottom: 32,
+    paddingHorizontal: 20,
+  },
+  profileTitle: {
+    fontSize: 32,
+    color: appColors.navyBlack,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  profileDescription: {
+    fontSize: 16,
+    color: '#222B45',
+    textAlign: 'center',
+    marginBottom: 24,
+    lineHeight: 22,
+  },
+  loginButton: {
+    backgroundColor: appColors.mainColor,
+    borderRadius: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  loginButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

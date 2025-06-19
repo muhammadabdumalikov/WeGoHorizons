@@ -318,7 +318,7 @@ export function AllToursScreen({navigation, route}: Props) {
           onPress={() => navigation.goBack()}>
           <FontAwesome6
             name="chevron-left"
-            size={22}
+            size={20}
             color={appColors.navyBlack}
           />
         </Pressable>

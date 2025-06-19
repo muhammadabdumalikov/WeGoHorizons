@@ -1,9 +1,37 @@
 {
-  "profile": {
-    "other": "Другое",
-    "language": "Язык",
-    "currency": "Валюта",
-    "logout": "Выйти"
+  "common": {
+    "search": "Поиск",
+    "apply": "Применить",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "close": "Закрыть",
+    "back": "Назад",
+    "next": "Далее",
+    "previous": "Предыдущий",
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успех",
+    "retry": "Повторить",
+    "ok": "OK",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "navigation": {
+    "home": "Главная",
+    "search": "Поиск",
+    "favorites": "Избранное",
+    "profile": "Профиль",
+    "settings": "Настройки"
+  },
+  "home": {
+    "upcomingTours": "Предстоящие туры",
+    "tours": "Туры",
+    "seeAll": "Посмотреть все",
+    "noToursFound": "Туры не найдены",
+    "storyPressed": "История нажата",
+    "openingStory": "Открытие истории"
   },
   "tour": {
     "overview": "Обзор",
@@ -34,6 +62,112 @@
     "tapStarToRate": "Нажмите на звезду, чтобы оценить тур",
     "rating": "Оценка...",
     "organizer": "Организатор:",
-    "empty": "Пусто"
+    "empty": "Пусто",
+    "discount": "25% СКИДКА",
+    "perPerson": "/человек",
+    "cultural": "Культурный",
+    "coffee": "Кофе",
+    "seeAll": "Посмотреть все"
+  },
+  "stories": {
+    "discoverMore": "Узнать больше",
+    "coffeeShop": "Кофейня",
+    "cosy": "Уютный"
+  },
+  "search": {
+    "placeholder": "Поиск направлений, отелей, мероприятий...",
+    "dateRange": "Диапазон дат",
+    "selectDates": "Выбрать даты",
+    "checkIn": "Заезд",
+    "checkOut": "Выезд",
+    "guests": "Гости",
+    "adults": "Взрослые",
+    "children": "Дети",
+    "infants": "Младенцы",
+    "rooms": "Номера",
+    "filters": "Фильтры",
+    "priceRange": "Диапазон цен",
+    "sortBy": "Сортировать по",
+    "distance": "Расстояние",
+    "rating": "Рейтинг",
+    "lastSearch": "Последний поиск",
+    "clearAll": "Очистить все",
+    "results": "Результаты",
+    "noToursFound": "Туры не найдены",
+    "sortOptions": {
+      "priceAsc": "Цена: от низкой к высокой",
+      "priceDesc": "Цена: от высокой к низкой",
+      "ratingDesc": "Рейтинг: от высокого к низкому",
+      "latest": "Новые",
+      "popular": "Популярные"
+    },
+    "languageOptions": {
+      "enUk": "Английский / Великобритания",
+      "enUs": "Английский / США",
+      "ru": "Русский / Россия",
+      "uz": "Узбекский / Узбекистан",
+      "de": "Немецкий / Германия",
+      "fr": "Французский / Франция",
+      "ja": "Японский / Япония",
+      "zh": "Китайский / Китай"
+    },
+    "activityOptions": {
+      "hiking": "Походы",
+      "biking": "Велопрогулки",
+      "skiing": "Лыжи",
+      "swimming": "Плавание",
+      "foodtour": "Гастротуры",
+      "citytour": "Городские экскурсии",
+      "museum": "Музеи",
+      "concert": "Концерты"
+    },
+    "genderOptions": {
+      "male": "Мужской",
+      "female": "Женский",
+      "mixed": "Смешанный",
+      "any": "Любой"
+    }
+  },
+  "hotel": {
+    "bookNow": "Забронировать сейчас",
+    "viewDetails": "Посмотреть детали",
+    "perNight": "за ночь",
+    "amenities": "Удобства",
+    "reviews": "Отзывы",
+    "location": "Расположение",
+    "description": "Описание",
+    "photos": "Фото",
+    "map": "Карта"
+  },
+  "travel": {
+    "destinations": "Направления",
+    "popular": "Популярные",
+    "trending": "Тренды",
+    "nearby": "Рядом",
+    "recommendations": "Рекомендации",
+    "explore": "Исследовать",
+    "discover": "Открыть",
+    "plan": "Планировать",
+    "book": "Забронировать"
+  },
+  "profile": {
+    "myTrips": "Мои поездки",
+    "bookings": "Бронирования",
+    "favorites": "Избранное",
+    "settings": "Настройки",
+    "language": "Язык",
+    "currency": "Валюта",
+    "notifications": "Уведомления",
+    "help": "Помощь",
+    "about": "О приложении",
+    "other": "Другое",
+    "logout": "Выйти"
+  },
+  "errors": {
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "serverError": "Ошибка сервера. Попробуйте позже.",
+    "notFound": "Не найдено",
+    "unauthorized": "Не авторизован",
+    "forbidden": "Запрещено"
   }
 } 

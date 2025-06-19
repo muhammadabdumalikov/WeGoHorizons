@@ -90,7 +90,7 @@ export function GuideDetailScreen({route, navigation}: Props) {
         <Pressable
           style={styles.backButton}
           onPress={() => navigation.goBack()}>
-          <FontAwesome6 name="chevron-left" size={18} color={appColors.navyBlack} />
+          <FontAwesome6 name="chevron-left" size={20} color={appColors.navyBlack} />
         </Pressable>
         <Animated.Text style={[styles.headerTitle, animatedTextStyle]}>
           {data.name}

@@ -48,7 +48,7 @@ const mockOrganizer = {
   name: 'John Doe',
 };
 
-export function Stories({stories, onStoryPress}: StoriesProps) {
+export function Stories({stories, onStoryPress: _onStoryPress}: StoriesProps) {
   const [viewerVisible, setViewerVisible] = useState(false);
   const [selectedStory, setSelectedStory] = useState<any>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);

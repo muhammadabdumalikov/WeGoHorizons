@@ -25,6 +25,7 @@ import {TourCardsSmall} from './all-tours';
 import {CustomNavigationProp} from '../types/stack';
 import {useNavigation} from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useLocalization} from '../shared/hooks/useLocalization';
 
 const mockStories = [
   {
@@ -68,6 +69,7 @@ export function HomeScreen() {
   const insets = useSafeAreaInsets();
   const STATUS_BAR_HEIGHT =
     Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight || 0;
+  const {t} = useLocalization();
 
   const {data: tours} = useQuery({
     queryKey: ['destinations'],
@@ -80,7 +82,7 @@ export function HomeScreen() {
   });
 
   const handleSeeAllPress = () => {
-    navigation.navigate('all-tours-screen', {title: 'Tours'});
+    navigation.navigate('all-tours-screen', {title: t('home.tours')});
   };
 
   const requestLocationPermission = async () => {
@@ -190,11 +192,14 @@ export function HomeScreen() {
         <Stories
           stories={mockStories}
           onStoryPress={storyId => {
-            Alert.alert('Story Pressed', `Opening story ${storyId}`);
+            Alert.alert(
+              t('home.storyPressed'),
+              `${t('home.openingStory')} ${storyId}`,
+            );
           }}
         />
 
-        <Tours tourData={tours} title="Upcoming Tours" />
+        <Tours tourData={tours} title={t('home.upcomingTours')} />
 
         <Organizers listings={organizers} />
 
@@ -208,11 +213,11 @@ export function HomeScreen() {
             numColumns={2}
             ListHeaderComponent={() => (
               <View style={styles.headerContainer}>
-                <Text style={styles.headerTitle}>Tours</Text>
+                <Text style={styles.headerTitle}>{t('home.tours')}</Text>
                 <Pressable
                   onPress={handleSeeAllPress}
                   style={styles.showAllButton}>
-                  <Text style={styles.showAllText}>See all</Text>
+                  <Text style={styles.showAllText}>{t('home.seeAll')}</Text>
                   <Entypo
                     name="chevron-right"
                     size={18}
@@ -226,7 +231,7 @@ export function HomeScreen() {
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
-                <Text style={styles.emptyText}>No tours found</Text>
+                <Text style={styles.emptyText}>{t('home.noToursFound')}</Text>
               </View>
             }
           />

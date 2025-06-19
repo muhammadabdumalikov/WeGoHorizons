@@ -1,4 +1,4 @@
-import React, {useRef, useState, useCallback} from 'react';
+import React, {useRef, useState, useCallback, useMemo} from 'react';
 import {
   ActivityIndicator,
   Pressable,
@@ -6,7 +6,6 @@ import {
   View,
   FlatList,
   Text,
-  Dimensions,
 } from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -22,6 +21,7 @@ import FilterComponent from '../components/FilterComponent';
 import {fetchTours, TourFilters} from '../api/cities';
 import {TourCardsSmall} from './all-tours';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import {useLocalization} from '../shared/hooks/useLocalization';
 
 export interface MyRefType {
   open: () => void;
@@ -36,55 +36,59 @@ export function SearchScreen({navigation}: {navigation: any}) {
   const [priceRange, setPriceRange] = useState<[number, number]>([
     100000, 1200000,
   ]);
-  const fixedPriceRange: [number, number] = [100000, 1200000];
+  const fixedPriceRange = useMemo<[number, number]>(
+    () => [100000, 1200000],
+    [],
+  );
   const [lastSearches, setLastSearches] = useState([
     'sports',
     'phones',
     'apple',
   ]);
+  const {t} = useLocalization();
 
   // Applied filters state (what's actually sent to API)
   const [appliedFilters, setAppliedFilters] = useState<TourFilters>({});
 
   // Sort options
   const sortOptions = [
-    {id: 'price_asc', label: 'Цена: от низкой к высокой'},
-    {id: 'price_desc', label: 'Цена: от высокой к низкой'},
-    {id: 'rating_desc', label: 'Рейтинг: от высокого к низкому'},
-    {id: 'latest', label: 'Новые'},
-    {id: 'popular', label: 'Популярные'},
+    {id: 'price_asc', label: t('search.sortOptions.priceAsc')},
+    {id: 'price_desc', label: t('search.sortOptions.priceDesc')},
+    {id: 'rating_desc', label: t('search.sortOptions.ratingDesc')},
+    {id: 'latest', label: t('search.sortOptions.latest')},
+    {id: 'popular', label: t('search.sortOptions.popular')},
   ];
 
   // Language options
   const languageOptions = [
-    {id: 'en-uk', label: 'Английский / Великобритания', icon: '🇬🇧'},
-    {id: 'en-us', label: 'Английский / США', icon: '🇺🇸'},
-    {id: 'ru', label: 'Русский / Россия', icon: '🇷🇺'},
-    {id: 'uz', label: 'Узбекский / Узбекистан', icon: '🇺🇿'},
-    {id: 'de', label: 'Немецкий / Германия', icon: '🇩🇪'},
-    {id: 'fr', label: 'Французский / Франция', icon: '🇫🇷'},
-    {id: 'ja', label: 'Японский / Япония', icon: '🇯🇵'},
-    {id: 'zh', label: 'Китайский / Китай', icon: '🇨🇳'},
+    {id: 'en-uk', label: t('search.languageOptions.enUk'), icon: '🇬🇧'},
+    {id: 'en-us', label: t('search.languageOptions.enUs'), icon: '🇺🇸'},
+    {id: 'ru', label: t('search.languageOptions.ru'), icon: '🇷🇺'},
+    {id: 'uz', label: t('search.languageOptions.uz'), icon: '🇺🇿'},
+    {id: 'de', label: t('search.languageOptions.de'), icon: '🇩🇪'},
+    {id: 'fr', label: t('search.languageOptions.fr'), icon: '🇫🇷'},
+    {id: 'ja', label: t('search.languageOptions.ja'), icon: '🇯🇵'},
+    {id: 'zh', label: t('search.languageOptions.zh'), icon: '🇨🇳'},
   ];
 
   // Activity options
   const activityOptions = [
-    {id: 'hiking', label: 'Походы', icon: '🚶'},
-    {id: 'biking', label: 'Велопрогулки', icon: '🚲'},
-    {id: 'skiing', label: 'Лыжи', icon: '⛷️'},
-    {id: 'swimming', label: 'Плавание', icon: '🏊'},
-    {id: 'foodtour', label: 'Гастротуры', icon: '🍽️'},
-    {id: 'citytour', label: 'Городские экскурсии', icon: '🏙️'},
-    {id: 'museum', label: 'Музеи', icon: '🏛️'},
-    {id: 'concert', label: 'Концерты', icon: '🎵'},
+    {id: 'hiking', label: t('search.activityOptions.hiking'), icon: '🚶'},
+    {id: 'biking', label: t('search.activityOptions.biking'), icon: '🚲'},
+    {id: 'skiing', label: t('search.activityOptions.skiing'), icon: '⛷️'},
+    {id: 'swimming', label: t('search.activityOptions.swimming'), icon: '🏊'},
+    {id: 'foodtour', label: t('search.activityOptions.foodtour'), icon: '🍽️'},
+    {id: 'citytour', label: t('search.activityOptions.citytour'), icon: '🏙️'},
+    {id: 'museum', label: t('search.activityOptions.museum'), icon: '🏛️'},
+    {id: 'concert', label: t('search.activityOptions.concert'), icon: '🎵'},
   ];
 
   // Gender options
   const genderOptions = [
-    {id: 'male', label: 'Мужской'},
-    {id: 'female', label: 'Женский'},
-    {id: 'mixed', label: 'Смешанный'},
-    {id: 'any', label: 'Любой'},
+    {id: 'male', label: t('search.genderOptions.male')},
+    {id: 'female', label: t('search.genderOptions.female')},
+    {id: 'mixed', label: t('search.genderOptions.mixed')},
+    {id: 'any', label: t('search.genderOptions.any')},
   ];
 
   // Filter state
@@ -281,8 +285,8 @@ export function SearchScreen({navigation}: {navigation: any}) {
         {!hasAppliedFilters ? (
           <>
             <SeeAllHeader
-              headerName="Last Search"
-              btnName="Clear all"
+              headerName={t('search.lastSearch')}
+              btnName={t('search.clearAll')}
               onPress={handleClearAll}
             />
             <View style={styles.lastSearchBox}>
@@ -320,7 +324,9 @@ export function SearchScreen({navigation}: {navigation: any}) {
           <>
             <SeeAllHeader
               headerName={
-                appliedFilters.search ? `"${appliedFilters.search}"` : 'Results'
+                appliedFilters.search
+                  ? `"${appliedFilters.search}"`
+                  : t('search.results')
               }
               btnName=""
               style={{marginVertical: 0}}
@@ -344,7 +350,9 @@ export function SearchScreen({navigation}: {navigation: any}) {
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={
                   <View style={styles.emptyContainer}>
-                    <Text style={styles.emptyText}>No tours found</Text>
+                    <Text style={styles.emptyText}>
+                      {t('search.noToursFound')}
+                    </Text>
                   </View>
                 }
               />

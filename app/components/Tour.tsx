@@ -17,6 +17,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {addDotsToNumber} from '../shared/helpers';
 import {CachedImage} from './CachedImage';
 import {CachedImageBackground} from './CachedImageBackground';
+import {useLocalization} from '../shared/hooks/useLocalization';
 // import {HeartLike} from './CustomHeartLike';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -30,6 +31,7 @@ function Component({tourData, title = 'Tours'}: Props) {
   const navigation = useNavigation<NavigationProp>();
   const scrollX = useRef(new Animated.Value(0)).current;
   const ITEM_WIDTH = 290 + 16; // Item width + marginRight
+  const {t} = useLocalization();
 
   const [imageLoaded, setImageLoaded] = React.useState(false);
   // Show up to 5 tours
@@ -55,19 +57,18 @@ function Component({tourData, title = 'Tours'}: Props) {
       <Pressable onPress={() => onPressHandler(item)}>
         <View style={styles.item}>
           {!imageLoaded && (
-          <View style={styles.placeholder}>
-            <Text style={styles.placeholderText}>trippo</Text>
-          </View>
-        )}
+            <View style={styles.placeholder}>
+              <Text style={styles.placeholderText}>trippo</Text>
+            </View>
+          )}
           {backgroundImageUrl && (
             <CachedImageBackground
               uri={backgroundImageUrl}
               style={styles.imgBackground}
               onLoad={() => setImageLoaded(true)}
-              onError={() => setImageLoaded(false)}
-            >
+              onError={() => setImageLoaded(false)}>
               <View style={styles.discountBox}>
-                <Text style={styles.discountTxt}>25% OFF</Text>
+                <Text style={styles.discountTxt}>{t('tour.discount')}</Text>
               </View>
 
               <View style={styles.organizerLogoBox}>
@@ -88,7 +89,9 @@ function Component({tourData, title = 'Tours'}: Props) {
             </CachedImageBackground>
           )}
           <View>
-            <Text style={styles.tagBox}>Cultural • Coffee</Text>
+            <Text style={styles.tagBox}>
+              {t('tour.cultural')} • {t('tour.coffee')}
+            </Text>
             <View style={styles.infoBox}>
               <Text style={styles.titleTxt} numberOfLines={2}>
                 {item.title}
@@ -106,7 +109,9 @@ function Component({tourData, title = 'Tours'}: Props) {
                   <Text style={styles.priceTxt}>
                     {addDotsToNumber(+item.price)}
                   </Text>
-                  <Text style={styles.personTxt} numberOfLines={1}>/person</Text>
+                  <Text style={styles.personTxt} numberOfLines={1}>
+                    {t('tour.perPerson')}
+                  </Text>
                 </View>
               </View>
             </View>
@@ -121,12 +126,8 @@ function Component({tourData, title = 'Tours'}: Props) {
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>{title}</Text>
         <Pressable onPress={handleSeeAllPress} style={styles.showAllButton}>
-          <Text style={styles.showAllText}>See all</Text>
-          <Entypo
-            name="chevron-right"
-            size={18}
-            color={appColors.mainColor}
-          />
+          <Text style={styles.showAllText}>{t('tour.seeAll')}</Text>
+          <Entypo name="chevron-right" size={18} color={appColors.mainColor} />
         </Pressable>
       </View>
 
@@ -178,17 +179,15 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   discountBox: {
-    width: 60,
-    height: 28,
     backgroundColor: appColors.mainColor,
     borderRadius: 30,
     position: 'absolute',
     left: 10,
     top: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   discountTxt: {
+    paddingHorizontal: 8,
+    paddingVertical: 8,
     color: appColors.pureWhite,
     fontSize: 10,
     fontFamily: 'Gilroy-Semibold',

@@ -1,9 +1,37 @@
 {
-  "profile": {
-    "other": "Башка",
-    "language": "Тил",
-    "currency": "Валюта",
-    "logout": "Чыгуу"
+  "common": {
+    "search": "Издөө",
+    "apply": "Колдонуу",
+    "cancel": "Баш тартуу",
+    "save": "Сактоо",
+    "delete": "Жоюу",
+    "edit": "Оңдоо",
+    "close": "Жабуу",
+    "back": "Артка",
+    "next": "Кийинки",
+    "previous": "Мурунку",
+    "loading": "Жүктөлүүдө...",
+    "error": "Ката",
+    "success": "Ийгиликтүү",
+    "retry": "Кайталоо",
+    "ok": "OK",
+    "yes": "Ооба",
+    "no": "Жок"
+  },
+  "navigation": {
+    "home": "Башкы бет",
+    "search": "Издөө",
+    "favorites": "Сүйүктүүлөр",
+    "profile": "Профиль",
+    "settings": "Орнотуулар"
+  },
+  "home": {
+    "upcomingTours": "Алдыдагы турлар",
+    "tours": "Турлар",
+    "seeAll": "Баарын көрүү",
+    "noToursFound": "Турлар табылган жок",
+    "storyPressed": "Окуя басылды",
+    "openingStory": "Окуяны ачуу"
   },
   "tour": {
     "overview": "Кыскача маалымат",
@@ -34,6 +62,112 @@
     "tapStarToRate": "Баалоо үчүн жылдызды басыңыз",
     "rating": "Бааланууда...",
     "organizer": "Уюштуруучу:",
-    "empty": "Бош"
+    "empty": "Бош",
+    "discount": "25% АРЗАНДАТУУ",
+    "perPerson": "/адам",
+    "cultural": "Маданий",
+    "coffee": "Кофе",
+    "seeAll": "Баарын көрүү"
+  },
+  "stories": {
+    "discoverMore": "Көбүрөөк ачуу",
+    "coffeeShop": "Кофе дүкөнү",
+    "cosy": "Жайлуу"
+  },
+  "search": {
+    "placeholder": "Багыттар, мейманканалар, кызматтар издөө...",
+    "dateRange": "Күндөр аралыгы",
+    "selectDates": "Күндү тандауу",
+    "checkIn": "Кирүү",
+    "checkOut": "Чыгуу",
+    "guests": "Коноктор",
+    "adults": "Чоңдор",
+    "children": "Балдар",
+    "infants": "Наристелер",
+    "rooms": "Бөлмөлөр",
+    "filters": "Сүзгүлөр",
+    "priceRange": "Баа аралыгы",
+    "sortBy": "Салаа",
+    "distance": "Аралык",
+    "rating": "Баалоо",
+    "lastSearch": "Акыркы издөө",
+    "clearAll": "Баарын тазалоо",
+    "results": "Натыйжалар",
+    "noToursFound": "Турлар табылган жок",
+    "sortOptions": {
+      "priceAsc": "Баа: төмөнкүдөн жогоркуга",
+      "priceDesc": "Баа: жогоркудан төмөнкүгө",
+      "ratingDesc": "Баалоо: жогоркудан төмөнкүгө",
+      "latest": "Жаңы",
+      "popular": "Белгилүү"
+    },
+    "languageOptions": {
+      "enUk": "Англис / Улуу Британия",
+      "enUs": "Англис / АКШ",
+      "ru": "Орус / Россия",
+      "uz": "Өзбек / Өзбекстан",
+      "de": "Немис / Германия",
+      "fr": "Француз / Франция",
+      "ja": "Жапон / Жапония",
+      "zh": "Кытай / Кытай"
+    },
+    "activityOptions": {
+      "hiking": "Жүрүү",
+      "biking": "Велосипед",
+      "skiing": "Лыжа",
+      "swimming": "Сүзүү",
+      "foodtour": "Тамак-аш турлары",
+      "citytour": "Шаар турлары",
+      "museum": "Музейлер",
+      "concert": "Концерттер"
+    },
+    "genderOptions": {
+      "male": "Эркек",
+      "female": "Аял",
+      "mixed": "Аралаш",
+      "any": "Кайсы болбосун"
+    }
+  },
+  "hotel": {
+    "bookNow": "Азыр брондоо",
+    "viewDetails": "Толук маалыматты көрүү",
+    "perNight": "түнгө",
+    "amenities": "Ыңгайлуулуктар",
+    "reviews": "Сын-пикирлер",
+    "location": "Жайгашуу",
+    "description": "Сүрөттөмө",
+    "photos": "Сүрөттөр",
+    "map": "Карта"
+  },
+  "travel": {
+    "destinations": "Багыттар",
+    "popular": "Белгилүү",
+    "trending": "Тренд",
+    "nearby": "Жакын",
+    "recommendations": "Сунуштар",
+    "explore": "Изилдөө",
+    "discover": "Ачуу",
+    "plan": "Жоспарлоо",
+    "book": "Брондоо"
+  },
+  "profile": {
+    "myTrips": "Менин сапарларым",
+    "bookings": "Брондоолор",
+    "favorites": "Сүйүктүүлөр",
+    "settings": "Орнотуулар",
+    "language": "Тил",
+    "currency": "Валюта",
+    "notifications": "Билдирүүлөр",
+    "help": "Жардам",
+    "about": "Жөнүндө",
+    "other": "Башка",
+    "logout": "Чыгуу"
+  },
+  "errors": {
+    "networkError": "Тармак катасы. Байланышты текшериңиз.",
+    "serverError": "Сервер катасы. Кийин кайталап көрүңүз.",
+    "notFound": "Табылган жок",
+    "unauthorized": "Уруксат берилген эмес",
+    "forbidden": "Тыйуу салынган"
   }
 } 
