@@ -46,7 +46,11 @@
     "perPerson": "/kishi",
     "cultural": "Madaniy",
     "coffee": "Kofe",
-    "seeAll": "Hammasini ko'rish"
+    "seeAll": "Hammasini ko'rish",
+    "addedToFavorites": "Sevimlilarga qo'shildi",
+    "removedFromFavorites": "Sevimlilardan olib tashlandi",
+    "communityPhotosVideos": "Jamiyat Rasmlari va Videolari",
+    "communitySubtitle": "Boshqa sayohatchilar bu turdan nima baham ko'rayotganini ko'ring"
   },
   "common": {
     "search": "Qidirish",

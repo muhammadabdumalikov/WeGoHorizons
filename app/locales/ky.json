@@ -63,11 +63,15 @@
     "rating": "Бааланууда...",
     "organizer": "Уюштуруучу:",
     "empty": "Бош",
-    "discount": "25% АРЗАНДАТУУ",
+    "discount": "25% АРЗЫРАТУУ",
     "perPerson": "/адам",
     "cultural": "Маданий",
     "coffee": "Кофе",
-    "seeAll": "Баарын көрүү"
+    "seeAll": "Баарын көрүү",
+    "addedToFavorites": "Сүйүктүүлөргө кошулду",
+    "removedFromFavorites": "Сүйүктүүлөрдөн алынды",
+    "communityPhotosVideos": "Жамаат Сүрөттөрү жана Видеолору",
+    "communitySubtitle": "Башка саякатчылар бул турдан эмнени бөлүшүп жатканын көрүңүз"
   },
   "stories": {
     "discoverMore": "Көбүрөөк ачуу",

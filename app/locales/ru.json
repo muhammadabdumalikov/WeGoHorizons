@@ -67,7 +67,11 @@
     "perPerson": "/человек",
     "cultural": "Культурный",
     "coffee": "Кофе",
-    "seeAll": "Посмотреть все"
+    "seeAll": "Посмотреть все",
+    "addedToFavorites": "Добавлено в избранное",
+    "removedFromFavorites": "Удалено из избранного",
+    "communityPhotosVideos": "Фото и Видео Сообщества",
+    "communitySubtitle": "Посмотрите, чем делятся другие путешественники с этого тура"
   },
   "stories": {
     "discoverMore": "Узнать больше",

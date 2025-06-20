@@ -67,7 +67,11 @@
     "perPerson": "/адам",
     "cultural": "Мәдени",
     "coffee": "Кофе",
-    "seeAll": "Барлығын көру"
+    "seeAll": "Барлығын көру",
+    "addedToFavorites": "Таңдаулыларға қосылды",
+    "removedFromFavorites": "Таңдаулылардан алынды",
+    "communityPhotosVideos": "Қауымдастық Суреттері мен Бейнелері",
+    "communitySubtitle": "Басқа саяхатшылар бұл турдан не бөлісіп жатқанын көріңіз"
   },
   "stories": {
     "discoverMore": "Көбірек ашу",

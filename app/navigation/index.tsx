@@ -10,14 +10,14 @@ import {TourDetailsScreen} from '../screens/tour-details';
 import {RootStackParamList} from '../types/stack';
 import {ActivityIndicator, Pressable, StyleSheet, View} from 'react-native';
 import {appColors} from '../shared/constants';
-import { GalleryCarousel } from '../components/GalleryCarousel';
-import { SearchScreen } from '../screens/search-screen';
+import {SearchScreen} from '../screens/search-screen';
 import {AllToursScreen} from '../screens/all-tours';
 import {useAuth} from './auth-context';
 import {SplashScreen} from '../screens/splash-screen';
 import {OnboardingScreen} from '../screens/onboarding-screen';
 import {GuideDetailScreen} from '../screens/guide-detail-screen';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import {GalleryCarouselScreen} from '../screens/gallery-carousel-screen';
 
 // const isAdmin = getData(IS_ADMIN_KEY).then(data => data) || false;
 
@@ -74,10 +74,9 @@ function MainNavigation() {
       />
       <Stack.Screen
         name="gallery-carousel-screen"
-        component={GalleryCarousel}
+        component={GalleryCarouselScreen}
         options={{
-          title: '',
-          headerLeft: headerLeft,
+          headerShown: false,
         }}
       />
       <Stack.Screen

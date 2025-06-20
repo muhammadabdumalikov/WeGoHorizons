@@ -67,7 +67,11 @@
     "perPerson": "/person",
     "cultural": "Cultural",
     "coffee": "Coffee",
-    "seeAll": "See all"
+    "seeAll": "See all",
+    "addedToFavorites": "Added to favorites",
+    "removedFromFavorites": "Removed from favorites",
+    "communityPhotosVideos": "Community Photos & Videos",
+    "communitySubtitle": "See what other travelers are sharing from this tour"
   },
   "stories": {
     "discoverMore": "Discover more",

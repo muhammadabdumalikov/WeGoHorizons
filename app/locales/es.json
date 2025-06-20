@@ -67,7 +67,11 @@
     "perPerson": "/persona",
     "cultural": "Cultural",
     "coffee": "Café",
-    "seeAll": "Ver todo"
+    "seeAll": "Ver todo",
+    "addedToFavorites": "Agregado a favoritos",
+    "removedFromFavorites": "Eliminado de favoritos",
+    "communityPhotosVideos": "Fotos y Videos de la Comunidad",
+    "communitySubtitle": "Mira lo que otros viajeros están compartiendo de este tour"
   },
   "stories": {
     "discoverMore": "Descubrir más",

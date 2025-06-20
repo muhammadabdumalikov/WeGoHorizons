@@ -79,26 +79,20 @@ export function ProfileScreen() {
   // Placeholder for authentication state
   const [isSignedIn, setIsSignedIn] = useState(false); // Set to true to simulate signed-in
 
+  // Static mapping of language codes to flag images
+  const languageFlags: {[key: string]: any} = {
+    en: require('../../assets/images/flags/uk.png'),
+    es: require('../../assets/images/flags/es.png'),
+    fr: require('../../assets/images/flags/fr.png'),
+    ru: require('../../assets/images/flags/ru.png'),
+    uz: require('../../assets/images/flags/uz.png'),
+    kk: require('../../assets/images/flags/kz.png'),
+    ky: require('../../assets/images/flags/ky.png'),
+  };
+
   // Get the flag image based on the current language
   const getLanguageFlag = () => {
-    switch (currentLanguage) {
-      case 'en':
-        return require('../../assets/images/flags/uk.png');
-      case 'es':
-        return require('../../assets/images/flags/es.png');
-      case 'fr':
-        return require('../../assets/images/flags/fr.png');
-      case 'ru':
-        return require('../../assets/images/flags/ru.png');
-      case 'uz':
-        return require('../../assets/images/flags/uz.png');
-      case 'kk':
-        return require('../../assets/images/flags/kz.png');
-      case 'ky':
-        return require('../../assets/images/flags/ky.png');
-      default:
-        return require('../../assets/images/flags/uk.png');
-    }
+    return languageFlags[currentLanguage] || languageFlags.en;
   };
 
   return (

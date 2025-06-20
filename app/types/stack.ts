@@ -6,7 +6,7 @@ export type RootStackParamList = {
   'onboarding-screen': undefined;
   'tour-details-screen': { tour: Tour };
   'tab-navigator': undefined;
-  'gallery-carousel-screen': undefined;
+  'gallery-carousel-screen': { photos: string[]; initialPhoto: string };
   'search-screen': undefined;
   'all-tours-screen': { title?: string; categoryId?: string };
   'guide-detail-screen': { guideId: string };
