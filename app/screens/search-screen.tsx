@@ -403,6 +403,7 @@ const styles = StyleSheet.create({
   },
   goBackBtn: {
     paddingRight: 10,
+    paddingLeft: 5,
     paddingVertical: 5,
   },
   removeSearchBox: {

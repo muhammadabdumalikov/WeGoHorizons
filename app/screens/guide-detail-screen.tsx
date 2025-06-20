@@ -2,8 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  Image,
-  ScrollView,
   StyleSheet,
   Pressable,
   Dimensions,
@@ -28,10 +26,10 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 // Type for navigation props
 type Props = NativeStackScreenProps<RootStackParamList, 'guide-detail-screen'>;
 
-const HEADER_HEIGHT = 60;
 const {width} = Dimensions.get('window');
 export function GuideDetailScreen({route, navigation}: Props) {
-  const {guideId} = route.params;
+  const { guideId } = route.params;
+  guideId;
   const {top} = useSafeAreaInsets();
   const scrollY = useSharedValue(0);
 

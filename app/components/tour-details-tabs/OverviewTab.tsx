@@ -14,7 +14,9 @@ import {TFunction} from 'i18next';
 const OverviewTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
   return (
     <View style={styles.contentWrapper}>
-      <Text style={styles.listingName}>{tour?.title || t('tour.empty')}</Text>
+      <Text style={styles.listingName}>
+        {typeof tour?.title === 'string' ? tour.title : t('tour.empty')}
+      </Text>
       <View style={styles.starReviewWrapper}>
         <View style={styles.starAndRate}>
           <View style={styles.ratingBox}>
@@ -69,7 +71,7 @@ const OverviewTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
       <Text style={styles.infoTitle}>{t('tour.aboutTour')}</Text>
 
       <Text style={styles.descriptionTxt}>
-        {tour?.description || t('tour.empty')}
+        {typeof tour?.description === 'string' ? tour.description : t('tour.empty')}
       </Text>
 
       {/* WHAT'S INCLUDED SECTION */}
@@ -82,7 +84,7 @@ const OverviewTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
               <View style={styles.includedIconContainer}>
                 <Feather name="check" size={20} color="#4CAF50" />
               </View>
-              <Text style={styles.includedText}>{item.title}</Text>
+              <Text style={styles.includedText}>{typeof item.title === 'string' ? item.title : t('tour.empty')}</Text>
             </View>
           ) : (
             <View style={styles.includedItem} key={index}>

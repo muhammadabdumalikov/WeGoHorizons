@@ -146,7 +146,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
           <Animated.Text
             style={[styles.headerTxt, animatedTextStyle]}
             numberOfLines={1}>
-            {tour?.title}
+            {typeof tour?.title === 'string' ? tour.title : ''}
           </Animated.Text>
         </View>
 
@@ -183,7 +183,13 @@ export function TourDetailsScreen({navigation, route}: Props) {
         scrollEventThrottle={16}
         stickyHeaderIndices={[1]}>
         <Pressable
-          onPress={() => navigation.navigate('gallery-carousel-screen')}>
+          onPress={() =>
+            navigation.navigate('gallery-carousel-screen', {
+              photos: tour?.files?.map(f => f.url) || [],
+              initialPhoto:
+                tour?.files?.find(f => f.type === 'extra')?.url || '',
+            })
+          }>
           <CachedImageBackground
             uri={tour?.files?.find(f => f.type === 'extra')?.url as string}
             style={styles.image}>
@@ -208,7 +214,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   <Text
                     style={styles.organizerBottomTxtOnImg}
                     numberOfLines={1}>
-                    {tour?.organizer_title}
+                    {typeof tour?.organizer_title === 'string' ? tour.organizer_title : ''}
                   </Text>
                 </View>
               </View>
