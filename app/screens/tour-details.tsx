@@ -51,6 +51,13 @@ export function TourDetailsScreen({navigation, route}: Props) {
   const {params} = route;
   const tour = params.tour;
 
+  // Handle case when activeTab is 'Itinerary' but route_json doesn't exist
+  // useEffect(() => {
+  //   if (activeTab === 'Itinerary' && !tour?.route_json) {
+  //     setActiveTab('Overview');
+  //   }
+  // }, [activeTab, tour?.route_json]);
+
   const scrollY = useSharedValue(0);
   const [isLiked, setIsLiked] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -214,7 +221,9 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   <Text
                     style={styles.organizerBottomTxtOnImg}
                     numberOfLines={1}>
-                    {typeof tour?.organizer_title === 'string' ? tour.organizer_title : ''}
+                    {typeof tour?.organizer_title === 'string'
+                      ? tour.organizer_title
+                      : ''}
                   </Text>
                 </View>
               </View>
@@ -242,7 +251,7 @@ export function TourDetailsScreen({navigation, route}: Props) {
             {(
               [
                 'Overview',
-                'Itinerary',
+                ...(tour?.route_json ? ['Itinerary'] : []),
                 'Photo',
                 'Review',
                 'Community',

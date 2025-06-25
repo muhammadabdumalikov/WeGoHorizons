@@ -30,17 +30,22 @@ const ItineraryTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
           const isDestination = point.type === 'destination';
 
           // Determine icon based on point type
-          if (point.type === 'transport') {
+          if (point.type === 'location') {
+            icon = 'map-marker';
+          } else if (point.type === 'destination') {
+            icon = 'map-marker';
+          } else if (point.type === 'transport') {
             icon = 'bus';
           }
 
           return (
-            <View key={index} style={styles.itineraryItem}>
-              <View style={styles.itineraryContent}>
-                <View style={styles.itineraryIconContainer}>
+            <View key={index}>
+              <View key={index} style={styles.itineraryItem}>
+                <View style={styles.itineraryContent}>
+                  <View style={styles.itineraryIconContainer}>
                   <MaterialCommunityIcons
                     name={icon}
-                    size={24}
+                    size={28}
                     color="#FFB800"
                   />
                 </View>
@@ -59,7 +64,7 @@ const ItineraryTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
                       ? point.title
                       : `(${point.duration})`}
                   </Text>
-                  {isDestination && point.activities && (
+                  {/* {isDestination && point.activities && (
                     <Text
                       style={[
                         styles.itineraryDescription,
@@ -67,9 +72,13 @@ const ItineraryTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
                       ]}>
                       {point.activities}
                     </Text>
-                  )}
+                  )} */}
+                </View>
                 </View>
               </View>
+              {index !== tour?.route_json?.length! - 1 && (
+                <View style={styles.itineraryLine} />
+              )}
             </View>
           );
         })}
@@ -91,7 +100,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   itineraryList: {
-    gap: 16,
+    // gap: 16,
   },
   itineraryItem: {
     flexDirection: 'row',
@@ -110,7 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: appColors.mainColor,
-    borderWidth: 1,
+    borderWidth: 1.5,
   },
   itineraryTextContent: {
     flex: 1,
@@ -120,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Gilroy-Semibold',
     color: appColors.navyBlack,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   itineraryDescription: {
     fontSize: 14,
@@ -131,5 +140,12 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 13,
     marginTop: 4,
+  },
+  itineraryLine: {
+    marginVertical: 5,
+    height: 20,
+    marginLeft: 20,
+    width: 1.5,
+    backgroundColor: appColors.mainColor,
   },
 });

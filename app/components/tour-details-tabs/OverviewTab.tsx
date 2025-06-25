@@ -11,7 +11,7 @@ import {appColors} from '../../shared/constants';
 import {Tour} from '../../types/tour';
 import {TFunction} from 'i18next';
 
-const OverviewTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
+const OverviewTabFC = ({ tour, t }: { tour: Tour; t: TFunction }) => {
   return (
     <View style={styles.contentWrapper}>
       <Text style={styles.listingName}>
@@ -78,7 +78,7 @@ const OverviewTabFC = ({tour, t}: {tour: Tour; t: TFunction}) => {
       <Text style={styles.infoTitle}>{t('tour.whatsIncluded')}</Text>
 
       <View style={styles.includedList}>
-        {tour.includes.map((item, index) => {
+        {tour.includes?.map((item, index) => {
           return item.included ? (
             <View style={styles.includedItem} key={index}>
               <View style={styles.includedIconContainer}>
