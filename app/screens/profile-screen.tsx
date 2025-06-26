@@ -100,23 +100,23 @@ export function ProfileScreen() {
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {!isSignedIn ? (
           <View style={styles.profileHeaderBox}>
-            <GilroyBoldText style={styles.profileTitle}>Profile</GilroyBoldText>
+            {/* <GilroyBoldText style={styles.profileTitle}>Profile</GilroyBoldText> */}
             <View style={styles.avatar}>
               <AvatarSvg />
             </View>
-            <GilroyMediumText style={styles.profileDescription}>
+            {/* <GilroyMediumText style={styles.profileDescription}>
               Access your bookings from any device{'\n'}
               {'\n'}
               Sign up, sync your existing bookings, add activities to your
               wishlist, and checkout quicker thanks to stored information.
-            </GilroyMediumText>
-            <Pressable
+            </GilroyMediumText> */}
+            {/* <Pressable
               style={styles.loginButton}
               onPress={() => setIsSignedIn(true)}>
               <GilroyBoldText style={styles.loginButtonText}>
                 Log in or sign up
               </GilroyBoldText>
-            </Pressable>
+            </Pressable> */}
           </View>
         ) : (
           <>

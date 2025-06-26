@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Image, ImageBackground, Dimensions} from 'react-native';
+import {View, StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import {appColors} from '../shared/constants';
 import { GilroyBoldText } from '../components/StyledText';
 
