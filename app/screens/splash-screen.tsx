@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, ImageBackground} from 'react-native';
 import {appColors} from '../shared/constants';
 import {GilroyBoldText} from '../components/StyledText';
 
@@ -7,7 +7,7 @@ export function SplashScreen({navigation}: {navigation: any}) {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('onboarding-screen');
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -15,12 +15,13 @@ export function SplashScreen({navigation}: {navigation: any}) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image
-          source={require('../../assets/images/logo.png')}
+        <ImageBackground
+          source={require('../../assets/images/wegohorizons.png')}
           style={styles.logo}
           resizeMode="contain"
-        />
-        <GilroyBoldText style={styles.appName}>trippo</GilroyBoldText>
+        >
+          <GilroyBoldText style={styles.appName}>WeGoHorizons</GilroyBoldText>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -35,12 +36,16 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
+    marginBottom: 100,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 240,
+    height: 240,
   },
   appName: {
+    position: 'absolute',
+    bottom: 20,
+    alignSelf: 'center',
     fontSize: 32,
     color: appColors.pureWhite,
     marginTop: 16,
