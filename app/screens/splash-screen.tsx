@@ -6,13 +6,13 @@ import { GilroyBoldText } from '../components/StyledText';
 const width = Dimensions.get('window').width;
 
 export function SplashScreen({navigation}: {navigation: any}) {
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     navigation.replace('onboarding-screen');
-  //   }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.replace('onboarding-screen');
+    }, 3000);
 
-  //   return () => clearTimeout(timer);
-  // }, [navigation]);
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
