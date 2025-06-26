@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Image, ImageBackground} from 'react-native';
+import {View, StyleSheet, Image, ImageBackground, Dimensions} from 'react-native';
 import {appColors} from '../shared/constants';
-import {GilroyBoldText} from '../components/StyledText';
+import { GilroyBoldText } from '../components/StyledText';
+
+const width = Dimensions.get('window').width;
 
 export function SplashScreen({navigation}: {navigation: any}) {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.replace('onboarding-screen');
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     navigation.replace('onboarding-screen');
+  //   }, 3000);
 
-    return () => clearTimeout(timer);
-  }, [navigation]);
+  //   return () => clearTimeout(timer);
+  // }, [navigation]);
 
   return (
     <View style={styles.container}>
@@ -39,14 +41,14 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   logo: {
-    width: 240,
-    height: 240,
+    width: width * 0.8,
+    height: width * 0.8,
   },
   appName: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 40,
     alignSelf: 'center',
-    fontSize: 32,
+    fontSize: 26,
     color: appColors.pureWhite,
     marginTop: 16,
   },
