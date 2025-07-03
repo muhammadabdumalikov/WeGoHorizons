@@ -16,6 +16,11 @@ import LanguageSelector from '../components/LanguageSelector';
 import {useLanguage} from '../shared/contexts/LanguageContext';
 import {useLocalization} from '../shared/hooks/useLocalization';
 import {AvatarSvg} from '../../assets/images/avatar/avatar';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import { BASE_URL } from '../api/cities';
 
 const StatBox = ({count, label}: {count: string; label: string}) => (
   <View style={styles.statBox}>
@@ -95,6 +100,61 @@ export function ProfileScreen() {
     return languageFlags[currentLanguage] || languageFlags.en;
   };
 
+  // Google Sign-In configuration (move webClientId to your real value)
+  React.useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '452906145986-h0celej6mnfcf5c7od1tnhbq1g8vme3o.apps.googleusercontent.com', // TODO: Replace with your real client ID
+      iosClientId:
+        '452906145986-e2jloo8tqvrsl8oqulm2ul1kf8nk1340.apps.googleusercontent.com', // TODO: Replace with your real iOS client ID
+    });
+  }, []);
+
+  const signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+
+      const idToken = userInfo.data?.idToken;
+      // Send to your backend
+      const response = await fetch(
+        `${BASE_URL}/traveler/google-auth`,
+        {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id_token: idToken,
+            token_type: 'id_token',
+          }),
+        },
+      );
+      const responseData = await response.json();
+      console.log('responseData', responseData);
+      if (responseData?.access_token) {
+        setIsSignedIn(true);
+      } else {
+        // handle backend error
+        console.error('Backend auth failed');
+      }
+    } catch (error) {
+      if (typeof error === 'object' && error && 'code' in error) {
+        // @ts-ignore
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          // user cancelled the login flow
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          // operation (e.g. sign in) is in progress already
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+          // play services not available or outdated
+        } else {
+          // some other error happened
+          console.error(error);
+        }
+      } else {
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -105,18 +165,17 @@ export function ProfileScreen() {
               <AvatarSvg />
             </View>
             {/* <GilroyMediumText style={styles.profileDescription}>
-              Access your bookings from any device{'\n'}
+              Access your bookings from any device{'
+'}
               {'\n'}
               Sign up, sync your existing bookings, add activities to your
               wishlist, and checkout quicker thanks to stored information.
             </GilroyMediumText> */}
-            {/* <Pressable
-              style={styles.loginButton}
-              onPress={() => setIsSignedIn(true)}>
+            <Pressable style={styles.loginButton} onPress={signIn}>
               <GilroyBoldText style={styles.loginButtonText}>
                 Log in or sign up
               </GilroyBoldText>
-            </Pressable> */}
+            </Pressable>
           </View>
         ) : (
           <>
