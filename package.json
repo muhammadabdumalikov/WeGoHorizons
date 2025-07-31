@@ -7,9 +7,14 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "bundle-ios": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle --assets-dest ios",
+    "clean": "cd android && ./gradlew clean && cd .. && npx react-native start --reset-cache",
+    "performance-test": "npx react-native run-android --variant=release"
   },
   "dependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@d11/react-native-fast-image": "^8.9.2",
     "@faker-js/faker": "^9.3.0",
     "@miblanchard/react-native-slider": "^2.6.0",
@@ -38,9 +43,9 @@
     "react-native-linear-gradient": "^2.8.3",
     "react-native-mmkv": "^3.2.0",
     "react-native-raw-bottom-sheet": "^3.0.0",
-    "react-native-reanimated": "^3.16.6",
+    "react-native-reanimated": "^3.18.0",
     "react-native-safe-area-context": "^5.0.0",
-    "react-native-screens": "^4.4.0",
+    "react-native-screens": "^4.13.1",
     "react-native-svg": "^15.11.2",
     "react-native-ui-datepicker": "^3.0.4",
     "react-native-vector-icons": "^10.2.0",

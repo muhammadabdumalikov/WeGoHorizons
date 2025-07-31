@@ -22,7 +22,7 @@ export const appColors = {
   purple: '#873afd',
   softPurple: '#f5ecff',
   bottomBarInactiveIconColor: 'rgba(158, 158, 158, 1)',
-  bottomBarBlur: 'rgba(255, 255, 255, 0.8)',
+  bottomBarBlur: 'rgb(255, 255, 255)',
   backgroundBlur: 'rgba(255, 255, 255, 0.85)',
   yellow: '#febd2d',
   mainColor: '#febd2d', // '#176FF2', // '#FF8559',

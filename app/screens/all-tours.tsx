@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useCallback, memo, useEffect, useRef} from 'react';
 import {
   View,
   Text,
@@ -37,99 +37,135 @@ interface RBSheetRefType {
   close: () => void;
 }
 
-export const TourCardsSmall = ({
-  item,
-  navigation,
-}: {
-  item: any;
-  navigation: any;
-}) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const backgroundImageUrl = item.files?.find(
-    (f: any) => f.type === 'extra',
-  )?.url;
+// Optimize TourCardsSmall with React.memo and useCallback
+export const TourCardsSmall = memo(
+  ({item, navigation}: {item: any; navigation: any}) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const backgroundImageUrl = item.files?.find(
+      (f: any) => f.type === 'extra',
+    )?.url;
 
-  return (
-    <Pressable
-      style={styles.tourCard}
-      onPress={() => navigation.navigate('tour-details-screen', {tour: item})}>
-      {!imageLoaded && (
-        <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>trippo</Text>
-        </View>
-      )}
-      {backgroundImageUrl && (
-        <CachedImageBackground
-          uri={backgroundImageUrl}
-          style={styles.imgBackground}
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(false)}
-        >
-          <View style={styles.discountBox}>
-            <Text style={styles.discountTxt}>25% OFF</Text>
+    const handlePress = useCallback(() => {
+      navigation.navigate('tour-details-screen', {tour: item});
+    }, [navigation, item]);
+
+    const handleImageLoad = useCallback(() => {
+      setImageLoaded(true);
+    }, []);
+
+    const handleImageError = useCallback(() => {
+      setImageLoaded(false);
+    }, []);
+
+    return (
+      <Pressable style={styles.tourCard} onPress={handlePress}>
+        {!imageLoaded && (
+          <View style={styles.placeholder}>
+            <Text style={styles.placeholderText}>trippo</Text>
           </View>
+        )}
+        {backgroundImageUrl && (
+          <CachedImageBackground
+            uri={backgroundImageUrl}
+            style={styles.imgBackground}
+            onLoad={handleImageLoad}
+            onError={handleImageError}>
+            <View style={styles.discountBox}>
+              <Text style={styles.discountTxt}>25% OFF</Text>
+            </View>
 
-          <View style={styles.organizerLogoBox}>
-            <Image
-              source={{uri: item.organizer_logo}}
-              style={styles.organizerLogo}
-            />
-          </View>
+            <View style={styles.organizerLogoBox}>
+              <Image
+                source={{uri: item.organizer_logo}}
+                style={styles.organizerLogo}
+              />
+            </View>
 
-          <View style={styles.heartBox}>
-            <FontAwesome name="heart-o" size={24} color={appColors.pureWhite} />
-          </View>
-        </CachedImageBackground>
-      )}
+            <View style={styles.heartBox}>
+              <FontAwesome
+                name="heart-o"
+                size={24}
+                color={appColors.pureWhite}
+              />
+            </View>
+          </CachedImageBackground>
+        )}
 
-      <View>
-        <Text style={styles.tagBox}>
-          {item.categoryName || 'Cultural Tour'}
-        </Text>
-        <View style={styles.infoBox}>
-          <Text style={styles.titleTxt} numberOfLines={2}>
-            {item.title.en || item.title}
+        <View>
+          <Text style={styles.tagBox}>
+            {item.categoryName || 'Cultural Tour'}
           </Text>
-          <View style={styles.ratingPriceBox}>
-            <View style={styles.ratingBox}>
-              <Text style={styles.rateTxt}>{item.rating || 0}</Text>
-              <FontAwesome size={12} name="star" color={appColors.pureWhite} />
-            </View>
-            <View style={styles.priceBox}>
-              <Text style={styles.priceTxt}>
-                {addDotsToNumber(+item.price)}
-              </Text>
-              <Text style={styles.personTxt} numberOfLines={1}>
-                /person
-              </Text>
+          <View style={styles.infoBox}>
+            <Text style={styles.titleTxt} numberOfLines={2}>
+              {item.title.en || item.title}
+            </Text>
+            <View style={styles.ratingPriceBox}>
+              <View style={styles.ratingBox}>
+                <Text style={styles.rateTxt}>{item.rating || 0}</Text>
+                <FontAwesome
+                  size={12}
+                  name="star"
+                  color={appColors.pureWhite}
+                />
+              </View>
+              <View style={styles.priceBox}>
+                <Text style={styles.priceTxt}>
+                  {addDotsToNumber(+item.price)}
+                </Text>
+                <Text style={styles.personTxt} numberOfLines={1}>
+                  /person
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </Pressable>
-  );
-};
+      </Pressable>
+    );
+  },
+);
 
-const SmallToursFlatList = ({filteredTours, navigation}: {filteredTours: any[], navigation?: any}) => {
-  return (
-    <FlatList
-      data={filteredTours}
-      renderItem={({item}) => (
+// Optimize SmallToursFlatList
+const SmallToursFlatList = memo(
+  ({filteredTours, navigation}: {filteredTours: any[]; navigation?: any}) => {
+    const renderItem = useCallback(
+      ({item}: {item: any}) => (
         <TourCardsSmall item={item} navigation={navigation} />
-      )}
-      keyExtractor={item => item.id}
-      numColumns={2}
-      contentContainerStyle={styles.gridContainer}
-      columnWrapperStyle={styles.row}
-      showsVerticalScrollIndicator={false}
-      ListEmptyComponent={
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>No tours found</Text>
-        </View>
-      }
-    />
-  );
-};
+      ),
+      [navigation],
+    );
+
+    const keyExtractor = useCallback((item: any) => item.id, []);
+
+    return (
+      <FlatList
+        data={filteredTours}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        numColumns={2}
+        contentContainerStyle={styles.gridContainer}
+        columnWrapperStyle={styles.row}
+        showsVerticalScrollIndicator={false}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={10}
+        windowSize={10}
+        initialNumToRender={6}
+        getItemLayout={useCallback(
+          (data: any, index: number) => ({
+            length: 200, // Adjust based on your card height
+            offset: 200 * Math.floor(index / 2),
+            index,
+          }),
+          [],
+        )}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>No tours found</Text>
+          </View>
+        }
+      />
+    );
+  },
+);
 
 export function AllToursScreen({navigation, route}: Props) {
   const {top} = useSafeAreaInsets();
@@ -311,7 +347,7 @@ export function AllToursScreen({navigation, route}: Props) {
   };
 
   return (
-    <SafeAreaView style={[styles.container, {paddingTop: top}]}>
+    <View style={[styles.container, {paddingTop: top}]}>
       <View style={styles.header}>
         <Pressable
           style={styles.backButton}
@@ -376,7 +412,7 @@ export function AllToursScreen({navigation, route}: Props) {
           applyFilters={applyFilters}
         />
       </RBSheet>
-    </SafeAreaView>
+    </View>
   );
 }
 

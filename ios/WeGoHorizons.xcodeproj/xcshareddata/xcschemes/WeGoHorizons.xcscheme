@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+               BlueprintIdentifier = "35C5061F2E3A052300DA3833"
                BuildableName = "WeGoHorizons.app"
                BlueprintName = "WeGoHorizons"
                ReferencedContainer = "container:WeGoHorizons.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BlueprintIdentifier = "35C506312E3A052800DA3833"
                BuildableName = "WeGoHorizonsTests.xctest"
                BlueprintName = "WeGoHorizonsTests"
                ReferencedContainer = "container:WeGoHorizons.xcodeproj">
@@ -54,7 +54,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BlueprintIdentifier = "35C5061F2E3A052300DA3833"
             BuildableName = "WeGoHorizons.app"
             BlueprintName = "WeGoHorizons"
             ReferencedContainer = "container:WeGoHorizons.xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BlueprintIdentifier = "35C5061F2E3A052300DA3833"
             BuildableName = "WeGoHorizons.app"
             BlueprintName = "WeGoHorizons"
             ReferencedContainer = "container:WeGoHorizons.xcodeproj">

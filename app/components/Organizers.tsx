@@ -1,13 +1,5 @@
-import React, {useState} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  ListRenderItem,
-  Pressable,
-  Image,
-} from 'react-native';
+import React, {useState, useCallback, memo} from 'react';
+import {FlatList, StyleSheet, Text, View, Pressable} from 'react-native';
 import {GroupType} from '../types/group';
 import {appColors} from '../shared/constants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -27,77 +19,92 @@ type GuideListItemProps = {
   fallbackPrice: number;
 };
 
-function GuideListItem({
-  item,
-  fallbackTags,
-  fallbackPrice,
-}: GuideListItemProps) {
-  const [imageLoaded, setImageLoaded] = React.useState(false);
-  const imageUrl = item.files?.find((f: any) => f.type === 'logo')?.url;
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  return (
-    <Pressable
-      onPress={() => navigation.navigate('guide-detail-screen', {guideId: item.id})}
-      style={styles.itemRow}>
-      <View style={styles.imageWrapper}>
-        {!imageLoaded && (
-          <View style={styles.placeholder}>
-            <Text style={styles.placeholderText}>trippo</Text>
-          </View>
-        )}
-        {imageUrl && (
-          <CachedImage
-            uri={imageUrl}
-            style={[styles.image, !imageLoaded && {display: 'none'}]}
-            onLoad={() => setImageLoaded(true)}
-            onError={() => setImageLoaded(false)}
+const GuideListItem = memo(
+  ({item, fallbackTags, fallbackPrice}: GuideListItemProps) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const imageUrl = item.files?.find((f: any) => f.type === 'logo')?.url;
+    const navigation =
+      useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+    const handlePress = useCallback(() => {
+      navigation.navigate('guide-detail-screen', {guideId: item.id});
+    }, [navigation, item.id]);
+
+    const handleImageLoad = useCallback(() => {
+      setImageLoaded(true);
+    }, []);
+
+    const handleImageError = useCallback(() => {
+      setImageLoaded(false);
+    }, []);
+
+    return (
+      <Pressable onPress={handlePress} style={styles.itemRow}>
+        <View style={styles.imageWrapper}>
+          {!imageLoaded && (
+            <View style={styles.placeholder}>
+              <Text style={styles.placeholderText}>trippo</Text>
+            </View>
+          )}
+          {imageUrl && (
+            <CachedImage
+              uri={imageUrl}
+              style={[styles.image, !imageLoaded && {display: 'none'}]}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+            />
+          )}
+        </View>
+        <View style={styles.infoBox}>
+          <Text style={styles.name} numberOfLines={2}>
+            {item.title}
+          </Text>
+          <Text style={styles.tags} numberOfLines={1}>
+            {(item.tags || fallbackTags).join(' • ')}
+          </Text>
+          <Text style={styles.priceRow}>
+            <Text style={styles.price}>${item.price || fallbackPrice}</Text>
+            <Text style={styles.perHour}> /hour</Text>
+          </Text>
+        </View>
+        <View style={styles.ratingBadge}>
+          <Text style={styles.ratingText}>
+            {item.rating?.toFixed(1) || '4.5'}
+          </Text>
+          <FontAwesome
+            name="star"
+            size={12}
+            color={appColors.pureWhite}
+            style={{marginLeft: 2}}
           />
-        )}
-      </View>
-      <View style={styles.infoBox}>
-        <Text style={styles.name} numberOfLines={2}>
-          {item.title}
-        </Text>
-        <Text style={styles.tags} numberOfLines={1}>
-          {(item.tags || fallbackTags).join(' • ')}
-        </Text>
-        <Text style={styles.priceRow}>
-          <Text style={styles.price}>${item.price || fallbackPrice}</Text>
-          <Text style={styles.perHour}> /hour</Text>
-        </Text>
-      </View>
-      <View style={styles.ratingBadge}>
-        <Text style={styles.ratingText}>
-          {item.rating?.toFixed(1) || '4.5'}
-        </Text>
-        <FontAwesome
-          name="star"
-          size={12}
-          color={appColors.pureWhite}
-          style={{marginLeft: 2}}
-        />
-      </View>
-    </Pressable>
-  );
-}
+        </View>
+      </Pressable>
+    );
+  },
+);
 
 function Component({listings, onShowAll}: Props) {
-  // Example fallback tags and price for demo
-  const fallbackTags = ['Sport', 'Music', 'Nightlife'];
-  const fallbackPrice = 10;
+  const renderItem = useCallback(
+    ({item}: {item: GroupType & {tags?: string[]; price?: number}}) => {
+      // Example fallback tags and price for demo
+      const fallbackTags = ['Sport', 'Music', 'Nightlife'];
+      const fallbackPrice = 10;
+      return (
+        <GuideListItem
+          item={item}
+          fallbackTags={fallbackTags}
+          fallbackPrice={fallbackPrice}
+        />
+      );
+    },
+    [],
+  );
 
-  const renderItem: ListRenderItem<
-    GroupType & {tags?: string[]; price?: number}
-  > = ({item}) => {
-    return (
-      <GuideListItem
-        item={item}
-        fallbackTags={fallbackTags}
-        fallbackPrice={fallbackPrice}
-      />
-    );
-  };
+  const keyExtractor = useCallback(
+    (item: GroupType & {tags?: string[]; price?: number}) =>
+      item.id?.toString() || '',
+    [],
+  );
 
   return (
     <View style={styles.section}>
@@ -115,15 +122,19 @@ function Component({listings, onShowAll}: Props) {
       <FlatList
         data={listings}
         renderItem={renderItem}
-        keyExtractor={item => item.id?.toString()}
+        keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         style={styles.container}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={5}
+        windowSize={5}
+        initialNumToRender={3}
       />
     </View>
   );
 }
 
-export const Organizers = React.memo(Component);
+export const Organizers = memo(Component);
 
 const styles = StyleSheet.create({
   section: {
@@ -240,7 +251,7 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 7,
     marginBottom: 28,
-    paddingHorizontal: 6
+    paddingHorizontal: 6,
   },
   ratingText: {
     color: '#fff',

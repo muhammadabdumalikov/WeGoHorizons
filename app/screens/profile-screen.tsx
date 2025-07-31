@@ -21,6 +21,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { BASE_URL } from '../api/cities';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const StatBox = ({count, label}: {count: string; label: string}) => (
   <View style={styles.statBox}>
@@ -75,6 +76,7 @@ const SettingItem = ({
 );
 
 export function ProfileScreen() {
+  const insets = useSafeAreaInsets();
   const [pushEnabled, setPushEnabled] = React.useState(true);
   const [emailEnabled, setEmailEnabled] = React.useState(true);
   const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] =
@@ -156,7 +158,7 @@ export function ProfileScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {paddingTop: insets.top}]}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {!isSignedIn ? (
           <View style={styles.profileHeaderBox}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import {
   PermissionsAndroid,
   Platform,
@@ -6,11 +6,11 @@ import {
   Alert,
   Animated,
   StatusBar,
-  SafeAreaView,
   FlatList,
   View,
   Text,
   Pressable,
+  InteractionManager,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {appColors} from '../shared/constants';
@@ -61,7 +61,8 @@ const mockStories = [
 ];
 
 export function HomeScreen() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<any>(null);
+  const [locationError, setLocationError] = useState<string | null>(null);
   const scrollY = useRef(new Animated.Value(0)).current;
   const lastScrollY = useRef(0);
   const headerTranslateY = useRef(new Animated.Value(0)).current;
@@ -70,6 +71,7 @@ export function HomeScreen() {
   const STATUS_BAR_HEIGHT =
     Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight || 0;
   const {t} = useLocalization();
+  const navigation = useNavigation<CustomNavigationProp>();
 
   const {data: tours} = useQuery({
     queryKey: ['destinations'],
@@ -81,9 +83,9 @@ export function HomeScreen() {
     queryFn: fetchOrganizers,
   });
 
-  const handleSeeAllPress = () => {
+  const handleSeeAllPress = useCallback(() => {
     navigation.navigate('all-tours-screen', {title: t('home.tours')});
-  };
+  }, [navigation, t]);
 
   const requestLocationPermission = async () => {
     if (Platform.OS === 'ios') {
@@ -118,26 +120,31 @@ export function HomeScreen() {
         .then(response => response.json())
         .then(data => {
           setWeatherData(data);
+          setLocationError(null);
         })
         .catch(err => {
-          console.error(err);
+          console.error('Weather fetch error:', err);
+          setWeatherData(null);
+          setLocationError('Failed to fetch weather data');
         });
     };
 
     const getUserLocation = async () => {
       const hasPermission = await requestLocationPermission();
-
       if (!hasPermission) {
+        setWeatherData(null);
+        setLocationError('Location permission denied');
         return;
       }
-
       Geolocation.getCurrentPosition(
         position => {
           const {latitude, longitude} = position.coords;
           getWeatherData(latitude, longitude);
         },
         error => {
-          console.error(error);
+          console.error('Location error:', error);
+          setWeatherData(null);
+          setLocationError('Failed to get location');
         },
         {enableHighAccuracy: true, timeout: 20000, maximumAge: 0},
       );
@@ -146,7 +153,17 @@ export function HomeScreen() {
     getUserLocation();
   }, []);
 
-  const navigation = useNavigation<CustomNavigationProp>();
+  // Add performance monitoring
+  useEffect(() => {
+    const startTime = performance.now();
+
+    InteractionManager.runAfterInteractions(() => {
+      const endTime = performance.now();
+      console.log(
+        `⚡ Home Screen Load Time: ${(endTime - startTime).toFixed(2)}ms`,
+      );
+    });
+  }, []);
 
   const handleScroll = Animated.event(
     [{nativeEvent: {contentOffset: {y: scrollY}}}],
@@ -186,32 +203,92 @@ export function HomeScreen() {
     },
   );
 
-  const renderContent = () => {
-    return (
-      <>
-        <Stories
-          stories={mockStories}
-          onStoryPress={storyId => {
-            Alert.alert(
-              t('home.storyPressed'),
-              `${t('home.openingStory')} ${storyId}`,
-            );
-          }}
-        />
+  const renderTourItem = useCallback(
+    ({item}: {item: any}) => (
+      <TourCardsSmall item={item} navigation={navigation} />
+    ),
+    [navigation],
+  );
 
-        <Tours tourData={tours} title={t('home.upcomingTours')} />
+  const keyExtractor = useCallback((item: any) => item.id, []);
 
-        <Organizers listings={organizers} />
+  // Create sections for the FlatList
+  const sections = useCallback(() => {
+    const sectionsData = [];
 
-        <View style={{padding: 16, marginTop: 16}}>
-          <FlatList
-            data={tours}
-            renderItem={({item}) => (
-              <TourCardsSmall item={item} navigation={navigation} />
-            )}
-            keyExtractor={item => item.id}
-            numColumns={2}
-            ListHeaderComponent={() => (
+    // Add error section if exists
+    if (locationError) {
+      sectionsData.push({
+        type: 'error',
+        data: [{id: 'error', message: locationError}],
+      });
+    }
+
+    // Add stories section
+    sectionsData.push({
+      type: 'stories',
+      data: mockStories,
+    });
+
+    // Add tours section
+    if (tours) {
+      sectionsData.push({
+        type: 'tours',
+        data: tours,
+      });
+    }
+
+    // Add organizers section
+    if (organizers) {
+      sectionsData.push({
+        type: 'organizers',
+        data: organizers,
+      });
+    }
+
+    // Add tours grid section
+    if (tours) {
+      sectionsData.push({
+        type: 'toursGrid',
+        data: tours,
+      });
+    }
+
+    return sectionsData;
+  }, [locationError, tours, organizers]);
+
+  const renderSection = useCallback(
+    ({item}: {item: any}) => {
+      switch (item.type) {
+        case 'error':
+          return (
+            <View style={{padding: 16, backgroundColor: '#fffbe6'}}>
+              <Text style={{color: 'red'}}>{item.data[0].message}</Text>
+            </View>
+          );
+
+        case 'stories':
+          return (
+            <Stories
+              stories={item.data}
+              onStoryPress={storyId => {
+                Alert.alert(
+                  t('home.storyPressed'),
+                  `${t('home.openingStory')} ${storyId}`,
+                );
+              }}
+            />
+          );
+
+        case 'tours':
+          return <Tours tourData={item.data} title={t('home.upcomingTours')} />;
+
+        case 'organizers':
+          return <Organizers listings={item.data} />;
+
+        case 'toursGrid':
+          return (
+            <View style={{padding: 16, marginTop: 16}}>
               <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}>{t('home.tours')}</Text>
                 <Pressable
@@ -225,51 +302,63 @@ export function HomeScreen() {
                   />
                 </Pressable>
               </View>
-            )}
-            contentContainerStyle={styles.gridContainer}
-            columnWrapperStyle={styles.row}
-            showsVerticalScrollIndicator={false}
-            ListEmptyComponent={
-              <View style={styles.emptyContainer}>
-                <Text style={styles.emptyText}>{t('home.noToursFound')}</Text>
-              </View>
-            }
-          />
-        </View>
-      </>
-    );
-  };
+              <FlatList
+                data={item.data}
+                renderItem={renderTourItem}
+                keyExtractor={keyExtractor}
+                numColumns={2}
+                contentContainerStyle={styles.gridContainer}
+                columnWrapperStyle={styles.row}
+                showsVerticalScrollIndicator={false}
+                removeClippedSubviews={true}
+                maxToRenderPerBatch={10}
+                windowSize={10}
+                initialNumToRender={6}
+                scrollEnabled={false} // This FlatList is now properly nested
+                ListEmptyComponent={
+                  <View style={styles.emptyContainer}>
+                    <Text style={styles.emptyText}>
+                      {t('home.noToursFound')}
+                    </Text>
+                  </View>
+                }
+              />
+            </View>
+          );
+
+        default:
+          return null;
+      }
+    },
+    [t, handleSeeAllPress, renderTourItem, keyExtractor],
+  );
 
   return (
-    <SafeAreaView style={styles.viewBox}>
-      <View
-        style={[
-          styles.stickyHeader,
-          // {
-          //   transform: [{translateY: headerTranslateY}],
-          //   top: STATUS_BAR_HEIGHT,
-          // },
-        ]}>
+    <View style={[styles.viewBox]}>
+      <View style={styles.stickyHeader}>
         <SearchBar weatherData={weatherData} />
       </View>
 
       <FlatList
-        data={[1]} // Single item since we're using renderItem to render all content
-        renderItem={() => renderContent()}
+        data={sections()}
+        renderItem={renderSection}
+        keyExtractor={item => item.type}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
-        onScroll={handleScroll}
-        // contentContainerStyle={[styles.scrollContent]}
-        keyExtractor={() => 'main-content'}
+        // onScroll={handleScroll}
+        contentContainerStyle={styles.scrollContent}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={5}
+        windowSize={10}
+        initialNumToRender={3}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   viewBox: {
     flex: 1,
-    paddingHorizontal: 16,
     backgroundColor: appColors.pureWhite,
   },
   container: {
@@ -297,7 +386,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   scrollContent: {
-    paddingTop: 60,
+    paddingTop: 5,
   },
   gridContainer: {
     padding: 16,

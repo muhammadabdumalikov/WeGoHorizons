@@ -367,6 +367,7 @@ export function SearchScreen({navigation}: {navigation: any}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 10,
     backgroundColor: appColors.pureWhite,
   },
   headerBox: {

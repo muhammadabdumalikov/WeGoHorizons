@@ -8,6 +8,7 @@ import {
   Text,
   View,
   ScrollView,
+  Platform,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -138,7 +139,11 @@ export function TourDetailsScreen({navigation, route}: Props) {
   return (
     <View style={styles.container}>
       <Animated.View
-        style={[styles.headerStyle, animatedHeaderStyle, {paddingTop: top}]}>
+        style={[
+          styles.headerStyle,
+          animatedHeaderStyle,
+          {paddingTop: Platform.OS === 'ios' ? top : 10},
+        ]}>
         <Pressable
           style={styles.headerLeftBox}
           onPress={() => navigation.goBack()}>
@@ -194,19 +199,34 @@ export function TourDetailsScreen({navigation, route}: Props) {
             navigation.navigate('gallery-carousel-screen', {
               photos: tour?.files?.map(f => f.url) || [],
               initialPhoto:
-                tour?.files?.find(f => f.type === 'extra')?.url || '',
+                tour?.files?.find(f => f.type === 'main')?.url ||
+                tour?.files?.find(f => f.type === 'extra')?.url ||
+                '',
             })
           }>
           <CachedImageBackground
-            uri={tour?.files?.find(f => f.type === 'extra')?.url as string}
+            uri={
+              tour?.files?.find(f => f.type === 'main')?.url ||
+              tour?.files?.find(f => f.type === 'extra')?.url ||
+              ''
+            }
             style={styles.image}>
             {/* Image content wrapper with organizer info */}
             <View style={styles.imgContentWrapper}>
-              <BlurView
-                blurAmount={15}
-                blurType="light"
-                style={styles.blurContent}
-              />
+              {Platform.OS === 'ios' ? (
+                <BlurView
+                  blurAmount={15}
+                  blurType="light"
+                  style={styles.blurContent}
+                />
+              ) : (
+                <View
+                  style={[
+                    styles.blurContent,
+                    {backgroundColor: 'rgba(255,255,255,0.5)'},
+                  ]}
+                />
+              )}
 
               <View style={styles.organizerContentWrapper}>
                 <Image
@@ -215,11 +235,22 @@ export function TourDetailsScreen({navigation, route}: Props) {
                   resizeMode="cover"
                 />
                 <View>
-                  <Text style={styles.organizerTopTxtOnImg}>
+                  <Text
+                    style={[
+                      styles.organizerTopTxtOnImg,
+                      Platform.OS === 'ios'
+                        ? {color: appColors.pureWhite}
+                        : {color: appColors.navyBlack},
+                    ]}>
                     {t('tour.organizer')}
                   </Text>
                   <Text
-                    style={styles.organizerBottomTxtOnImg}
+                    style={[
+                      styles.organizerBottomTxtOnImg,
+                      Platform.OS === 'ios'
+                        ? {color: appColors.pureWhite}
+                        : {color: appColors.navyBlack},
+                    ]}
                     numberOfLines={1}>
                     {typeof tour?.organizer_title === 'string'
                       ? tour.organizer_title

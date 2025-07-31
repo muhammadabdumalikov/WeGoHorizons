@@ -9,6 +9,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   ImageBackground,
+  Platform,
 } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
@@ -252,7 +253,7 @@ const styles = StyleSheet.create({
   },
   contentBox: {
     position: 'absolute',
-    bottom: 20,
+    bottom: Platform.OS === 'ios' ? 20 : 65,
     left: 20,
     right: 20,
     backgroundColor: appColors.grey1,

@@ -7,30 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		35C506112DE6E6B600DA3833 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506102DE6E6B600DA3833 /* Gilroy-Semibold.ttf */; };
-		35C506122DE6E77100DA3833 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C505FA2DE6E21E00DA3833 /* Gilroy-Bold.ttf */; };
-		35C506132DE6E77100DA3833 /* Gilroy-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C505FB2DE6E21E00DA3833 /* Gilroy-Heavy.ttf */; };
-		35C506142DE6E77100DA3833 /* Gilroy-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C505FC2DE6E21E00DA3833 /* Gilroy-Light.ttf */; };
-		35C506152DE6E77100DA3833 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C505FD2DE6E21E00DA3833 /* Gilroy-Medium.ttf */; };
-		35C506162DE6E77100DA3833 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C505FE2DE6E21E00DA3833 /* Gilroy-Regular.ttf */; };
-		35C506172DE6E77100DA3833 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506002DE6E21E00DA3833 /* Quicksand-Bold.ttf */; };
-		35C506182DE6E77100DA3833 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506012DE6E21E00DA3833 /* Quicksand-Light.ttf */; };
-		35C506192DE6E77100DA3833 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506022DE6E21E00DA3833 /* Quicksand-Medium.ttf */; };
-		35C5061A2DE6E77100DA3833 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506032DE6E21E00DA3833 /* Quicksand-Regular.ttf */; };
-		35C5061B2DE6E77100DA3833 /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35C506042DE6E21E00DA3833 /* Quicksand-SemiBold.ttf */; };
-		371962503FF71B683A1140E9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		55CC2AB057A6E0B3254CF490 /* libPods-WeGoHorizons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 432FF3992025F0F8E8C3272A /* libPods-WeGoHorizons.a */; };
-		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		86D934B1AE23C8546A3B0410 /* libPods-WeGoHorizons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF8B9E34757694FF448C2E5 /* libPods-WeGoHorizons.a */; };
+		9BEFD1AA272ABBCE5CBB8C33 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		35C506332E3A052800DA3833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35C5061F2E3A052300DA3833;
+			remoteInfo = WeGoHorizons;
+		};
+		35C5063D2E3A052800DA3833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35C5061F2E3A052300DA3833;
+			remoteInfo = WeGoHorizons;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* WeGoHorizons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeGoHorizons.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF8B9E34757694FF448C2E5 /* libPods-WeGoHorizons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeGoHorizons.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeGoHorizons/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WeGoHorizons/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = WeGoHorizons/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		1C76A23E38D7427433E48E06 /* Pods-WeGoHorizons.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeGoHorizons.debug.xcconfig"; path = "Target Support Files/Pods-WeGoHorizons/Pods-WeGoHorizons.debug.xcconfig"; sourceTree = "<group>"; };
+		19207AF6FEFB4AAE837AB00D /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		1A852DC7B57F4B76B78D7229 /* Gilroy-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Light.ttf"; path = "../assets/fonts/Gilroy-Light.ttf"; sourceTree = "<group>"; };
+		1ECC68447F784A7EA8769502 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Semibold.ttf"; path = "../assets/fonts/Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
+		3392A2BD83D8403F9A37CEDA /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-SemiBold.ttf"; path = "../assets/fonts/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
 		35C505FA2DE6E21E00DA3833 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		35C505FB2DE6E21E00DA3833 /* Gilroy-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Heavy.ttf"; sourceTree = "<group>"; };
 		35C505FC2DE6E21E00DA3833 /* Gilroy-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.ttf"; sourceTree = "<group>"; };
@@ -43,19 +49,65 @@
 		35C506032DE6E21E00DA3833 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		35C506042DE6E21E00DA3833 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
 		35C506102DE6E6B600DA3833 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
-		432FF3992025F0F8E8C3272A /* libPods-WeGoHorizons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeGoHorizons.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		681E3AA0F1AFC1578BC4D3F6 /* Pods-WeGoHorizons.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeGoHorizons.release.xcconfig"; path = "Target Support Files/Pods-WeGoHorizons/Pods-WeGoHorizons.release.xcconfig"; sourceTree = "<group>"; };
+		35C506202E3A052300DA3833 /* WeGoHorizons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeGoHorizons.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C506322E3A052800DA3833 /* WeGoHorizonsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeGoHorizonsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C5063C2E3A052800DA3833 /* WeGoHorizonsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeGoHorizonsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C506D42E3A2F6000DA3833 /* WeGoHorizons.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeGoHorizons.entitlements; sourceTree = "<group>"; };
+		429D80AA04BD45E0A635670F /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Medium.ttf"; path = "../assets/fonts/Gilroy-Medium.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = WeGoHorizons/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WeGoHorizons/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A36318E6FAB4FBB82D823E1 /* Gilroy-Heavy.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Heavy.ttf"; path = "../assets/fonts/Gilroy-Heavy.ttf"; sourceTree = "<group>"; };
+		B6703706E5E8A61E204CD9DB /* Pods-WeGoHorizons.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeGoHorizons.release.xcconfig"; path = "Target Support Files/Pods-WeGoHorizons/Pods-WeGoHorizons.release.xcconfig"; sourceTree = "<group>"; };
+		BB9F952CDD0A405BB154CA4A /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Bold.ttf"; path = "../assets/fonts/Gilroy-Bold.ttf"; sourceTree = "<group>"; };
+		C0706DD5AD4542FE8E06A225 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Light.ttf"; path = "../assets/fonts/Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		C21399A31CB943C2B31A79D2 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		C3B22728AA174EA9A95094A3 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		DF1E63DCB0B7EA01EA3C7AD1 /* Pods-WeGoHorizons.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeGoHorizons.debug.xcconfig"; path = "Target Support Files/Pods-WeGoHorizons/Pods-WeGoHorizons.debug.xcconfig"; sourceTree = "<group>"; };
+		E29851CF92524B4BAFEB6222 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gilroy-Regular.ttf"; path = "../assets/fonts/Gilroy-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		35C506572E3A07DE00DA3833 /* Exceptions for "WeGoHorizons" folder in "WeGoHorizons" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 35C5061F2E3A052300DA3833 /* WeGoHorizons */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		35C506212E3A052300DA3833 /* WeGoHorizons */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				35C506572E3A07DE00DA3833 /* Exceptions for "WeGoHorizons" folder in "WeGoHorizons" target */,
+			);
+			path = WeGoHorizons;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+		35C5061D2E3A052300DA3833 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55CC2AB057A6E0B3254CF490 /* libPods-WeGoHorizons.a in Frameworks */,
+				86D934B1AE23C8546A3B0410 /* libPods-WeGoHorizons.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C5062F2E3A052800DA3833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C506392E3A052800DA3833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +117,7 @@
 		13B07FAE1A68108700A75B9A /* WeGoHorizons */ = {
 			isa = PBXGroup;
 			children = (
+				35C506D42E3A2F6000DA3833 /* WeGoHorizons.entitlements */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -89,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				432FF3992025F0F8E8C3272A /* libPods-WeGoHorizons.a */,
+				0BF8B9E34757694FF448C2E5 /* libPods-WeGoHorizons.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,9 +160,11 @@
 				35C506102DE6E6B600DA3833 /* Gilroy-Semibold.ttf */,
 				13B07FAE1A68108700A75B9A /* WeGoHorizons */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				35C506212E3A052300DA3833 /* WeGoHorizons */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				9DCF361A3CD147AFA8E4518C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -119,16 +174,36 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* WeGoHorizons.app */,
+				35C506202E3A052300DA3833 /* WeGoHorizons.app */,
+				35C506322E3A052800DA3833 /* WeGoHorizonsTests.xctest */,
+				35C5063C2E3A052800DA3833 /* WeGoHorizonsUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9DCF361A3CD147AFA8E4518C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB9F952CDD0A405BB154CA4A /* Gilroy-Bold.ttf */,
+				9A36318E6FAB4FBB82D823E1 /* Gilroy-Heavy.ttf */,
+				1A852DC7B57F4B76B78D7229 /* Gilroy-Light.ttf */,
+				429D80AA04BD45E0A635670F /* Gilroy-Medium.ttf */,
+				E29851CF92524B4BAFEB6222 /* Gilroy-Regular.ttf */,
+				1ECC68447F784A7EA8769502 /* Gilroy-Semibold.ttf */,
+				C3B22728AA174EA9A95094A3 /* Quicksand-Bold.ttf */,
+				C0706DD5AD4542FE8E06A225 /* Quicksand-Light.ttf */,
+				19207AF6FEFB4AAE837AB00D /* Quicksand-Medium.ttf */,
+				C21399A31CB943C2B31A79D2 /* Quicksand-Regular.ttf */,
+				3392A2BD83D8403F9A37CEDA /* Quicksand-SemiBold.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C76A23E38D7427433E48E06 /* Pods-WeGoHorizons.debug.xcconfig */,
-				681E3AA0F1AFC1578BC4D3F6 /* Pods-WeGoHorizons.release.xcconfig */,
+				DF1E63DCB0B7EA01EA3C7AD1 /* Pods-WeGoHorizons.debug.xcconfig */,
+				B6703706E5E8A61E204CD9DB /* Pods-WeGoHorizons.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -136,26 +211,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* WeGoHorizons */ = {
+		35C5061F2E3A052300DA3833 /* WeGoHorizons */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WeGoHorizons" */;
+			buildConfigurationList = 35C5064A2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizons" */;
 			buildPhases = (
-				AC06CD826D1F106FC6FB7EF3 /* [CP] Check Pods Manifest.lock */,
-				13B07F871A680F5B00A75B9A /* Sources */,
-				13B07F8C1A680F5B00A75B9A /* Frameworks */,
-				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				F00A972321ABC8AD024C7F99 /* [CP] Embed Pods Frameworks */,
-				87CC1693F772F4DC463BAFBD /* [CP] Copy Pods Resources */,
+				1C24106D8F6F841A1EE3BD88 /* [CP] Check Pods Manifest.lock */,
+				35C5061C2E3A052300DA3833 /* Sources */,
+				35C5061D2E3A052300DA3833 /* Frameworks */,
+				35C5061E2E3A052300DA3833 /* Resources */,
+				43E510D57433CD2EF1660B31 /* [CP] Embed Pods Frameworks */,
+				12DA492767E12916B498F747 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				35C506212E3A052300DA3833 /* WeGoHorizons */,
+			);
 			name = WeGoHorizons;
 			productName = WeGoHorizons;
-			productReference = 13B07F961A680F5B00A75B9A /* WeGoHorizons.app */;
+			productReference = 35C506202E3A052300DA3833 /* WeGoHorizons.app */;
 			productType = "com.apple.product-type.application";
+		};
+		35C506312E3A052800DA3833 /* WeGoHorizonsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35C5064B2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizonsTests" */;
+			buildPhases = (
+				35C5062E2E3A052800DA3833 /* Sources */,
+				35C5062F2E3A052800DA3833 /* Frameworks */,
+				35C506302E3A052800DA3833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35C506342E3A052800DA3833 /* PBXTargetDependency */,
+			);
+			name = WeGoHorizonsTests;
+			productName = WeGoHorizonsTests;
+			productReference = 35C506322E3A052800DA3833 /* WeGoHorizonsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		35C5063B2E3A052800DA3833 /* WeGoHorizonsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35C5064C2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizonsUITests" */;
+			buildPhases = (
+				35C506382E3A052800DA3833 /* Sources */,
+				35C506392E3A052800DA3833 /* Frameworks */,
+				35C5063A2E3A052800DA3833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35C5063E2E3A052800DA3833 /* PBXTargetDependency */,
+			);
+			name = WeGoHorizonsUITests;
+			productName = WeGoHorizonsUITests;
+			productReference = 35C5063C2E3A052800DA3833 /* WeGoHorizonsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -163,10 +276,20 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+					35C5061F2E3A052300DA3833 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					35C506312E3A052800DA3833 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 35C5061F2E3A052300DA3833;
+					};
+					35C5063B2E3A052800DA3833 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 35C5061F2E3A052300DA3833;
 					};
 				};
 			};
@@ -183,53 +306,40 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* WeGoHorizons */,
+				35C5061F2E3A052300DA3833 /* WeGoHorizons */,
+				35C506312E3A052800DA3833 /* WeGoHorizonsTests */,
+				35C5063B2E3A052800DA3833 /* WeGoHorizonsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+		35C5061E2E3A052300DA3833 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C506122DE6E77100DA3833 /* Gilroy-Bold.ttf in Resources */,
-				35C506132DE6E77100DA3833 /* Gilroy-Heavy.ttf in Resources */,
-				35C506142DE6E77100DA3833 /* Gilroy-Light.ttf in Resources */,
-				35C506152DE6E77100DA3833 /* Gilroy-Medium.ttf in Resources */,
-				35C506162DE6E77100DA3833 /* Gilroy-Regular.ttf in Resources */,
-				35C506172DE6E77100DA3833 /* Quicksand-Bold.ttf in Resources */,
-				35C506182DE6E77100DA3833 /* Quicksand-Light.ttf in Resources */,
-				35C506192DE6E77100DA3833 /* Quicksand-Medium.ttf in Resources */,
-				35C5061A2DE6E77100DA3833 /* Quicksand-Regular.ttf in Resources */,
-				35C5061B2DE6E77100DA3833 /* Quicksand-SemiBold.ttf in Resources */,
-				35C506112DE6E6B600DA3833 /* Gilroy-Semibold.ttf in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				371962503FF71B683A1140E9 /* PrivacyInfo.xcprivacy in Resources */,
+				9BEFD1AA272ABBCE5CBB8C33 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C506302E3A052800DA3833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C5063A2E3A052800DA3833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/.xcode.env",
-			);
-			name = "Bundle React Native code and images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
-		};
-		87CC1693F772F4DC463BAFBD /* [CP] Copy Pods Resources */ = {
+		12DA492767E12916B498F747 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,7 +356,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeGoHorizons/Pods-WeGoHorizons-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC06CD826D1F106FC6FB7EF3 /* [CP] Check Pods Manifest.lock */ = {
+		1C24106D8F6F841A1EE3BD88 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,7 +378,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F00A972321ABC8AD024C7F99 /* [CP] Embed Pods Frameworks */ = {
+		43E510D57433CD2EF1660B31 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,72 +398,297 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		13B07F871A680F5B00A75B9A /* Sources */ = {
+		35C5061C2E3A052300DA3833 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C5062E2E3A052800DA3833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C506382E3A052800DA3833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		35C506342E3A052800DA3833 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35C5061F2E3A052300DA3833 /* WeGoHorizons */;
+			targetProxy = 35C506332E3A052800DA3833 /* PBXContainerItemProxy */;
+		};
+		35C5063E2E3A052800DA3833 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35C5061F2E3A052300DA3833 /* WeGoHorizons */;
+			targetProxy = 35C5063D2E3A052800DA3833 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		13B07F941A680F5B00A75B9A /* Debug */ = {
+		35C506442E3A052800DA3833 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C76A23E38D7427433E48E06 /* Pods-WeGoHorizons.debug.xcconfig */;
+			baseConfigurationReference = DF1E63DCB0B7EA01EA3C7AD1 /* Pods-WeGoHorizons.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WeGoHorizons/WeGoHorizons.entitlements;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"WeGoHorizons/Preview Content\"";
 				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
-				ENABLE_BITCODE = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeGoHorizons/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WeGoHorizons;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "\"$(inherited) @executable_path/Frameworks\"";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "\"$(inherited) @executable_path/../Frameworks\"";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WeGoHorizons;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizons;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		13B07F951A680F5B00A75B9A /* Release */ = {
+		35C506452E3A052800DA3833 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 681E3AA0F1AFC1578BC4D3F6 /* Pods-WeGoHorizons.release.xcconfig */;
+			baseConfigurationReference = B6703706E5E8A61E204CD9DB /* Pods-WeGoHorizons.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WeGoHorizons/WeGoHorizons.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"WeGoHorizons/Preview Content\"";
 				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeGoHorizons/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WeGoHorizons;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "\"$(inherited) @executable_path/Frameworks\"";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "\"$(inherited) @executable_path/../Frameworks\"";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WeGoHorizons;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizons;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		35C506462E3A052800DA3833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizonsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeGoHorizons.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeGoHorizons";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		35C506472E3A052800DA3833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizonsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeGoHorizons.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeGoHorizons";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		35C506482E3A052800DA3833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizonsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = WeGoHorizons;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		35C506492E3A052800DA3833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3AVK4Q2T4R;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhammad.WeGoHorizonsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = WeGoHorizons;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -390,6 +725,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -426,7 +762,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -467,6 +806,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -495,7 +835,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -506,11 +849,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WeGoHorizons" */ = {
+		35C5064A2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizons" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13B07F941A680F5B00A75B9A /* Debug */,
-				13B07F951A680F5B00A75B9A /* Release */,
+				35C506442E3A052800DA3833 /* Debug */,
+				35C506452E3A052800DA3833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35C5064B2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizonsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35C506462E3A052800DA3833 /* Debug */,
+				35C506472E3A052800DA3833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35C5064C2E3A052800DA3833 /* Build configuration list for PBXNativeTarget "WeGoHorizonsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35C506482E3A052800DA3833 /* Debug */,
+				35C506492E3A052800DA3833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

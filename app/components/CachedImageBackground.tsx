@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, ViewStyle, StyleProp} from 'react-native';
 import FastImage, {
-  FastImageProps,
   ImageStyle,
 } from '@d11/react-native-fast-image';
 

@@ -1,6 +1,6 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {
-  Animated,
+  FlatList,
   ListRenderItem,
   Pressable,
   StyleSheet,
@@ -29,8 +29,6 @@ type Props = {
 
 function Component({tourData, title = 'Tours'}: Props) {
   const navigation = useNavigation<NavigationProp>();
-  const scrollX = useRef(new Animated.Value(0)).current;
-  const ITEM_WIDTH = 290 + 16; // Item width + marginRight
   const {t} = useLocalization();
 
   const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -46,7 +44,9 @@ function Component({tourData, title = 'Tours'}: Props) {
   };
 
   const renderItem: ListRenderItem<Tour> = ({item}) => {
-    const backgroundImageUrl = item.files?.find(f => f.type === 'extra')?.url;
+    const backgroundImageUrl =
+      item.files?.find(f => f.type === 'main')?.url ||
+      item.files?.find(f => f.type === 'extra')?.url;
     const organizerLogoUrl = item.organizer_logo;
 
     if (!backgroundImageUrl || !organizerLogoUrl) {
@@ -131,17 +131,12 @@ function Component({tourData, title = 'Tours'}: Props) {
         </Pressable>
       </View>
 
-      <Animated.FlatList
+      <FlatList
         renderItem={renderItem}
         data={visibleListings}
         horizontal
+        contentContainerStyle={styles.container}
         showsHorizontalScrollIndicator={false}
-        style={styles.container}
-        onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {x: scrollX}}}],
-          {useNativeDriver: true},
-        )}
-        snapToInterval={ITEM_WIDTH}
         decelerationRate="fast"
         bounces={false}
       />
@@ -172,7 +167,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Medium',
     color: '#FFC107',
   },
-  container: {paddingHorizontal: 16},
+  container: {
+    paddingLeft: 16,
+  },
   item: {
     width: 290,
     height: 260,

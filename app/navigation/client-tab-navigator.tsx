@@ -1,44 +1,34 @@
 import React from 'react';
-import {BlurView} from '@react-native-community/blur';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StyleSheet} from 'react-native';
 import {appColors} from '../shared/constants';
 import {HomeScreen} from '../screens/home';
-import { HomeActiveSvg } from '../../assets/images/home-active';
-import { HomeInactiveSvg } from '../../assets/images/home-inactive';
-import { WorldActiveSvg } from '../../assets/images/world-active';
-import { WorldInactiveSvg } from '../../assets/images/world-inactive';
-import { ProfileActiveSvg } from '../../assets/images/profile-active';
-import { ProfileInactiveSvg } from '../../assets/images/profile-inactive';
-import { ProfileScreen } from '../screens/profile-screen';
-import { CalendarEventsScreen } from '../screens/calendar-events-screen';
+import {HomeActiveSvg} from '../../assets/images/home-active';
+import {HomeInactiveSvg} from '../../assets/images/home-inactive';
+import {WorldActiveSvg} from '../../assets/images/world-active';
+import {WorldInactiveSvg} from '../../assets/images/world-inactive';
+import {ProfileActiveSvg} from '../../assets/images/profile-active';
+import {ProfileInactiveSvg} from '../../assets/images/profile-inactive';
+import {ProfileScreen} from '../screens/profile-screen';
+import {CalendarEventsScreen} from '../screens/calendar-events-screen';
 
 const Tab = createBottomTabNavigator();
 
-const TabbarBackground = () => (
-  <BlurView blurAmount={15} style={styles.blurView} blurType="light" />
-);
+// const TabbarBackground = () => (
+//   <BlurView blurAmount={15} style={styles.blurView} blurType="light" />
+// );
 
 const HomeIcon = ({focused}: {color: string; focused: boolean}) => {
   switch (focused) {
     case true:
       return (
         // <View style={styles.homeIconOnFocus}>
-        <HomeActiveSvg
-          width={34}
-          height={34}
-          color={appColors.mainColor}
-        />
+        <HomeActiveSvg width={34} height={34} color={appColors.mainColor} />
         // </View>
       );
     case false:
       return (
         // <View style={styles.homeIcon}>
-        <HomeInactiveSvg
-          width={32}
-          height={32}
-          color={appColors.grey6}
-        />
+        <HomeInactiveSvg width={32} height={32} color={appColors.grey6} />
         // </View>
       );
   }
@@ -48,11 +38,7 @@ const WorldIcon = ({focused}: {color: string; focused: boolean}) => {
   switch (focused) {
     case true:
       return (
-        <WorldActiveSvg
-          width={32}
-          height={32}
-          color={appColors.mainColor}
-        />
+        <WorldActiveSvg width={32} height={32} color={appColors.mainColor} />
       );
     case false:
       return (
@@ -66,21 +52,13 @@ const ProfileIcon = ({focused}: {color: string; focused: boolean}) => {
     case true:
       return (
         // <View style={styles.profileIconOnFocus}>
-        <ProfileActiveSvg
-          width={32}
-          height={32}
-          color={appColors.mainColor}
-        />
+        <ProfileActiveSvg width={32} height={32} color={appColors.mainColor} />
         // </View>
       );
     case false:
       return (
         // <View style={styles.profileIcon}>
-        <ProfileInactiveSvg
-          width={30}
-          height={30}
-          color={appColors.grey6}
-        />
+        <ProfileInactiveSvg width={30} height={30} color={appColors.grey6} />
         // </View>
       );
   }
@@ -94,10 +72,10 @@ export function ClientTabNavigator() {
       screenOptions={{
         headerTransparent: true,
         headerTitle: '',
-        tabBarBackground: TabbarBackground,
+        // tabBarBackground: TabbarBackground,
         tabBarStyle: {
-          height: 80,
-          backgroundColor: appColors.bottomBarBlur,
+          height: 70  ,
+          backgroundColor: appColors.pureWhite,
           borderTopWidth: 0,
         },
         tabBarShowLabel: false,
@@ -147,39 +125,3 @@ export function ClientTabNavigator() {
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  blurView: {
-    flex: 1,
-  },
-  profileIconOnFocus: {
-    backgroundColor: appColors.mainColor,
-    height: '100%',
-    width: '100%',
-    borderRadius: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  profileIcon: {
-    backgroundColor: appColors.pureWhite,
-    height: '100%',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  homeIconOnFocus: {
-    backgroundColor: appColors.mainColor,
-    height: '100%',
-    width: '100%',
-    borderRadius: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  homeIcon: {
-    backgroundColor: appColors.pureWhite,
-    height: '100%',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

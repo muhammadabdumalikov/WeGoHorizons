@@ -5,14 +5,12 @@ import {
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { ClientTabNavigator } from './client-tab-navigator';
-import {AdminTabNavigator} from './admin-tab-navigator';
 import {TourDetailsScreen} from '../screens/tour-details';
 import {RootStackParamList} from '../types/stack';
-import {ActivityIndicator, Pressable, StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import {appColors} from '../shared/constants';
 import {SearchScreen} from '../screens/search-screen';
 import {AllToursScreen} from '../screens/all-tours';
-import {useAuth} from './auth-context';
 import {SplashScreen} from '../screens/splash-screen';
 import {OnboardingScreen} from '../screens/onboarding-screen';
 import {GuideDetailScreen} from '../screens/guide-detail-screen';
@@ -111,20 +109,10 @@ function MainNavigation() {
 }
 
 export function RootLayout() {
-  const {isAdmin} = useAuth();
-
-  if (isAdmin === null) {
-    return (
-      <View style={styles.loaderContainer}>
-        <ActivityIndicator size="large" color={appColors.navyBlack} />
-      </View>
-    );
-  }
-
   return (
     <View style={{flex: 1}}>
       <NavigationContainer>
-        {isAdmin ? <AdminTabNavigator /> : <MainNavigation />}
+        <MainNavigation />
       </NavigationContainer>
     </View>
   );
